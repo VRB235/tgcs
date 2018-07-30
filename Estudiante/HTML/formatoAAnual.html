@@ -5,144 +5,171 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Registro del Proyecto de TG Anual</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="../CSS/talento.css">
 </head>
 <body>
-    <center><img src="../recursos/Logo-UCAB-04.png" id="logo"></center>
+    <img src="../recursos/Logo-UCAB-04.png" alt="logo_UCAB" class="logo_UCAB">
     <form action="../PHP/procesarSolicitud.php" method="post" id="form">
-        <br>
-        <br>
         <div id="header">
-            <center><h1><strong>FORMATO A <br/> FICHA DE REGISTRO DEL PROYECTO DE TRABAJO DE GRADO</strong></h1></center>
-                <center>(llenar en el computador, no a mano)</center>
-            </div>
-            <br>
-            <br>
-        <div id="version">
-            <input type="radio" name="version"  value="first_version"> Primera Versión
-            <input type="radio" name="version"  value="second_version"  required> Segunda Versión
+            <h1><strong>FORMATO A <br/> FICHA DE REGISTRO DEL PROYECTO DE TRABAJO DE GRADO</strong></h1>
+            <spam>(llenar en el computador, no a mano)</spam>
         </div>
-            
-    <br>
-    <br>
-    <br>
-            <label for="title">TITULO COMPLETO DE PROYECTO DE TRABAJO DE GRADO <br> (Máximo 120 caracteres, incluyendo espacios y signos)</label><input type="text" id="title" name="title" maxlength="120" required>
-            <br>
-            <br>
-            <label for="student_one_name"><strong>Estudiante 1) Nombre y Apellido</strong></label><input type="text" id="student_one_name" name="student_one_name"   required>
-            <label for="student_one_id">Cédula de Identidad</label><input type="text" id="student_one_id" min="0" name="student_one_id"  required>
-            <br>
-            <br>
-            <label for="student_one_hab_phone">Teléfono Habitación</label><input type="tel" id="student_one_hab_phone" name="student_one_hab_phone" placeholder="0000-000-0000" required>
-            <label for="student_one_cel_phone">Telefono Celular</label><input type="tel" id="student_one_cel_phone" name="student_one_cel_phone" placeholder="0000-000-0000" required>
-            <label for="student_one_ucab_email">E-mail UCAB</label><input type="email" id="student_one_ucab_email" name="student_one_ucab_email" placeholder ="ejemplo@correo.com"  required>
-            <br>
-            <br>
-            <label for="student_one_personal_email">E-mail Personal</label><input type="email" id="student_one_personal_email" name="student_one_personal_email" placeholder ="ejemplo@correo.com"  required>
-            <label for="student_one_specialty">Especialidad</label>
-            <select id="student_one_specialty" name="student_one_specialty">
-                <option value="Sin O">Sin Opción</option>
-                <option value="RR.II">Relaciones Industriales</option>
-                <option value="Soc.">Sociología</option>
-            </select>
-            <br>
-            <br>
-            <label for="student_one_mention">Mención</label>
-            <select id="student_one_mention" name="student_one_mention">
-                <option value="Sin O">Sin Opción</option>
-                <option value="RR.HH">Recursos Humanos</option>
-                <option value="RR.LL">Relaciones Laborales</option>
-                <option value="CyB">Compensación y Beneficios</option>
-            </select>
-            <input type="radio" name="student_one_scholarship" value="fourth_year"  required> 4to Año
-            <input type="radio" name="student_one_scholarship" value="fifth_year" > 5to Año
-            <input type="radio" name="student_one_scholarship" value="scholarship_ended" > Escolaridad Finalizada
-            <label for="student_one_year_ended">Año de Finalización</label><input type="number" id="student_one_year_ended" min="1900" name="student_one_year_ended">
-            <br>
-            <br>
-            <br>
-            <label for="student_one_seminar_title">Titulo del Proyecto de Seminario</label><input type="text" id="student_one_seminar_title" name="student_one_seminar_title"  required>
-            <br>
-            <br>
-            <label for="student_one_professor">Profesor de Seminario</label><input type="text" id="student_one_professor" name="student_one_professor"  required>
-            <label for="student_one_approval_year">Año de Aprobación</label><input type="number" id="student_one_approval_year" min="1900" name="student_one_approval_year"  required>
-            <label for="student_one_same_seminar">¿Este proyecto es el mismo del Seminario?</label>
-            <select name="student_one_same_seminar" id="student_one_same_seminar">
-                <option value="yes">Si</option>
-                <option value="no">No</option>
-            </select>
-            <br>
-            <br>
-            <br>
-            <label for="student_two_name"><strong>Estudiante 2) Nombre y Apellido</strong></label><input type="text" id="student_two_name" name="student_two_name"  required>
-            <label for="student_two_id">Cédula de Identidad</label><input type="text" id="student_two_id" min="0" name="student_two_id"  required>
-            <br>
-            <br>
-            <label for="student_two_hab_phone">Teléfono Habitación</label><input type="tel" id="student_two_hab_phone" name="student_two_hab_phone" placeholder="0000-000-0000" required>
-            <label for="student_two_cel_phone">Teléfono Celular</label><input type="tel" id="student_two_cel_phone" name="student_two_cel_phone" placeholder="0000-000-0000" required>
-            <label for="student_two_ucab_email">E-mail UCAB</label><input type="email" id="student_two_ucab_email" name="student_two_ucab_email" placeholder ="ejemplo@correo.com" required>
-            <br>
-            <br>
-            <label for="student_two_personal_email">E-mail Personal</label><input type="email" id="student_two_personal_email" name="student_two_personal_email" placeholder ="ejemplo@correo.com" required>
-            <label for="student_two_specialty">Especialidad</label>
-            <select id="student_two_specialty" name="student_two_specialty">
+        <div class="form-check">
+            <label for="version1" class="form-check-label">
+                <input type="radio" name="version" id="version1"  value="first_version" class="form-check-input"> Primera Version
+            </label>
+            <label for="version2" class="form-check-label">
+                <input type="radio" name="version" id="version2"  value="second_version" class="form-check-input" required> Segunda Versión
+            </label>
+        </div>
+            <label for="title">TITULO COMPLETO DE PROYECTO DE TRABAJO DE GRADO <br> (Máximo 120 caracteres, incluyendo espacios y signos)
+                <input type="text" id="title" name="title" maxlength="120" class="form-control" required>
+            </label>
+            <spam class="split">Estudiante 1)</spam>
+            <label for="student_one_name"><strong>Nombre y Apellido</strong>
+                <input type="text" id="student_one_name" name="student_one_name" class="form-control"   required>
+            </label>
+            <label for="student_one_id">Cédula de Identidad
+                <input type="text" id="student_one_id" name="student_one_id" class="form-control"  required>
+            </label>
+            <label for="student_one_hab_phone">Teléfono Habitación
+                <input type="tel" id="student_one_hab_phone" name="student_one_hab_phone" class="form-control" placeholder="0000-000-0000" required>
+            </label>
+            <label for="student_one_cel_phone">Telefono Celular
+                <input type="tel" id="student_one_cel_phone" name="student_one_cel_phone" class="form-control" placeholder="0000-000-0000" required>
+            </label>
+            <label for="student_one_ucab_email">E-mail UCAB
+                <input type="email" id="student_one_ucab_email" name="student_one_ucab_email" class="form-control" placeholder ="ejemplo@correo.com"  required>
+            </label>
+            <label for="student_one_personal_email">E-mail Personal
+                <input type="email" id="student_one_personal_email" name="student_one_personal_email" class="form-control" placeholder ="ejemplo@correo.com"  required>
+            </label>
+            <label for="student_one_specialty">Especialidad
+                <select id="student_one_specialty" name="student_one_specialty" class="form-control">
                     <option value="Sin O">Sin Opción</option>
                     <option value="RR.II">Relaciones Industriales</option>
                     <option value="Soc.">Sociología</option>
-            </select>
-            <br>
-            <br>
-            <label for="student_two_mention">Mención</label>
-            <select id="student_two_mention" name="student_two_mention">
+                </select>
+            </label>
+            <label for="student_one_mention">Mención
+                <select id="student_one_mention" name="student_one_mention" class="form-control">
                     <option value="Sin O">Sin Opción</option>
                     <option value="RR.HH">Recursos Humanos</option>
                     <option value="RR.LL">Relaciones Laborales</option>
                     <option value="CyB">Compensación y Beneficios</option>
+                </select>
+            </label>
+        <label for="student_one_scholarship"> Escolaridad
+            <select name="student_two_scholarship" id="student_one_scholarship" class="form-control">
+                <option value="fourth_year">4to Año</option>
+                <option value="fifth_year">5to Año</option>
+                <option value="scholarship_ended">Escolaridad Finalizada</option>
             </select>
-            <input type="radio" name="student_two_scholarship" value="fourth_year" > 4to Año
-            <input type="radio" name="student_two_scholarship" value="fifth_year" > 5to Año
-            <input type="radio" name="student_two_scholarship" value="scholarship_ended" > Escolaridad Finalizada
-            <label for="student_two_year_ended">Año de Finalización</label><input type="number" min="1900" id="student_two_year_ended" name="student_two_year_ended">
-            <br>
-            <br>
-            <label for="student_two_seminar_title">Titulo del Proyecto de Seminario</label><input type="text" id="student_two_seminar_title" name="student_two_seminar_title"  required>
-            <br>
-            <br>
-            <label for="student_two_professor">Profesor de Seminario</label><input type="text" id="student_two_professor" name="student_two_professor"  required>
-            <label for="student_two_approval_year">Año de Aprobación</label><input type="number" id="student_two_approval_year" min="1900" name="student_two_approval_year"  required>
-            <label for="student_two_same_seminar">¿Este proyecto es el mismo del Seminario?</label>
-            <select name="student_two_same_seminar" id="student_two_same_seminar">
-                <option value="yes">Si</option>
-                <option value="no">No</option>
-            </select>
-            <br>
-            <br>
-            <br>
-            <label for="tutor_name"><strong>Nombre y Apellido del Tutor</strong></label><input type="text" id="tutor_name" name="tutor_name"  required>
-            <label for="tutor_email">E-mail</label><input type="email" id="tutor_email" name="tutor_email" placeholder ="ejemplo@correo.com" required>
-            <br>
-            <br>
-            <label for="tutor_cel_phone">Teléfono Celular</label><input type="tel" id="tutor_cel_phone" name="tutor_cel_phone" placeholder="0000-000-0000" required>
-            <label for="tutor_id">Cédula de Identidad</label><input type="text" id="tutor_id" min="0" name="tutor_id"  required>
-            <br>
-            <br>
-            <br>
-            <p class="sign">Firma del Estudiante No.1</p>
-            <p class="sign">Firma del Estudiante No.2</p>
-            <br>
-            <br>
+        </label>
+            <label for="student_one_year_ended">Año de Finalización
+                <input type="number" id="student_one_year_ended" min="1900" name="student_one_year_ended" class="form-control">
+            </label>
+            <label for="student_one_seminar_title">Titulo del Proyecto de Seminario
+                <input type="text" id="student_one_seminar_title" name="student_one_seminar_title" class="form-control"  required>
+            </label>
+            <label for="student_one_professor">Profesor de Seminario
+                <input type="text" id="student_one_professor" name="student_one_professor" class="form-control"  required>
+            </label>
+            <label for="student_one_approval_year">Año de Aprobación
+                <input type="number" id="student_one_approval_year" min="1900" class="form-control" name="student_one_approval_year"  required>
+            </label>
+            <label for="student_one_same_seminar">¿Este proyecto es el mismo del Seminario?
+                <select name="student_one_same_seminar" id="student_one_same_seminar" class="form-control">
+                    <option value="yes">Si</option>
+                    <option value="no">No</option>
+                </select>
+            </label>
+            <spam class="split">Estudiante 2)</spam>
+            <label for="student_two_name"><strong>Nombre y Apellido</strong>
+                <input type="text" id="student_two_name" name="student_two_name" class="form-control"  required>
+            </label>
+            <label for="student_two_id">Cédula de Identidad
+                <input type="text" id="student_two_id" min="0" name="student_two_id" class="form-control"  required>
+            </label>
+            <label for="student_two_hab_phone">Teléfono Habitación
+                <input type="tel" id="student_two_hab_phone" name="student_two_hab_phone" class="form-control" placeholder="0000-000-0000" required>
+            </label>
+            <label for="student_two_cel_phone">Teléfono Celular
+                <input type="tel" id="student_two_cel_phone" name="student_two_cel_phone" class="form-control" placeholder="0000-000-0000" required>
+            </label>
+            <label for="student_two_ucab_email">E-mail UCAB
+                <input type="email" id="student_two_ucab_email" name="student_two_ucab_email" class="form-control" placeholder ="ejemplo@correo.com" required>
+            </label>
+            <label for="student_two_personal_email">E-mail Personal
+                <input type="email" id="student_two_personal_email" name="student_two_personal_email" class="form-control" placeholder ="ejemplo@correo.com" required>
+            </label>
+            <label for="student_two_specialty">Especialidad
+                <select id="student_two_specialty" name="student_two_specialty" class="form-control">
+                        <option value="Sin O">Sin Opción</option>
+                        <option value="RR.II">Relaciones Industriales</option>
+                        <option value="Soc.">Sociología</option>
+                </select>
+            </label>
+            <label for="student_two_mention">Mención
+                <select id="student_two_mention" name="student_two_mention" class="form-control">
+                        <option value="Sin O">Sin Opción</option>
+                        <option value="RR.HH">Recursos Humanos</option>
+                        <option value="RR.LL">Relaciones Laborales</option>
+                        <option value="CyB">Compensación y Beneficios</option>
+                </select>
+            </label>
+            <label for="student_two_scholarship"> Escolaridad
+                <select name="student_two_scholarship" id="student_two_scholarship" class="form-control">
+                    <option value="fourth_year">4to Año</option>
+                    <option value="fifth_year">5to Año</option>
+                    <option value="scholarship_ended">Escolaridad Finalizada</option>
+                </select>
+            </label>
+            <label for="student_two_year_ended">Año de Finalización
+                <input type="number" min="1900" id="student_two_year_ended" name="student_two_year_ended" class="form-control">
+            </label>
+            <label for="student_two_seminar_title">Titulo del Proyecto de Seminario
+                <input type="text" id="student_two_seminar_title" name="student_two_seminar_title" class="form-control"  required>
+            </label>
+            <label for="student_two_professor">Profesor de Seminario
+                <input type="text" id="student_two_professor" name="student_two_professor" class="form-control"  required>
+            </label>
+            <label for="student_two_approval_year">Año de Aprobación
+                <input type="number" id="student_two_approval_year" min="1900" class="form-control" name="student_two_approval_year"  required>
+            </label>
+            <label for="student_two_same_seminar">¿Este proyecto es el mismo del Seminario?
+                <select name="student_two_same_seminar" id="student_two_same_seminar" class="form-control">
+                    <option value="yes">Si</option>
+                    <option value="no">No</option>
+                </select>
+            </label>
+            <spam class="split">Tutor</spam>
+            <label for="tutor_name"><strong>Nombre y Apellido del Tutor</strong>
+                <input type="text" id="tutor_name" name="tutor_name" class="form-control"  required>
+            </label>
+            <label for="tutor_email">E-mail
+                <input type="email" id="tutor_email" name="tutor_email" class="form-control" placeholder ="ejemplo@correo.com" required>
+            </label>
+            <label for="tutor_cel_phone">Teléfono Celular
+                <input type="tel" id="tutor_cel_phone" name="tutor_cel_phone" class="form-control" placeholder="0000-000-0000" required>
+            </label>
+            <label for="tutor_id">Cédula de Identidad
+                <input type="text" id="tutor_id" min="0" name="tutor_id" class="form-control"  required>
+            </label>
+            <br><br>
+            <p class="sign1">Firma del Estudiante No.1</p>
+            <p class="sign2">Firma del Estudiante No.2</p>
             <p class="text">Nosotros los estudiantes de la Escuela de Ciencias Sociales firmantes de la presente ficha de registro 
                 declaramos que el presente Proyecto de Trabajo de Grado ha sido elaborado respetando las normas de 
                 derecho de autor y propiedad intelectual y que conocemos que cualquier tipo de irregularidad en este 
                 sentido en el documento acarreará sanciones por parte de la Escuela de Ciencias Sociales
             </p>
-            <br>
-            <br>
-            <input type="submit" value="Enviar Formulario" name="print" class="btn">
+            <input type="submit" value="Enviar Formulario" name="print" class="btn btn-primary">
     </form>
-    <div>
-        <a href="../index.html"><div class="buttom">Regresar</div></a>
+    <div class="back">
+        <a href="../index.html"><div class="btn btn-primary">Regresar</div></a>
     </div>
 </body>
 </html>

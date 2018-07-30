@@ -5,97 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Presentación TG Semestral</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="../CSS/talento.css">
 </head>
 <body>
-    <img src="../recursos/Logo-UCAB-04.png" id="logo">
+    <img src="../recursos/Logo-UCAB-04.png" id="logo" alt="logo_UCAB" class="logo_UCAB">
 
     <form action="../PHP/procesarSolicitud.php" method="post" id="form">
-        <br>
-        <br>
-        <br>
-        <br>
         <div id="header">
             <h1>FORMATO F <br/> PRESENTACIÓN TRABAJO DE GRADO</h1>
-            (llenar en el computador, no a mano)
+            <spam>(llenar en el computador, no a mano)</spam>
         </div>
-        <br>
-        <br>
-        <br>
-        <label for="approval_date">Fecha de aprobación del Proyecto</label><input type="date" id="approval_date" name="approval_date" required>
-        <br>
-        <br>
-        <label for="title">TITULO COMPLETO DE PROYECTO DE TRABAJO DE GRADO <br> (Máximo 120 caracteres, incluyendo espacios y signos)</label><input type="text" id="title" name="title" required>
-        <br>
-        <br>        
-        <label for="investigation_area">Area de Investigación</label><input type="text" id="investigation_area" name="investigation_area" required>
-        <br>
-        <br>
-        <label for="student_one_name"><strong>Estudiante 1) Nombre y Apellido</strong></label><input type="text" id="student_one_name" name="student_one_name" required>
-        <label for="student_one_id">Cédula de Identidad</label><input type="text" id="student_one_id" name="student_one_id" required>
-        <br>
-        <br>
-        <label for="student_one_hab_phone">Teléfono Habitación</label><input type="tel" id="student_one_hab_phone" name="student_one_hab_phone" placeholder="0000-000-0000" required>
-        <label for="student_one_cel_phone">Teléfono Celular</label><input type="tel" id="student_one_cel_phone" name="student_one_cel_phone" placeholder="0000-000-0000" required>
-        <label for="student_one_ucab_email">E-mail UCAB</label><input type="email" id="student_one_ucab_email" name="student_one_ucab_email" placeholder ="ejemplo@correo.com" required>
-        <br>
-        <br>
-        <br>
-        <label for="student_one_personal_email">E-mail Personal</label><input type="email" id="student_one_personal_email" name="student_one_personal_email" placeholder ="ejemplo@correo.com" required>
-        <br>
-        <br>
-        <br>
-        <label for="student_two_name"><strong>Estudiante 2) Nombre y Apellido</strong></label><input type="text" id="student_two_name" name="student_two_name" required>
-        <label for="student_two_id">Cédula de Identidad</label><input type="text" id="student_two_id" min="0" name="student_two_id">
-        <br>
-        <br>
-        <label for="student_two_hab_phone">Teléfono Habitación</label><input type="tel" id="student_two_hab_phone" name="student_two_hab_phone" placeholder="0000-000-0000" required>
-        <label for="student_two_cel_phone">Teléfono Celular</label><input type="tel" id="student_two_cel_phone" name="student_two_cel_phone" placeholder="0000-000-0000" required>
-        <label for="student_two_ucab_email">E-mail UCAB</label><input type="email" id="student_two_ucab_email" name="student_two_ucab_email" placeholder ="ejemplo@correo.com" required>
-        <br>
-        <br>
-        <label for="student_two_personal_email">E-mail Personal</label><input type="email" id="student_two_personal_email" name="student_two_personal_email" placeholder ="ejemplo@correo.com" required>
-        <br>
-        <br>
-        <label for="tutor_name"><strong>Nombre y Apellido del Tutor</strong></label><input type="text" id="tutor_name" name="tutor_name" required>
-        <label for="tutor_email">E-mail</label><input type="email" id="tutor_email" name="tutor_email" placeholder ="ejemplo@correo.com" required>
-        <br>
-        <br>
-        <label for="tutor_cel_phone">Teléfono Celular</label><input type="text" id="tutor_cel_phone" name="tutor_cel_phone" placeholder="0000-000-0000" required>
-        <label for="tutor_id">Cédula de Identidad</label><input type="text" id="tutor_id" name="tutor_id" required>
-        <br>
-        <br>
+        <label for="approval_date">Fecha de aprobación del Proyecto
+            <input type="date" id="approval_date" name="approval_date" class="form-control" required>
+        </label>
+        <label for="title">TITULO COMPLETO DE PROYECTO DE TRABAJO DE GRADO <br> (Máximo 120 caracteres, incluyendo espacios y signos)
+            <input type="text" id="title" name="title" class="form-control" required>
+        </label>
+        <label for="investigation_area">Area de Investigación
+            <input type="text" id="investigation_area" name="investigation_area" class="form-control" required>
+        </label>
+        <spam class="split">Estudiante 1)</spam>
+        <label for="student_one_name"><strong>Nombre y Apellido</strong>
+            <input type="text" id="student_one_name" name="student_one_name" class="form-control" required>
+        </label>
+        <label for="student_one_id">Cédula de Identidad
+            <input type="text" id="student_one_id" name="student_one_id" class="form-control" required>
+        </label>
+        <label for="student_one_hab_phone">Teléfono Habitación
+            <input type="tel" id="student_one_hab_phone" name="student_one_hab_phone" class="form-control" placeholder="0000-000-0000" required>
+        </label>
+        <label for="student_one_cel_phone">Teléfono Celular
+            <input type="tel" id="student_one_cel_phone" name="student_one_cel_phone" class="form-control" placeholder="0000-000-0000" required>
+        </label>
+        <label for="student_one_ucab_email">E-mail UCAB
+            <input type="email" id="student_one_ucab_email" name="student_one_ucab_email" class="form-control" placeholder ="ejemplo@correo.com" required>
+        </label>
+        <label for="student_one_personal_email">E-mail Personal
+            <input type="email" id="student_one_personal_email" name="student_one_personal_email" class="form-control" placeholder ="ejemplo@correo.com" required>
+        </label>
+        <spam class="split">Estudiante 2)</spam>
+        <label for="student_two_name"><strong>Nombre y Apellido</strong>
+            <input type="text" id="student_two_name" name="student_two_name" class="form-control" required>
+        </label>
+        <label for="student_two_id">Cédula de Identidad
+            <input type="text" id="student_two_id" min="0" name="student_two_id" class="form-control">
+        </label>
+        <label for="student_two_hab_phone">Teléfono Habitación
+            <input type="tel" id="student_two_hab_phone" name="student_two_hab_phone" class="form-control" placeholder="0000-000-0000" required>
+        </label>
+        <label for="student_two_cel_phone">Teléfono Celular
+            <input type="tel" id="student_two_cel_phone" name="student_two_cel_phone" class="form-control" placeholder="0000-000-0000" required>
+        </label>
+        <label for="student_two_ucab_email">E-mail UCAB
+            <input type="email" id="student_two_ucab_email" name="student_two_ucab_email" class="form-control" placeholder ="ejemplo@correo.com" required>
+        </label>
+        <label for="student_two_personal_email">E-mail Personal
+            <input type="email" id="student_two_personal_email" name="student_two_personal_email" class="form-control" placeholder ="ejemplo@correo.com" required>
+        </label>
+        <spam class="split">Tutor</spam>
+        <label for="tutor_name"><strong>Nombre y Apellido del Tutor</strong>
+            <input type="text" id="tutor_name" name="tutor_name" class="form-control" required>
+        </label>
+        <label for="tutor_email">E-mail
+            <input type="email" id="tutor_email" name="tutor_email" placeholder ="ejemplo@correo.com" class="form-control" required>
+        </label>
+        <label for="tutor_cel_phone">Teléfono Celular
+            <input type="text" id="tutor_cel_phone" name="tutor_cel_phone" class="form-control" placeholder="0000-000-0000" required>
+        </label>
+        <label for="tutor_id">Cédula de Identidad
+            <input type="text" id="tutor_id" name="tutor_id" class="form-control" required>
+        </label>
+        <p class="clean consig">Se Consigna:</p>
+        <label for="cd" class="form-check-label check">
+            <input type="checkbox" id="cd" name="cd" class="form-check-input"> CD con el documento del Trabajo de Grado en word y PDF.Ficha Resumen del Trabajo de Grado (Formato G)
+        </label>
+        <br><br>
         <p class="approvation">Aprobación por parte del Tutor <br> (firma)</p>
         <div class="approvation_sub"></div>
         <p class="date_sign">Día y Fecha</p>
         <div class="date_sign_sub"></div>
-        <br>
-        <br>
-        <br>
-        <p class="sign">Firma del Estudiante No.1</p>
-        <p class="sign">Firma del Estudiante No.2</p>
-        <br>
-        <br>
-        <p class="clean">Se Consigna:</p>
-        <br>
-        <br>
-        <input type="checkbox" id="cd" name="cd"> CD con el documento del Trabajo de Grado en word y PDF.Ficha Resumen del Trabajo de Grado (Formato G)
-        <br>
-        <br>
+        <p class="sign1">Firma del Estudiante No.1</p>
+        <p class="sign2">Firma del Estudiante No.2</p>
+        <br><br>
         <p class="text2">Nosotros los estudiantes de la Escuela de Ciencias Sociales firmantes de la presente ficha de registro 
                 declaramos que el presente Proyecto de Trabajo de Grado ha sido elaborado respetando las normas de 
                 derecho de autor y propiedad intelectual y que conocemos que cualquier tipo de irregularidad en este 
                 sentido en el documento acarreará sanciones por parte de la Escuela de Ciencias Sociales
         </p>
-        <br>
-        <br>
-        <br>
-                    <input type="submit" value="Imprimir Formulario" name="print" class="btn">
+        <input type="submit" value="Enviar Formulario" name="print" class="btn btn-primary">
 
     </form>
-    <div>
-        <a href="../index.html"><div class="buttom">Regresar</div></a>
+    <div class="back">
+        <a href="../index.html"><div class="btn btn-primary">Regresar</div></a>
     </div>
 </body>
 </html>
