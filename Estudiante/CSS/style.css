@@ -9,8 +9,8 @@ div#form {
     margin-left: auto;
     margin-right: auto;
     margin-top: 40px;
-    width: 400px;
-    max-width: 400px;
+    width: 430px;
+    max-width: 430px;
     max-height: 250px;
     height: 250px;
 }
@@ -39,6 +39,21 @@ select#period, select#format {
     margin-left: auto;
     margin-right: auto;
     display: inline-block;
+}
+
+select#period {
+    max-width: 150px;
+    width: 150px;
+}
+
+select#format {
+    max-width: 150px;
+    width: 150px;
+}
+
+select#format {
+    max-width: 360px;
+    width: 360px;
 }
 
 @media screen and (max-width: 800px) {

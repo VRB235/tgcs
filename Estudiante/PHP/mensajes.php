@@ -1,12 +1,5 @@
 <?php
 
-$_USER_MONGODB = "USER_MONGODB";
-$_PASSWORD_MONGODB = "PASSWORD_MONGODB";
-$_DOMAIN_MONGODB = "IP_MONGODB";
-$_NAME_MONGODB = "NAME_DB_MONGODB";
-$_DIR_MONGODB = "mongodb://".$_USER_MONGODB.":".$_PASSWORD_MONGODB."@".$_DOMAIN_MONGODB."/".$_NAME_MONGODB."?ssl=false";
-$_COLLECTION_PROJECT = "project";
-
 $_TITLE_MESSAGE_INVALID_FIELD = "Campo Invalido";
 $_MESSAGE_INVALID_FIELD = "El campo ingresado no es valido";
 $_TITLE_MESSAGE_FAIL_CONNECTION = "Conexion Fallida";
@@ -19,5 +12,3 @@ $_TITLE_ROBOT_MESSAGE = "Robot";
 $_MESSAGE_ROBOT_DETECTED = "Recuerde demostrar que no es un robot!!";
 
 $_SECRET_KET_RECAPTCHA = "SECRET_HEY_RECAPTCHA";
-
-?>

@@ -1,7 +1,7 @@
 <?php
 
     require_once "./recaptchalib.php";
-    include_once ("../PHP/variablesGlobales.php");
+    include_once ("../PHP/mensajes.php");
 
     session_start();
 
