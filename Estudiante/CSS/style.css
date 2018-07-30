@@ -1,0 +1,48 @@
+img.logo_UCAB {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+div#form {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    width: 400px;
+    max-width: 400px;
+    max-height: 250px;
+    height: 250px;
+}
+
+label[for="period"], label[for="format"] {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    display: block;
+    text-align: center;
+}
+
+.g-recaptcha {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 300px;
+    margin-bottom: 20px;
+}
+input.request {
+    margin-left: 35%;
+    margin-right: auto;
+}
+
+select#period, select#format {
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+}
+
+@media screen and (max-width: 800px) {
+    img.logo_UCAB, div#form {
+        width: 70%;
+    }
+}
