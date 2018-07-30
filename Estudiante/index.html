@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Tesis</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="./CSS/talento.css">
+    <script src="https://www.google.com/recaptcha/api.js?hl=es" async defer></script>
+</head>
+<body>
+    <header>
+        <br>
+        <center><img src="./recursos/Logo-UCAB-04.png"></center>
+    </header>
+    <div>
+        <form action="./PHP/index.php" method="post">
+            <div id="box">
+                <label for="period">Periodo :
+                    <select name="period" id="period">
+                        <option value="Semestral">Semestral</option>
+                        <option value="Anual">Anual</option>
+                    </select>
+                </label>
+                <br><br>
+                <label for="format"> Formato:
+                    <select name="format" id="format">
+                        <option value="formatA">Formato A Ficha Registro de Proyecto</option>
+                        <option value="formatF">Formato F Presentación Trabajo de Grado</option>
+                    </select>
+                </label>
+                <br>
+                <br>
+                <div class="g-recaptcha" data-sitekey="6LfR7WQUAAAAAEZcUrOmJXACHIHKeIlTylWPvd3Z"></div>
+            </div>
+            <input type="submit" value="Solicitar" class="btn">
+
+        </form>
+    </div>
+</body>
+</html>
