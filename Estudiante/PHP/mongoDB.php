@@ -17,7 +17,7 @@
          */
         function __construct()
         {
-            $this->credentials = new credentials();
+            $this->credentials = new Credentials();
         }
 
         /**

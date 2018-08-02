@@ -4,7 +4,7 @@
  * Class managementTXT
  * Clase para el manejo de archivos TXT
  */
-class managementTXT {
+class ManagementTXT {
 
     private $root = "../recursos/credenciales.txt";
 

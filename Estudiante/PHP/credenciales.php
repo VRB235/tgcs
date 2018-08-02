@@ -6,7 +6,7 @@
  * Class credentials
  * Clase para obtener las credenciales para conectar a la base de datos
  */
-    class credentials {
+    class Credentials {
 
         private $user_mongodb;
         private $password_mongodb;
@@ -19,7 +19,7 @@
          */
         function __construct(){
 
-            $managementTXT = new managementTXT();
+            $managementTXT = new ManagementTXT();
             $credentials = $managementTXT->readTXT();
             $this->domain_mongodb = $credentials[0];
             $this->name_mongodb = $credentials[1];
