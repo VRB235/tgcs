@@ -126,7 +126,7 @@
                             'student_two_personal_email'=>$project->getStudentPersonalEmailTwo(),
                             'student_two_professor'=>$project->getStudentProfessorTwo(),
                             'student_two_approval_year'=>$project->getStudentApprovalDateTwo(),
-                            'same_seminar'=>$project->setStudentSameSeminarTwo(),
+                            'same_seminar'=>$project->getStudentSameSeminarTwo(),
                             'tutor_name'=>$project->getTutorName(),
                             'tutor_email'=>$project->getTutorEmail(),
                             'tutor_cel_phone'=>$project->getTutorCelPhone(),

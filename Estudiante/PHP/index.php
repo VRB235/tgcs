@@ -39,25 +39,25 @@
         // Si el periodo es anual y formato A
         if($_POST['period']=='Anual' && $_POST['format']=='formatA'){
             $_SESSION['formato'] = $_POST['format'].$_POST['period'];
-            header("Location: ../HTML/formatoAAnual.html");
+            header("Location: ../html/formatoAAnual.html");
         }
         else{
             // Si el periodo es anual y formato F
             if($_POST['period']=='Anual' && $_POST['format']=='formatF'){
                 $_SESSION['formato'] = $_POST['format'].$_POST['period'];
-                header("Location: ../HTML/formatoFAnual.html");
+                header("Location: ../html/formatoFAnual.html");
             }
             else{
                 // Si el periodo es semestral y formato A
                 if($_POST['period']=='Semestral' && $_POST['format']=='formatA'){
                     $_SESSION['formato'] = $_POST['format'].$_POST['period'];
-                    header("Location: ../HTML/formatoASemestral.html");
+                    header("Location: ../html/formatoASemestral.html");
                 }
                 else{
                     // Si el periodo es semetral y formato D
                     if($_POST['period']=='Semestral' && $_POST['format']=='formatF') {
                         $_SESSION['formato'] = $_POST['format'].$_POST['period'];
-                        header("Location: ../HTML/formatoFSemestral.html");
+                        header("Location: ../html/formatoFSemestral.html");
                     }
                 }
             }

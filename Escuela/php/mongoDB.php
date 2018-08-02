@@ -119,7 +119,7 @@
 
                     $bulk->insert($project);
 
-                    $manager = new MongoDB\Driver\Manager($this->credentials->gerLocalMongoDB());
+                    $manager = new MongoDB\Driver\Manager($this->credentials->gerLocalDirMongoDB());
                     $manager->executeBulkWrite($this->credentials->getNameMongoDB().".".$this->credentials->getCollection(), $bulk);
 
                     return true;
@@ -139,6 +139,81 @@
             }
             else{
                 return false;
+            }
+        }
+
+        /**
+         * Obtiene los proyectos que no ahn sido aprobados por la escuela y que no han sido rechazados anteriormente para su aprobacion
+         * @return \MongoDB\Driver\Cursor|
+         * @throws \MongoDB\Driver\Exception\Exception
+         */
+        function getNotApproveProjects (){
+
+            $connetion = $this->conexionMongoDB();
+
+            // Si se dio la conexion
+            if ($connetion!=null){
+
+                // Filtro para que solo se traiga los proyectos no aprobados y no rechazados anteriormente
+                $filter = array('approve'=>'0', 'status' => null);
+                $options = array();
+
+                try{
+
+                    $query = new MongoDB\Driver\Query($filter,$options);
+                    $cursor = $connetion->executeQuery($this->credentials->getNameMongoDB().".".$this->credentials->getCollection(),$query);
+                    return $cursor;
+
+                }catch (MongoDB\Driver\Exception $e){
+
+                    $_SESSION['title'] = $_SESSION["title_fail_connetion"];
+                    $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                    header("Location: ../php/mensaje.php");
+
+                }
+                catch (Exception $e){
+                    echo $e->getMessage();
+                    die();
+                }
+                return null;
+            }
+
+        }
+
+        /**
+         * Obtiene las informacion de un proyecto correspondiente al id
+         * @param $id
+         * @return \MongoDB\Driver\Cursor|
+         */
+        function findProject($id){
+
+            $connetion = new mongoDataBase();
+
+            // Si se dio la conexion
+            if ($connetion!=null){
+
+                // Filtro para que solo se traiga los proyectos no aprobados y no rechazados anteriormente
+                $filter = array('id'=>$id);
+                $options = array();
+
+                try{
+
+                    $query = new MongoDB\Driver\Query($filter,$options);
+                    $cursor = $connetion->executeQuery($this->credentials->getNameMongoDB().".".$this->credentials->getCollection(),$query);
+                    return $cursor;
+
+                }catch (MongoDB\Driver\Exception $e){
+
+                    $_SESSION['title'] = $_SESSION["title_fail_connetion"];
+                    $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                    header("Location: ../php/mensaje.php");
+
+                }
+                catch (Exception $e){
+                    echo $e->getMessage();
+                    die();
+                }
+                return null;
             }
         }
 
