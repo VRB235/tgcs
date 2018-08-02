@@ -119,10 +119,7 @@
                                     $studentSpecialtyTwo, $studentMentionTwo,
                                     $studentScholarchipTwo, $studentYearEndedTwo,
                                     $tutorName, $tutorEmail, $tutorHabPhone,
-                                    $tutorCelPhone, $tutorCI, $extern, $tutorApprove,
-                                    $juryOne, $juryStatusOne, $juryRolOne, $jutyTwo,
-                                    $juryStatusTwo, $juryRolTwo, $jutyThree,
-                                    $juryStatusThree, $juryRolThree, $cd, $approve)
+                                    $tutorCelPhone, $tutorCI)
         {
             $this->format = $format;
             $this->termCode = null;
@@ -156,19 +153,19 @@
             $this->tutorHabPhone = $tutorHabPhone;
             $this->tutorCelPhone = $tutorCelPhone;
             $this->tutorCI = $tutorCI;
-            $this->extern = $extern;
-            $this->tutorApprove = $tutorApprove;
-            $this->juryOne = $juryOne;
-            $this->juryStatusOne = $juryStatusOne;
-            $this->juryRolOne = $juryRolOne;
-            $this->jutyTwo = $jutyTwo;
-            $this->juryStatusTwo = $juryStatusTwo;
-            $this->juryRolTwo = $juryRolTwo;
-            $this->jutyThree = $jutyThree;
-            $this->juryStatusThree = $juryStatusThree;
-            $this->juryRolThree = $juryRolThree;
-            $this->cd = $cd;
-            $this->approve = $approve;
+            $this->extern = "-";
+            $this->tutorApprove = "-";
+            $this->juryOne = "-";
+            $this->juryStatusOne = null;
+            $this->juryRolOne = "-";
+            $this->jutyTwo = "-";
+            $this->juryStatusTwo = null;
+            $this->juryRolTwo = "-";
+            $this->jutyThree = "-";
+            $this->juryStatusThree = null;
+            $this->juryRolThree = "-";
+            $this->cd = "-";
+            $this->approve = "0";
         }
 
         /**

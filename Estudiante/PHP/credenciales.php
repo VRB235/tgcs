@@ -32,62 +32,87 @@
             $this->password_mongodb = substr($this->password_mongodb,0,strlen($this->password_mongodb)-2);
         }
 
-
         /**
-         * Obtiene el nombre de usuario con permiso a la base de datos mongoDB
-         * @return string
+         * @return bool|string
          */
-        function getUserMongoDB (){
+        public function getUserMongodb()
+        {
             return $this->user_mongodb;
         }
 
         /**
-         * Obtiene la contraseña para acceder a la base de datos mongoDB
-         * @return string
+         * @param bool|string $user_mongodb
          */
-        function getPasswordmongoDB (){
+        public function setUserMongodb($user_mongodb)
+        {
+            $this->user_mongodb = $user_mongodb;
+        }
+
+        /**
+         * @return bool|string
+         */
+        public function getPasswordMongodb()
+        {
             return $this->password_mongodb;
         }
 
         /**
-         * Obtiene el nombre del dominio de la base de datos mongoDB
-         * @return string
+         * @param bool|string $password_mongodb
          */
-        function getDomainMongoDB (){
+        public function setPasswordMongodb($password_mongodb)
+        {
+            $this->password_mongodb = $password_mongodb;
+        }
+
+        /**
+         * @return bool|string
+         */
+        public function getDomainMongodb()
+        {
             return $this->domain_mongodb;
         }
 
         /**
-         * Obtiene el nombre de la base de datos mongoDB
-         * @return string
+         * @param bool|string $domain_mongodb
          */
-        function getNameMongoDB (){
+        public function setDomainMongodb($domain_mongodb)
+        {
+            $this->domain_mongodb = $domain_mongodb;
+        }
+
+        /**
+         * @return bool|string
+         */
+        public function getNameMongodb()
+        {
             return $this->name_mongodb;
         }
 
         /**
-         * Obtiene la direccion completa para la conexion hacia la base de datos
-         * @return string
+         * @param bool|string $name_mongodb
          */
-        function gerDirMongoDB (){
-            return "mongodb://".$this->user_mongodb.":".$this->password_mongodb.
-                "@".$this->domain_mongodb."/".$this->name_mongodb."?ssl=false";
+        public function setNameMongodb($name_mongodb)
+        {
+            $this->name_mongodb = $name_mongodb;
         }
 
         /**
-         * Obtiene la direccion completa para la conexion hacia la base de datos localmente
          * @return string
          */
-        function gerLocalDirMongoDB(){
-            return "mongodb://".$this->domain_mongodb."/".$this->name_mongodb."?ssl=false";
-        }
-
-        /**
-         * Obtiene el nombre de la coleccion en la base de datos mongoDB
-         * @return string
-         */
-        function getCollection(){
+        public function getCollection()
+        {
             return $this->collection;
         }
+
+        /**
+         * @param string $collection
+         */
+        public function setCollection($collection)
+        {
+            $this->collection = $collection;
+        }
+
+
+
     }
 

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="../CSS/talento.css">
+    <script src="../js/verify.js"></script>
 </head>
 <body>
     <img src="../recursos/Logo-UCAB-04.png" alt="logo_UCAB" class="logo_UCAB">
@@ -62,7 +63,7 @@
                 </select>
             </label>
         <label for="student_one_scholarship"> Escolaridad
-            <select name="student_one_scholarship" id="student_one_scholarship" class="form-control">
+            <select name="student_one_scholarship" id="student_one_scholarship" class="form-control" onclick="verifyScholarship()">
                 <option value="fourth_year">4to Año</option>
                 <option value="fifth_year">5to Año</option>
                 <option value="scholarship_ended">Escolaridad Finalizada</option>
@@ -121,7 +122,7 @@
                 </select>
             </label>
             <label for="student_two_scholarship"> Escolaridad
-                <select name="student_two_scholarship" id="student_two_scholarship" class="form-control">
+                <select name="student_two_scholarship" id="student_two_scholarship" class="form-control" onclick="verifyScholarship()">
                     <option value="fourth_year">4to Año</option>
                     <option value="fifth_year">5to Año</option>
                     <option value="scholarship_ended">Escolaridad Finalizada</option>

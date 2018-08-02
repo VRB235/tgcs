@@ -259,36 +259,6 @@
                         header("Location: ../PHP/mensaje.php");
 
                     }
-
-
-
-/*
-                    try{
-                        // Conexion a la base de datos MongoDB
-                        $m = new MongoClient($_DIR_MONGODB);
-                        // Selecciona la base de datos llamada
-                        $db = $m->selectDB($_NAME_MONGODB);
-                        // Selecciona la coleccion de datos
-                        $colección2 = new MongoCollection($db, $_COLLECTION_PROJECT);
-                        $colección2->insert($arrProject);
-                        $_SESSION['project'] = $arrProject;
-                        /*
-                        header("Location: ../PHP/imprimirPropuesta.php");
-                        *//*
-                        $_SESSION['title'] = $_TITLE_TESIS_REGISTER;
-                        $_SESSION['message'] = $_MESSAGE_TESIS_REGISTER;
-                        header("Location: ../PHP/mensaje.php");
-
-                    }
-                    catch(Exception $e){
-
-                        $_SESSION['title'] = $_TITLE_MESSAGE_FAIL_CONNECTION;
-                        $_SESSION['message'] = $_MESSAGE_FAIL_CONNECTION;
-                        header("Location: ../PHP/mensaje.php");
-                    }
-
-                    //header("Location: ../index.html");*/
-
                 }
             }
         }

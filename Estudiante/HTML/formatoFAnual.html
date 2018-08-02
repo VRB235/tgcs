@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="../CSS/style.css">
         <link rel="stylesheet" href="../CSS/talento.css">
+        <script src="../js/verify.js"></script>
 </head>
 <body>
         <img src="../recursos/Logo-UCAB-04.png" id="logo" alt="logo_UCAB" class="logo_UCAB">
@@ -59,17 +60,13 @@
                                 <option value="CyB">Compensación y Beneficios</option>
                         </select>
                 </label>
-                <div class="scholarship">
-                        <label for="student_one_scholarship1" class="form-check-label">
-                                <input type="radio" name="student_one_scholarship" id="student_one_scholarship1" value="forth_year" class="form-check-input" required> 4to Año
-                        </label>
-                        <label for="student_one_scholarship2" class="form-check-label">
-                                <input type="radio" name="student_one_scholarship" id="student_one_scholarship2" value="fifth_year" class="form-check-input" required> 5to Año
-                        </label>
-                        <label for="student_one_scholarship3" class="form-check-label">
-                                <input type="radio" name="student_one_scholarship" id="student_one_scholarship3" value="scholarship_ended" class="form-check-input" required> Escolaridad Finalizada
-                        </label>
-                </div>
+                <label for="student_one_scholarship"> Escolaridad
+                        <select name="student_one_scholarship" id="student_one_scholarship" class="form-control" onclick="verifyScholarship()">
+                                <option value="fourth_year">4to Año</option>
+                                <option value="fifth_year">5to Año</option>
+                                <option value="scholarship_ended">Escolaridad Finalizada</option>
+                        </select>
+                </label>
                 <label for="student_one_year_ended">Año de Finalización
                         <input type="number" min="1900" id="student_one_year_ended" name="student_one_year_ended" class="form-control">
                 </label>
@@ -107,20 +104,16 @@
                                 <option value="CyB">Compensación y Beneficios</option>
                         </select>
                 </label>
-                <div class="scholarship">
-                        <label for="student_two_scholarship1" class="form-check-label">
-                                <input type="radio" name="student_two_scholarship" id="student_two_scholarship1" value="forth_year" class="form-check-input" required> 4to Año
-                        </label>
-                        <label for="student_two_scholarship2" class="form-check-label">
-                                <input type="radio" name="student_two_scholarship" id="student_two_scholarship2" value="fifth_year" class="form-check-input" required> 5to Año
-                        </label>
-                        <label for="student_two_scholarship3" class="form-check-label">
-                                <input type="radio" name="student_two_scholarship" id="student_two_scholarship3" value="scholarship_ended" class="form-check-input" required> Escolaridad Finalizada
-                        </label>
-                        <label for="student_two_year_ended">Año de Finalización
-                                <input type="number" id="student_two_year_ended" name="student_two_year_ended" class="form-control">
-                        </label>
-                </div>
+                <label for="student_two_scholarship"> Escolaridad
+                        <select name="student_two_scholarship" id="student_two_scholarship" class="form-control" onclick="verifyScholarship()">
+                                <option value="fourth_year">4to Año</option>
+                                <option value="fifth_year">5to Año</option>
+                                <option value="scholarship_ended">Escolaridad Finalizada</option>
+                        </select>
+                </label>
+                <label for="student_two_year_ended">Año de Finalización
+                        <input type="number" min="1900" id="student_two_year_ended" name="student_two_year_ended" class="form-control">
+                </label>
                 <spam class="split">Tutor</spam>
                 <label for="tutor_name"><strong>Nombre y Apellido del Tutor</strong>
                         <input type="text" id="tutor_name" name="tutor_name" class="form-control" required>
