@@ -8,7 +8,7 @@
  *
  * Realiza las respectivas operaciones con la base de datos mongoDB
  */
-    class mongoDataBase extends credentials {
+    class mongoDataBase{
 
         private $credentials;
 
@@ -17,7 +17,7 @@
          */
         function __construct()
         {
-            $this->credentials = new Credentials();
+            $this->credentials = new credentiales();
         }
 
         /**
@@ -27,8 +27,9 @@
         function conexionMongoDB() {
 
 
-            //$connetion = new MongoDB\Driver\Manager($credentials->gerDirMongoDB());
-            $connetion = new MongoDB\Driver\Manager($this->credentials->gerLocalDirMongoDB());
+            //$connetion = new MongoDB\Driver\Manager($credentials->getDirMongoDB());
+            echo  $this->credentials->get;
+            $connetion = new MongoDB\Driver\Manager($this->credentials->getLocalMongoDB());
             $command = new MongoDB\Driver\Command(array("serverStatus" => 1));
             try {
 
@@ -119,8 +120,7 @@
 
                     $bulk->insert($project);
 
-                    $manager = new MongoDB\Driver\Manager($this->credentials->gerLocalDirMongoDB());
-                    $manager->executeBulkWrite($this->credentials->getNameMongoDB().".".$this->credentials->getCollection(), $bulk);
+                    $connetion->executeBulkWrite($this->credentials->getNameMongoDB().".".$this->credentials->getCollection(), $bulk);
 
                     return true;
 

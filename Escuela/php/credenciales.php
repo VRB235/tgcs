@@ -116,7 +116,7 @@ class Credentials {
      * Obtiene la ruta completa para la conexion a la base de datos
      * @return string
      */
-    public function gerDirMongoDB(){
+    public function getDirMongoDB(){
         return "mongodb://".$this->user_mongodb.":".$this->password_mongodb."@".$this->domain_mongodb."/".$this->name_mongodb."?ssl=false";
     }
 
@@ -124,7 +124,7 @@ class Credentials {
      * Obtiene la ruta completa para la conexion a la base de datos local
      * @return string
      */
-    public function gerLocalMongoDB(){
+    public function getLocalMongoDB(){
         return "mongodb://".$this->domain_mongodb."/".$this->name_mongodb."?ssl=false";
     }
 

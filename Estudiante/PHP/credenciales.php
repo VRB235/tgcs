@@ -6,7 +6,7 @@
  * Class credentials
  * Clase para obtener las credenciales para conectar a la base de datos
  */
-    class Credentials {
+    class credentiales {
 
         private $user_mongodb;
         private $password_mongodb;
@@ -110,6 +110,22 @@
         public function setCollection($collection)
         {
             $this->collection = $collection;
+        }
+
+        /**
+         * Obtiene la ruta completa para la conexion a la base de datos
+         * @return string
+         */
+        public function getDirMongoDB(){
+            return "mongodb://".$this->user_mongodb.":".$this->password_mongodb."@".$this->domain_mongodb."/".$this->name_mongodb."?ssl=false";
+        }
+
+        /**
+         * Obtiene la ruta completa para la conexion a la base de datos local
+         * @return string
+         */
+        public function getLocalMongoDB(){
+            return "mongodb://".$this->domain_mongodb."/".$this->name_mongodb."?ssl=false";
         }
 
 

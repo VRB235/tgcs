@@ -1,0 +1,190 @@
+.buttom{
+    border: 1px solid #38b5e6;
+    width: 60px;
+    padding: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    position: absolute;
+    top: 2%;
+}
+.buttom>a{
+    text-decoration: none;
+    color: white;
+}
+
+label[for="id_register"] {
+    margin-left: 30%;
+}
+form#evaluadores, form#tutor, form#jurados {
+    margin-left: 12%;
+}
+input[id="subirEvaluadores"] {
+    margin-left: 35%;
+}
+form#tutor{
+    margin-left: 40%;
+}
+#tutorid{
+    margin-left: 0%;
+}
+input[id="subirTutor"] {
+    margin-left: 90px;
+}
+form#jurados{
+    margin-left: 35%;
+}
+label#id_registerj{
+    margin-left: 6%;
+}
+input#subirJurados {
+    margin-left: 20%;
+}
+form#roles {
+    margin-left: 37%;
+}
+label#is_registerr{
+    margin-left: 5%;
+}
+input#subirRoles{
+    margin-left: 15%;
+}
+div#table_id_wrapper {
+    width: 90%;
+    margin-left: 3%;
+}
+form#defensa{
+    margin-left: 37%;
+}
+label#id_registerfd{
+    margin-left: 1%;
+}
+input#subirFechaDefensa{
+    margin-left: 10%;
+}
+div#table_id_wrapper {
+    background: #d9e4f9;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 50px;
+}
+form#notas{
+    margin-left: 38%;
+}
+label#id_registerNotas{
+    margin-left: 1%;
+}
+input#cargarNotas{
+    margin-left: 10%;
+}
+div#table_id_length {
+    padding-left: 25px;
+}
+div#table_id_filter {
+    padding-right: 25px;
+}
+div#table_id_info {
+    padding-left: 25px;
+}
+th.sorting[aria-label='Fecha Defensa: activate to sort column ascending'] {
+    width: 80px !important;
+}
+form#excel{
+    margin-left: 40%;
+}
+#generarExcel {
+    margin-left: 12%;
+}
+
+body{
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eff9fd+0,d7f0fb+50,c3e7f5+51,7ccef4+100 */
+    /*background: rgb(239,249,253); /* Old browsers */
+    /*background: -moz-linear-gradient(left, rgba(239,249,253,1) 0%, rgba(215,240,251,1) 50%, rgba(195,231,245,1) 51%, rgba(124,206,244,1) 100%); /* FF3.6-15 */
+    /*background: -webkit-linear-gradient(left, rgba(239,249,253,1) 0%,rgba(215,240,251,1) 50%,rgba(195,231,245,1) 51%,rgba(124,206,244,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    /*background: linear-gradient(to right, rgba(239,249,253,1) 0%,rgba(215,240,251,1) 50%,rgba(195,231,245,1) 51%,rgba(124,206,244,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eff9fd', endColorstr='#7ccef4',GradientType=1 ); /* IE6-9 */
+}
+.form {
+    margin-left: 32%;
+    width: 30%;
+    margin-top: 20px;
+}
+.btn {
+    background: #3498db;
+    background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+    background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+    background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+    background-image: -o-linear-gradient(top, #3498db, #2980b9);
+    background-image: linear-gradient(to bottom, #3498db, #2980b9);
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 12px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background: #3cb0fd;
+    background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+    text-decoration: none;
+}
+.buttom {
+    background: #3498db;
+    background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+    background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+    background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+    background-image: -o-linear-gradient(top, #3498db, #2980b9);
+    background-image: linear-gradient(to bottom, #3498db, #2980b9);
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 12px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+
+.buttom:hover {
+    background: #3cb0fd;
+    background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+    text-decoration: none;
+}
+input#term_code {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid;
+}
+.fix {
+    margin-left: 0px;
+    width: 100% !important;
+}
+
+input#id_register, input#jury_one_fullname, input#jury_two_fullname,
+input#jury_three_fullname, input#jury_fullname, input#defense_date, input#note, input#date, input#version{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid;
+    margin-left: 2px;
+}
+
+input#jury_one_fullname, input#jury_two_fullname,
+input#jury_three_fullname{
+    display: inline-block;
+    width: 15%;
+}
+
+label[for="version"] {
+    margin-left: 20px;
+}
