@@ -1,0 +1,148 @@
+/*
+  Theme Name: WSUCAB
+  Theme URI: http://www.ucab.edu.ve/
+  Description: WordPress theme for UCAB
+  Author: Mermelon Design
+  Author URI: http://www.mermelonde.com.ve
+  Template: Divi
+  Version: 1.0
+  Text Domain: wsucab
+  Tags: one-column, two-columns, right-sidebar, flexible-header, accessibility-ready, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
+*/
+@import url("https://fonts.googleapis.com/css?family=PT+Mono");
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline; }
+
+html {
+    line-height: 1; }
+
+ol, ul {
+    list-style: none; }
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0; }
+
+caption, th, td {
+    text-align: left;
+    font-weight: normal;
+    vertical-align: middle; }
+
+q, blockquote {
+    quotes: none; }
+q:before, q:after, blockquote:before, blockquote:after {
+    content: "";
+    content: none; }
+
+a img {
+    border: none; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+    display: block; }
+
+/*csslint box-model:false*/
+/*
+Box-model set to false because we're setting a height on select elements, which
+also have border and padding. This is done because some browsers don't render
+the padding. We explicitly set the box-model for select elements to border-box,
+so we can ignore the csslint warning.
+*/
+.pure-form input[type="text"],
+.pure-form input[type="password"],
+.pure-form input[type="email"],
+.pure-form input[type="url"],
+.pure-form input[type="date"],
+.pure-form input[type="month"],
+.pure-form input[type="time"],
+.pure-form input[type="datetime"]
+{
+margin-left: 15px;
+margin-bottom: 15px;
+}
+
+a.button-wide:hover {
+    color: #ffffff;
+    background: #40b4e5;
+}
+
+#acc li h3 {
+    margin-top: 20px;
+    border: 1px solid #e2e2e2;
+    padding: 15px;
+}
+
+#left .inside div#login {
+    position: absolute;
+    left: -25%;
+}
+
+#login div.ce_text .submit_link{
+    text-align: center;
+}
+
+#login div.ce_text .submit_link a.hyperlink_txt {
+    text-decoration: none;
+    border: 2px solid #40b4e5;
+    padding: 5px 10px;
+}
+
+#login div.ce_text .submit_link a.hyperlink_txt:hover {
+    background: #40b4e5;
+    color: #ffffff;
+}
+
+.inside >div >h1 {
+    text-transform: uppercase;
+}
+
+div#newsletters > h1 {
+    font-size: 20px !important;
+}
+.submit_link.logout {
+    position: absolute;
+    top: -36%;
+    left: 480%;
+    margin-bottom: 0px !important;
+}
+div#wrappe {
+    height: 993px;
+}
+a.hyperlink_txt.logout {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+.submit_link.logout a:hover {
+    transition-duration: 0.3s;
+    color: #707273;
+}
+
+.menu-top ul.level_1 > li:nth-child(3) {
+    display: none;
+}
+
+@media all and (min-width: 1440px){
+
+    .mod_customnav.block{
+        border-left: 0px;
+
+    }
+
+}

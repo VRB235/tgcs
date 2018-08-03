@@ -1,0 +1,306 @@
+img.logo_UCAB {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+div#form {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    width: 430px;
+    max-width: 430px;
+    max-height: 250px;
+    height: 250px;
+}
+
+label[for="period"], label[for="format"] {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    display: block;
+    text-align: center;
+}
+
+.g-recaptcha {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 300px;
+    margin-bottom: 20px;
+}
+input.request {
+    margin-left: 35%;
+    margin-right: auto;
+}
+
+select#period, select#format {
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+}
+
+select#period {
+    max-width: 150px;
+    width: 150px;
+}
+
+select#format {
+    max-width: 150px;
+    width: 150px;
+}
+
+select#format {
+    max-width: 360px;
+    width: 360px;
+}
+
+div#header {
+    clear: both;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 15px;
+    background: #40b4e5;
+    border: solid 1px black;
+    padding: 10px 0px;
+}
+
+div#header > spam {
+    font-weight: initial;
+}
+
+.form-check {
+    margin-left: 5%;
+    margin-bottom: 10px;
+}
+
+label.form-check-label {
+    width: 130px;
+}
+
+label[for="title"] {
+    display: block;
+    margin-left: 3%;
+    margin-right: 3%;
+    width: auto;
+    margin-bottom: 20px;
+}
+
+label[for="approval_date"] {
+    display: block;
+    margin-left: 3%;
+    margin-right: 3%;
+    width: 230px;
+    margin-bottom: 20px;
+}
+
+spam.split {
+    display: block;
+    margin-left: 3%;
+    margin-bottom: 10px;
+    font-weight: 900;
+}
+
+label[for="student_one_name"], label[for="student_one_id"], label[for="student_one_hab_phone"], label[for="student_one_cel_phone"],
+label[for="student_one_ucab_email"], label[for="student_one_personal_email"],label[for="student_one_specialty"], label[for="student_one_mention"],
+label[for="student_one_year_ended"], label[for="student_one_seminar_title"], label[for="student_one_professor"], label[for="student_one_approval_year"],
+label[for="student_one_same_seminar"] , label[for="student_two_name"], label[for="student_two_id"], label[for="student_two_hab_phone"],
+label[for="student_two_cel_phone"], label[for="student_two_ucab_email"], label[for="student_two_personal_email"], label[for="student_two_specialty"],
+label[for="student_two_mention"],label[for="student_two_scholarship"],label[for="student_two_year_ended"],label[for="student_two_seminar_title"],label[for="student_two_professor"],
+label[for="student_two_approval_year"],label[for="student_two_same_seminar"], label[for="tutor_name"], label[for="tutor_email"],
+label[for="tutor_cel_phone"],label[for="tutor_id"], label[for="investigation_area"], label[for="same_seminar"], label[for="student_two_approval_date"],
+label[for="student_one_approval_date"], label[for="student_one_speciality"], label[for="student_one_mention"], label[for="tutor_hab_phone"],label[for="student_one_scholarship"]{
+    margin-left: 3%;
+    margin-bottom: 20px;
+}
+
+.scholarship {
+    margin-left: 5%;
+    margin-bottom: 20px;
+}
+
+p.sign1, .approvation{
+    clear: both;
+    margin-left: 28%;
+    display: inline-block;
+    float: left;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+p.sign2, .date_sign {
+    margin-left: 28%;
+    display: inline-block;
+    float: left;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+p.text, p.text2.clean, p.text2 {
+    clear: both;
+    text-align: center;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+input.btn.btn-primary {
+    margin-left: 45%;
+    margin-top: 50px;
+}
+
+.back {
+    margin-left: 3%;
+    margin-bottom: 3%;
+}
+
+p.text2.clean, p.text2 {
+    clear: both;
+}
+
+label.form-check-label.check {
+    width: auto;
+    margin-left: 5%;
+}
+
+p.clean.consig {
+    margin-left: 3%;
+    margin-bottom: 10px;
+}
+
+#wrapper{
+    margin-top: 20px;
+    background: white;
+    width: 25%;
+    margin-left: 40%;
+    border: 2px solid #6d6666;
+    border-radius: 30px;
+}
+
+#menu_acciones p, #reportes p, #excel p{
+    padding: 10px;
+    margin: 0px;
+    text-align: center;
+}
+#menu_acciones p:hover, #reportes p:hover, #excel p:hover{
+    background: rgba(72, 76, 73, 0.38);
+    cursor: pointer;
+}
+
+#menu_acciones a, #reportes a, #excel a{
+    text-decoration: none;
+    color: black;
+
+}
+/*
+div#menu_acciones, #reportes {
+    border-bottom: 2px solid #6d6666;
+}
+*/
+div#menu_acciones a p, div#reportes a p, div#excel a p {
+    border-radius: 30px;
+}
+ul.lista{
+    display: block;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+.lista li{
+    list-style: none;
+}
+.lista li p{
+    text-align: center;
+}
+.lista li p:hover{
+    background: #b5aeae;
+}
+.lista li a:hover{
+    text-decoration: none;
+    color: black;
+}
+
+.lista a{
+    text-decoration: none;
+    color: black;
+}
+
+.lista li a p {
+    padding: 5px;
+    border-radius: 12px;
+}
+
+.lista li a p {
+    padding: 5px;
+    border-radius: 12px;
+    border: solid 1.5px #6d6c6c;
+    margin: 0;
+    margin-bottom: 2px;
+}
+
+spam {
+    font-weight: bolder;
+}
+
+.regresar:hover{
+    color: white;
+}
+
+a.regresar {
+    margin-left: 3%;
+}
+
+
+footer div {
+    display: block;
+    height: 80px;
+    width: 100%;
+}
+
+footer p {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.projectID {
+    float: right;
+    width: 20%;
+    margin-right: 30px;
+}
+
+.botones {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 15%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.btn.btn-outline-primary{
+    margin-left: 3%;
+    margin-bottom: 3%;
+}
+
+.btn.btn-outline-primary a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.btn.btn-outline-primary:hover >a{
+    color: white;
+}
+
+@media screen and (max-width: 800px) {
+    img.logo_UCAB, div#form {
+        width: 70%;
+    }
+}
