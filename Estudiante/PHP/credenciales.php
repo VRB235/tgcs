@@ -112,22 +112,6 @@
             $this->collection = $collection;
         }
 
-        /**
-         * Obtiene la ruta completa para la conexion a la base de datos
-         * @return string
-         */
-        public function gerDirMongoDB(){
-            return "mongodb://".$this->user_mongodb.":".$this->password_mongodb."@".$this->domain_mongodb."/".$this->name_mongodb."?ssl=false";
-        }
-
-        /**
-         * Obtiene la ruta completa para la conexion a la base de datos local
-         * @return string
-         */
-        public function gerLocalMongoDB(){
-            return "mongodb://".$this->domain_mongodb."/".$this->name_mongodb."?ssl=false";
-        }
-
 
 
     }
