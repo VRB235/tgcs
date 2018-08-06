@@ -299,11 +299,35 @@ footer p {
     color: white;
 }
 
-form#evaluadores {
+form#evaluadores, form#tutor {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 80%;
+}
+
+form#tutor {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 31%;
+}
+
+.formContent{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+select#tutor_extern {
+    width: 120px;
+    display: inline-block;
+}
+
+select#tutor_decision {
+    width: 100px;
+    display: inline-block;
 }
 
 @media screen and (max-width: 800px) {

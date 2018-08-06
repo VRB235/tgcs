@@ -392,4 +392,105 @@ class MongoDataBase extends Credentials {
         }
     }
 
+    /**
+     * Aprueba el tutor de un proyecto
+     * @param $id_register
+     * @param $version
+     * @param $extern
+     * @param $desicion
+     * @return \MongoDB\Driver\WriteResult|null
+     */
+    function approveTutor($id_register, $version,$extern, $desicion){
+
+        $connetion = $this->conexionMongoDB();
+
+        // Si se dio la conexion
+        if ($connetion!=null){
+            // Si es semestral
+            if($version=="-"){
+                // Filtro para buscar un proyecto en particular semestral
+                $filter = array('id_register'=>$id_register);
+            }else{
+                // Filtro para buscar un proyecto en particular  anual
+                $filter = array('id_register'=>$id_register,'version'=>$version);
+            }
+            // Atributos que se agregaran al proyecto encontrado
+            $newObj = array('$set'=>array("tutor_extern"=>$extern,
+                "tutor_approve"=>$desicion,"tutor_approve_date"=>date('d/m/Y', time())));
+            $options = array('multi'=>true,'upsert'=>false);
+
+            try{
+
+                $bulk = new MongoDB\Driver\BulkWrite;
+                $bulk->update($filter,$newObj,$options);
+                $cursor = $connetion->executeBulkWrite($this->credentials->getNameMongodb().".".$this->credentials->getCollection(),$bulk);
+                return $cursor;
+
+            }catch (MongoDB\Driver\Exception $e){
+
+                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
+                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                header("Location: ../php/mensaje.php");
+
+            }
+            catch (Exception $e){
+                echo $e->getMessage();
+                die();
+            }
+            return null;
+        }
+
+    }
+
+    /**
+     * Verifica si existe un proyecto con el nro de registro y version ingresado
+     * @param $id_register
+     * @param $version
+     * @return bool
+     * @throws \MongoDB\Driver\Exception\Exception
+     */
+    function verifyIfExist($id_register,$version){
+
+        $connetion = $this->conexionMongoDB();
+
+        // Si se dio la conexion
+        if ($connetion!=null){
+
+            // Filtro para que verigfique si existe un proyecto con ese nro de registro y version
+            if($version!="-"){
+                $filter = array("id_register"=>$id_register,"version"=>$version);
+            }
+            else{
+                $filter = array("id_register"=>$id_register);
+            }
+
+            $options = array();
+
+            try{
+
+                $query = new MongoDB\Driver\Query($filter,$options);
+                $cursor = $connetion->executeQuery($this->credentials->getNameMongoDB().".".$this->credentials->getCollection(),$query);
+                if(count($cursor->toArray())>0){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+
+            }catch (MongoDB\Driver\Exception $e){
+
+                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
+                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                header("Location: ../php/mensaje.php");
+
+            }
+            catch (Exception $e){
+                echo $e->getMessage();
+                die();
+            }
+            return false;
+        }
+
+    }
+
 }

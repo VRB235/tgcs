@@ -21,25 +21,27 @@
     <br>
     <div class="form fix">
         <form action="../php/evaluadores.php" method="post" id="evaluadores">
-            <label for="id_register">N° Registro <input type="text" name="id_register" id="id_register" class="form-control"></label>
-            <label for="version">Version:
-                <select name="version" id="version" class="form-control">
-                    <option value="-">-</option>
-                    <option value="first_version">Version 1</option>
-                    <option value="second_version">Version 2</option>
-                </select>
-            </label>
-            <br>
-            <br>
-            <label for="jury_one_fullname">Nombre Jurado # 1</label><input type="text" class="form-control" id="jury_one_fullname" name="jury_one_fullname">
+            <div class="formContent">
+                <label for="id_register">N° Registro <input type="text" name="id_register" id="id_register" class="form-control"></label>
+                <label for="version">Version:
+                    <select name="version" id="version" class="form-control">
+                        <option value="-">-</option>
+                        <option value="first_version">Version 1</option>
+                        <option value="second_version">Version 2</option>
+                    </select>
+                </label>
+                <br>
+                <br>
+                <label for="jury_one_fullname">Nombre Jurado # 1</label><input type="text" class="form-control" id="jury_one_fullname" name="jury_one_fullname">
 
-            <label for="jury_two_fullname">Nombre Jurado # 2</label><input type="text" class="form-control" id="jury_two_fullname" name="jury_two_fullname">
+                <label for="jury_two_fullname">Nombre Jurado # 2</label><input type="text" class="form-control" id="jury_two_fullname" name="jury_two_fullname">
 
-            <label for="jury_three_fullname">Nombre Jurado # 3</label><input type="text" class="form-control" id="jury_three_fullname" name="jury_three_fullname">
-            <br><br>
-            <input type="submit" value="Subir Evaluadores" id="subirEvaluadores" class="btn">
-            <br>
-            <br>
+                <label for="jury_three_fullname">Nombre Jurado # 3</label><input type="text" class="form-control" id="jury_three_fullname" name="jury_three_fullname">
+                <br><br>
+                <input type="submit" value="Subir Evaluadores" id="subirEvaluadores" class="btn">
+                <br>
+                <br>
+            </div>
         </form>
     </div>
 

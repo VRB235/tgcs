@@ -15,33 +15,24 @@
 label[for="id_register"] {
     margin-left: 30%;
 }
-form#evaluadores, form#tutor, form#jurados {
-    margin-left: 12%;
-}
 input[id="subirEvaluadores"] {
     margin-left: 35%;
 }
-form#tutor{
-    margin-left: 40%;
-}
+
 #tutorid{
     margin-left: 0%;
 }
 input[id="subirTutor"] {
     margin-left: 90px;
 }
-form#jurados{
-    margin-left: 35%;
-}
+
 label#id_registerj{
     margin-left: 6%;
 }
 input#subirJurados {
     margin-left: 20%;
 }
-form#roles {
-    margin-left: 37%;
-}
+
 label#is_registerr{
     margin-left: 5%;
 }
@@ -51,9 +42,6 @@ input#subirRoles{
 div#table_id_wrapper {
     width: 90%;
     margin-left: 3%;
-}
-form#defensa{
-    margin-left: 37%;
 }
 label#id_registerfd{
     margin-left: 1%;
@@ -66,9 +54,6 @@ div#table_id_wrapper {
     padding-top: 20px;
     padding-bottom: 20px;
     margin-bottom: 50px;
-}
-form#notas{
-    margin-left: 38%;
 }
 label#id_registerNotas{
     margin-left: 1%;
@@ -88,9 +73,7 @@ div#table_id_info {
 th.sorting[aria-label='Fecha Defensa: activate to sort column ascending'] {
     width: 80px !important;
 }
-form#excel{
-    margin-left: 40%;
-}
+
 #generarExcel {
     margin-left: 12%;
 }
@@ -103,11 +86,7 @@ body{
     /*background: linear-gradient(to right, rgba(239,249,253,1) 0%,rgba(215,240,251,1) 50%,rgba(195,231,245,1) 51%,rgba(124,206,244,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eff9fd', endColorstr='#7ccef4',GradientType=1 ); /* IE6-9 */
 }
-.form {
-    margin-left: 32%;
-    width: 30%;
-    margin-top: 20px;
-}
+
 .btn {
     background: #3498db;
     background-image: -webkit-linear-gradient(top, #3498db, #2980b9);

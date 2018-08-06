@@ -80,7 +80,7 @@
                             'tutor_cel_phone'=>$project->getTutorCelPhone(),
                             'tutor_id'=>$project->getTutorCI(),
                             'tutor_extern'=>$project->getExtern(),
-                            'tutor_approve'=>$project->getApprove(),
+                            'tutor_approve'=>$project->getTutorApprove(),
                             'jury_one_fullname'=>$project->getJuryOne(),
                             'jury_one_status'=>$project->getJuryStatusOne(),
                             'jury_one_rol'=>$project->getJuryRolOne(),
