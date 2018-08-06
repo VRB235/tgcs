@@ -32,11 +32,11 @@
                 </label>
                 <br>
                 <br>
-                <label for="jury_one_fullname">Nombre Jurado # 1</label><input type="text" class="form-control" id="jury_one_fullname" name="jury_one_fullname">
+                <label for="jury_one_fullname">Nombre Jurado # 1</label><input type="text" class="form-control" id="jury_one_fullname" name="jury_one_fullname" required>
 
-                <label for="jury_two_fullname">Nombre Jurado # 2</label><input type="text" class="form-control" id="jury_two_fullname" name="jury_two_fullname">
+                <label for="jury_two_fullname">Nombre Jurado # 2</label><input type="text" class="form-control" id="jury_two_fullname" name="jury_two_fullname" required>
 
-                <label for="jury_three_fullname">Nombre Jurado # 3</label><input type="text" class="form-control" id="jury_three_fullname" name="jury_three_fullname">
+                <label for="jury_three_fullname">Nombre Jurado # 3</label><input type="text" class="form-control" id="jury_three_fullname" name="jury_three_fullname" required>
                 <br><br>
                 <input type="submit" value="Subir Evaluadores" id="subirEvaluadores" class="btn">
                 <br>

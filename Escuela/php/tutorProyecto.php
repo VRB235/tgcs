@@ -22,7 +22,7 @@
     <div class="form fix">
         <form action="../php/tutores.php" method="post" id="tutor">
             <div class="formContent">
-                <label for="id_register" id="tutorid">N° Registro <input type="text" name="id_register" id="id_register" class="form-control"></label>
+                <label for="id_register" id="tutorid">N° Registro <input type="text" name="id_register" id="id_register" class="form-control" required></label>
                 <label for="version"> Version
                     <select name="version" id="version"  class="form-control">
                         <option value="-">-</option>

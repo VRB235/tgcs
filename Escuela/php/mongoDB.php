@@ -493,4 +493,263 @@ class MongoDataBase extends Credentials {
 
     }
 
+    /**
+     * Devuelve un array con el proyecto
+     * @param $id_register
+     * @param $version
+     * @return array|bool
+     * @throws \MongoDB\Driver\Exception\Exception
+     */
+    function getProject ($id_register,$version){
+
+        $connetion = $this->conexionMongoDB();
+
+        // Si se dio la conexion
+        if ($connetion!=null){
+
+            // Filtro para que verigfique si existe un proyecto con ese nro de registro y version
+            if($version!="-"){
+                $filter = array("id_register"=>$id_register,"version"=>$version);
+            }
+            else{
+                $filter = array("id_register"=>$id_register);
+            }
+
+            $options = array();
+
+            try{
+
+                $query = new MongoDB\Driver\Query($filter,$options);
+                $cursor = $connetion->executeQuery($this->credentials->getNameMongoDB().".".$this->credentials->getCollection(),$query);
+
+                foreach ($cursor as $element){
+                    return array("jury_one_status"=>$element->jury_one_status,
+                        "jury_two_status"=>$element->jury_two_status,
+                        "jury_three_status"=>$element->jury_three_status);
+                }
+
+                return false;
+
+            }catch (MongoDB\Driver\Exception $e){
+
+                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
+                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                header("Location: ../php/mensaje.php");
+
+            }
+            catch (Exception $e){
+                echo $e->getMessage();
+                die();
+            }
+            return false;
+        }
+
+    }
+
+    /**
+     * Verificar si existe el evaluador
+     * @param $filter
+     * @return bool
+     * @throws \MongoDB\Driver\Exception\Exception
+     */
+    function verifyJuryFullname ($filter){
+
+        $connetion = $this->conexionMongoDB();
+
+        // Si se dio la conexion
+        if ($connetion!=null){
+
+            // Filtro para que verigfique si existe un proyecto con ese nro de registro y version
+
+            $options = array();
+
+            try{
+
+                $query = new MongoDB\Driver\Query($filter,$options);
+                $cursor = $connetion->executeQuery($this->credentials->getNameMongoDB().".".$this->credentials->getCollection(),$query);
+                if(count($cursor->toArray())>0){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+
+            }catch (MongoDB\Driver\Exception $e){
+
+                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
+                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                header("Location: ../php/mensaje.php");
+
+            }
+            catch (Exception $e){
+                echo $e->getMessage();
+                die();
+            }
+            return false;
+        }
+
+    }
+
+    /**
+     * Modificar respuesta de jurado
+     * @param $id_register
+     * @param $version
+     * @param $jury_fullname
+     * @param $jury_status
+     * @return null
+     * @throws \MongoDB\Driver\Exception\Exception
+     */
+    function setJuryStatus($id_register,$version,$jury_fullname, $jury_status){
+
+        $connetion = $this->conexionMongoDB();
+
+        // Si se dio la conexion
+        if ($connetion!=null){
+            // Si es semestral
+            if($version=="-"){
+                // Filtro para buscar un proyecto en particular semestral
+                $filterOne = array('id_register'=>$id_register,'version'=>$version,'jury_one_fullname'=>$jury_fullname);
+                $filterTwo = array('id_register'=>$id_register,'version'=>$version,'jury_two_fullname'=>$jury_fullname);
+                $filterThree = array('id_register'=>$id_register,'version'=>$version,'jury_three_fullname'=>$jury_fullname);
+            }else{
+                // Filtro para buscar un proyecto en particular  anual
+                $filterOne = array('id_register'=>$id_register,'jury_one_fullname'=>$jury_fullname);
+                $filterTwo = array('id_register'=>$id_register,'jury_two_fullname'=>$jury_fullname);
+                $filterThree = array('id_register'=>$id_register,'jury_three_fullname'=>$jury_fullname);
+            }
+            $options = array('multi'=>true,'upsert'=>false);
+            if($this->verifyJuryFullname($filterOne)){
+
+                $newObj = array('$set'=>array("jury_one_status"=>$jury_status));
+                try{
+
+                    $bulk = new MongoDB\Driver\BulkWrite;
+                    $bulk->update($filterOne,$newObj,$options);
+                    $cursor = $connetion->executeBulkWrite($this->credentials->getNameMongodb().".".$this->credentials->getCollection(),$bulk);
+                    return $cursor;
+
+                }catch (MongoDB\Driver\Exception $e){
+
+                    $_SESSION['title'] = $_SESSION["title_fail_connetion"];
+                    $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                    header("Location: ../php/mensaje.php");
+
+                }
+                catch (Exception $e){
+                    echo $e->getMessage();
+                    die();
+                }
+                return null;
+
+            }
+            else{
+                echo "Jurado 1 no existe";
+            }
+
+            if($this->verifyJuryFullname($filterTwo)){
+
+                $newObj = array('$set'=>array("jury_two_status"=>$jury_status));
+                try{
+
+                    $bulk = new MongoDB\Driver\BulkWrite;
+                    $bulk->update($filterTwo,$newObj,$options);
+                    $cursor = $connetion->executeBulkWrite($this->credentials->getNameMongodb().".".$this->credentials->getCollection(),$bulk);
+                    return $cursor;
+
+                }catch (MongoDB\Driver\Exception $e){
+
+                    $_SESSION['title'] = $_SESSION["title_fail_connetion"];
+                    $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                    header("Location: ../php/mensaje.php");
+
+                }
+                catch (Exception $e){
+                    echo $e->getMessage();
+                    die();
+                }
+                return null;
+
+            }
+            else{
+                echo "Jurado 2 no existe";
+            }
+            if($this->verifyJuryFullname($filterThree)){
+
+                $newObj = array('$set'=>array("jury_three_status"=>$jury_status));
+                try{
+
+                    $bulk = new MongoDB\Driver\BulkWrite;
+                    $bulk->update($filterThree,$newObj,$options);
+                    $cursor = $connetion->executeBulkWrite($this->credentials->getNameMongodb().".".$this->credentials->getCollection(),$bulk);
+                    return $cursor;
+
+                }catch (MongoDB\Driver\Exception $e){
+
+                    $_SESSION['title'] = $_SESSION["title_fail_connetion"];
+                    $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                    header("Location: ../php/mensaje.php");
+
+                }
+                catch (Exception $e){
+                    echo $e->getMessage();
+                    die();
+                }
+                return null;
+
+            }
+            else{
+                echo "Jurado 3 no existe";
+            }
+
+        }
+
+    }
+
+    /**
+     * Modificr fecha de aprobacion de propuesta
+     * @param $id_register
+     * @param $version
+     * @return \MongoDB\Driver\WriteResult|null
+     */
+    function setApprovalDate($id_register,$version){
+
+        $connetion = $this->conexionMongoDB();
+
+        // Si se dio la conexion
+        if ($connetion!=null){
+            // Si es semestral
+            if($version=="-"){
+                // Filtro para buscar un proyecto en particular semestral
+                $filter = array('id_register'=>$id_register);
+            }else{
+                // Filtro para buscar un proyecto en particular  anual
+                $filter = array('id_register'=>$id_register,'version'=>$version);
+            }
+            // Atributos que se agregaran al proyecto encontrado
+            $newObj = array('$set'=>array("approval_date"=>date('d/m/Y', time())));
+            $options = array('multi'=>true,'upsert'=>false);
+
+            try{
+
+                $bulk = new MongoDB\Driver\BulkWrite;
+                $bulk->update($filter,$newObj,$options);
+                $cursor = $connetion->executeBulkWrite($this->credentials->getNameMongodb().".".$this->credentials->getCollection(),$bulk);
+                return $cursor;
+
+            }catch (MongoDB\Driver\Exception $e){
+
+                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
+                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                header("Location: ../php/mensaje.php");
+
+            }
+            catch (Exception $e){
+                echo $e->getMessage();
+                die();
+            }
+            return null;
+        }
+
+    }
+
 }
