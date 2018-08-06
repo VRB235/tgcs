@@ -191,8 +191,8 @@
         <input type="submit" value="Rechazar" id="rechazar" name="rechazar" class="btn btn-outline-danger">
     </div>
 </form>
-<div class="btn btn-outline-primary">
-    <a href="../php/aprobarProyectos.php">Regresar</a>
+<div >
+    <a href="../php/aprobarProyectos.php" class="btn btn-outline-primary">Regresar</a>
 </div>
 </body>
 </html>

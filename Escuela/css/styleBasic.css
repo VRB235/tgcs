@@ -26,19 +26,12 @@ input[id="subirTutor"] {
     margin-left: 90px;
 }
 
-label#id_registerj{
-    margin-left: 6%;
-}
-input#subirJurados {
-    margin-left: 20%;
-}
 
-label#is_registerr{
+
+label#is_registerj{
     margin-left: 5%;
 }
-input#subirRoles{
-    margin-left: 15%;
-}
+
 div#table_id_wrapper {
     width: 90%;
     margin-left: 3%;

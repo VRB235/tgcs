@@ -559,8 +559,6 @@ class MongoDataBase extends Credentials {
         // Si se dio la conexion
         if ($connetion!=null){
 
-            // Filtro para que verigfique si existe un proyecto con ese nro de registro y version
-
             $options = array();
 
             try{
@@ -606,7 +604,7 @@ class MongoDataBase extends Credentials {
         // Si se dio la conexion
         if ($connetion!=null){
             // Si es semestral
-            if($version=="-"){
+            if($version!="-"){
                 // Filtro para buscar un proyecto en particular semestral
                 $filterOne = array('id_register'=>$id_register,'version'=>$version,'jury_one_fullname'=>$jury_fullname);
                 $filterTwo = array('id_register'=>$id_register,'version'=>$version,'jury_two_fullname'=>$jury_fullname);
@@ -750,6 +748,320 @@ class MongoDataBase extends Credentials {
             return null;
         }
 
+    }
+
+    /**
+     * Obtiene proyectos en formato A
+     * @return array|bool
+     * @throws \MongoDB\Driver\Exception\Exception
+     */
+    function getProjectsInFormatA(){
+
+        $connetion = $this->conexionMongoDB();
+
+        // Si se dio la conexion
+        if ($connetion!=null){
+
+            $filter = array('$or' =>array(array("format"=>"formatAAnual"),array("format"=>"formatASemestral")));
+
+            $options = array();
+
+            try{
+
+                $query = new MongoDB\Driver\Query($filter,$options);
+                $cursor = $connetion->executeQuery($this->credentials->getNameMongoDB().".".$this->credentials->getCollection(),$query);
+
+                return $cursor->toArray();
+
+
+            }catch (MongoDB\Driver\Exception $e){
+
+                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
+                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                header("Location: ../php/mensaje.php");
+
+            }
+            catch (Exception $e){
+                echo $e->getMessage();
+                die();
+            }
+            return false;
+        }
+
+    }
+
+    /**
+     * Obtiene proyectos en formato F
+     * @return array|bool
+     * @throws \MongoDB\Driver\Exception\Exception
+     */
+    function getProjectsInFormatF(){
+
+        $connetion = $this->conexionMongoDB();
+
+        // Si se dio la conexion
+        if ($connetion!=null){
+
+            $filter = array('$or' =>array(array("format"=>"formatFAnual"),array("format"=>"formatFSemestral")));
+
+            $options = array();
+
+            try{
+
+                $query = new MongoDB\Driver\Query($filter,$options);
+                $cursor = $connetion->executeQuery($this->credentials->getNameMongoDB().".".$this->credentials->getCollection(),$query);
+
+                return $cursor->toArray();
+
+
+            }catch (MongoDB\Driver\Exception $e){
+
+                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
+                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                header("Location: ../php/mensaje.php");
+
+            }
+            catch (Exception $e){
+                echo $e->getMessage();
+                die();
+            }
+            return false;
+        }
+
+    }
+
+    /**
+     * Verifica si existe 2da version del proyecto
+     * @param $id_register
+     * @return bool
+     * @throws \MongoDB\Driver\Exception\Exception
+     */
+    function verifyIfSecondVersionFromProjectExist($id_register){
+
+        $connetion = $this->conexionMongoDB();
+
+        // Si se dio la conexion
+        if ($connetion!=null){
+
+            $filter = array('id_register'=>$_POST["id_register"],'version'=>'second_version');
+
+            $options = array();
+
+            try{
+
+                $query = new MongoDB\Driver\Query($filter,$options);
+                $cursor = $connetion->executeQuery($this->credentials->getNameMongoDB().".".$this->credentials->getCollection(),$query);
+
+                if(count($cursor->toArray())>0){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+
+            }catch (MongoDB\Driver\Exception $e){
+
+                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
+                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                header("Location: ../php/mensaje.php");
+
+            }
+            catch (Exception $e){
+                echo $e->getMessage();
+                die();
+            }
+            return false;
+        }
+
+    }
+
+    /**
+     * Verifica si existe 1era version del proyecto
+     * @param $id_register
+     * @return bool
+     * @throws \MongoDB\Driver\Exception\Exception
+     */
+    function verifyIfFirstVersionFromProjectExist($id_register){
+
+        $connetion = $this->conexionMongoDB();
+
+        // Si se dio la conexion
+        if ($connetion!=null){
+
+            $filter = array('id_register'=>$_POST["id_register"],'version'=>'first_version');
+
+            $options = array();
+
+            try{
+
+                $query = new MongoDB\Driver\Query($filter,$options);
+                $cursor = $connetion->executeQuery($this->credentials->getNameMongoDB().".".$this->credentials->getCollection(),$query);
+
+                if(count($cursor->toArray())>0){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+
+            }catch (MongoDB\Driver\Exception $e){
+
+                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
+                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                header("Location: ../php/mensaje.php");
+
+            }
+            catch (Exception $e){
+                echo $e->getMessage();
+                die();
+            }
+            return false;
+        }
+
+    }
+
+
+    /**
+     * Realiza la actializacion en la base de datos
+     * @param $filter
+     * @param $newObj
+     * @return \MongoDB\Driver\WriteResult|null
+     */
+    function setJuryRol ($filter,$newObj){
+
+        $connetion = $this->conexionMongoDB();
+
+        // Si se dio la conexion
+        if ($connetion!=null){
+
+            $options = array('multi'=>true,'upsert'=>false);
+
+            try{
+
+                $bulk = new MongoDB\Driver\BulkWrite;
+                $bulk->update($filter,$newObj,$options);
+                $cursor = $connetion->executeBulkWrite($this->credentials->getNameMongodb().".".$this->credentials->getCollection(),$bulk);
+                return $cursor;
+
+            }catch (MongoDB\Driver\Exception $e){
+
+                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
+                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                header("Location: ../php/mensaje.php");
+
+            }
+            catch (Exception $e){
+                echo $e->getMessage();
+                die();
+            }
+            return null;
+        }
+
+    }
+
+    /**
+     * Modifica el rol del jurado
+     * @param $id_register
+     * @param $jury_fullname
+     * @param $jury_rol
+     * @throws \MongoDB\Driver\Exception\Exception
+     */
+    function setJuryRols($id_register, $jury_fullname, $jury_rol){
+        // Si existe 2da version del proyecto
+        if($this->verifyIfSecondVersionFromProjectExist($id_register)){
+
+            // Arreglo para buscar la segunda version del proyecto en formato A Anual o Semestral con su jurado # 1
+            $filterOne = array('$and'=>array(array("id_register"=>$id_register),
+                array("jury_one_fullname"=>$jury_fullname),array("version"=>'second_version'),array('$or'=>array(array('format'=>'formatAAnual'),array('format'=>'formatASemestral')))));
+            // Arreglo para buscar la segunda version del proyecto en formato A Anual o Semestral con su jurado # 2
+            $filterTwo = array('$and'=>array(array("id_register"=>$id_register),
+                array("jury_two_fullname"=>$jury_fullname),array("version"=>'second_version'),array('$or'=>array(array('format'=>'formatAAnual'),array('format'=>'formatASemestral')))));
+            // Arreglo para buscar la segunda version del proyecto en formato A Anual o Semestral con su jurado # 3
+            $filterThree = array('$and'=>array(array("id_register"=>$id_register),
+                array("jury_three_fullname"=>$jury_fullname),array("version"=>'second_version'),array('$or'=>array(array('format'=>'formatAAnual'),array('format'=>'formatASemestral')))));
+
+            // Verifica si existe ese evaluador en el proyecto
+            if($this->verifyJuryFullname($filterOne)) {
+
+                $this->setJuryRol($filterOne,array('$set'=>array("jury_one_rol"=>$jury_rol)));
+
+            }
+            if($this->verifyJuryFullname($filterTwo)){
+
+                $this->setJuryRol($filterTwo,array('$set'=>array("jury_two_rol"=>$jury_rol)));
+
+            }
+            if($this->verifyJuryFullname($filterThree)){
+
+                $this->setJuryRol($filterThree,array('$set'=>array("jury_three_rol"=>$jury_rol)));
+
+            }
+        }
+        else{
+
+            if($this->verifyIfFirstVersionFromProjectExist($id_register)){
+
+                // Arreglo para buscar la primera version del proyecto en formato A Anual o Semestral con su jurado # 1
+                $filterOne = array('$and'=>array(array("id_register"=>$id_register),
+                    array("jury_one_fullname"=>$jury_fullname),array("version"=>'first_version'),array('$or'=>array(array('format'=>'formatAAnual'),array('format'=>'formatASemestral')))));
+                // Arreglo para buscar la primera version del proyecto en formato A Anual o Semestral con su jurado # 2
+                $filterTwo = array('$and'=>array(array("id_register"=>$id_register),
+                    array("jury_two_fullname"=>$jury_fullname),array("version"=>'first_version'),array('$or'=>array(array('format'=>'formatAAnual'),array('format'=>'formatASemestral')))));
+                // Arreglo para buscar la primera version del proyecto en formato A Anual o Semestral con su jurado # 3
+                $filterThree = array('$and'=>array(array("id_register"=>$id_register),
+                    array("jury_three_fullname"=>$jury_fullname),array("version"=>'first_version'),array('$or'=>array(array('format'=>'formatAAnual'),array('format'=>'formatASemestral')))));
+
+                // Verifica si existe ese evaluador en el proyecto
+                if($this->verifyJuryFullname($filterOne)) {
+
+                    $this->setJuryRol($filterOne,array('$set'=>array("jury_one_rol"=>$jury_rol)));
+
+                }
+                if($this->verifyJuryFullname($filterTwo)){
+
+                    $this->setJuryRol($filterTwo,array('$set'=>array("jury_two_rol"=>$jury_rol)));
+
+                }
+                if($this->verifyJuryFullname($filterThree)){
+
+                    $this->setJuryRol($filterThree,array('$set'=>array("jury_three_rol"=>$jury_rol)));
+
+                }
+
+            }
+            else{
+
+                if($this->verifyIfExist($id_register,"-")){
+
+                    // Arreglo para buscar la segunda version del proyecto en formato A Anual o Semestral con su jurado # 1
+                    $filterOne = array('$and'=>array(array("id_register"=>$_POST['id_register']),
+                        array("jury_one_fullname"=>$_POST['jury_fullname']),array('$or'=>array(array('format'=>'formatASemestral')))));
+                    // Arreglo para buscar la segunda version del proyecto en formato A Anual o Semestral con su jurado # 2
+                    $filterTwo = array('$and'=>array(array("id_register"=>$_POST['id_register']),
+                        array("jury_two_fullname"=>$_POST['jury_fullname']),array('$or'=>array(array('format'=>'formatASemestral')))));
+                    // Arreglo para buscar la segunda version del proyecto en formato A Anual o Semestral con su jurado # 3
+                    $filterThree = array('$and'=>array(array("id_register"=>$_POST['id_register']),
+                        array("jury_three_fullname"=>$_POST['jury_fullname']),array('$or'=>array(array('format'=>'formatASemestral')))));
+
+                    // Verifica si existe ese evaluador en el proyecto
+                    if($this->verifyJuryFullname($filterOne)) {
+
+                        $this->setJuryRol($filterOne,array('$set'=>array("jury_one_rol"=>$jury_rol)));
+
+                    }
+                    if($this->verifyJuryFullname($filterTwo)){
+
+                        $this->setJuryRol($filterTwo,array('$set'=>array("jury_two_rol"=>$jury_rol)));
+
+                    }
+                    if($this->verifyJuryFullname($filterThree)){
+
+                        $this->setJuryRol($filterThree,array('$set'=>array("jury_three_rol"=>$jury_rol)));
+
+                    }
+                }
+            }
+        }
     }
 
 }

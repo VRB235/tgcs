@@ -175,8 +175,8 @@
     </div>
 
 </form>
-<div class="btn btn-outline-primary">
-    <a href="../php/aprobarProyectos.php">Regresar</a>
+<div>
+    <a href="../php/aprobarProyectos.php" class="btn btn-outline-primary">Regresar</a>
 </div>
 </body>
 </html>

@@ -14,6 +14,7 @@
         // Verifica si existe el proeycto
         if($mongo->verifyIfExist($_POST["id_register"],$_POST["version"])){
             $mongo->approveTutor($_POST["id_register"],$_POST["version"],$_POST["tutor_extern"],$_POST["tutor_decision"]);
+            header("Location: ../php/tutorProyecto.php");
         }
         else{
             $_SESSION['title'] = $_SESSION["title_fail_connetion"];

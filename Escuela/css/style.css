@@ -320,6 +320,13 @@ form#jurados {
     width: 31%;
 }
 
+form#roles {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 31%;
+}
+
 .formContent{
     display: block;
     margin-left: auto;
@@ -343,6 +350,11 @@ input#jury_fullname {
     margin-left: 10px;
 }
 
+select#jury_rol {
+    display: inline-block;
+    width: 150px;
+}
+
 h1 {
     font-size: 28px !important;
 }
@@ -354,6 +366,25 @@ h1 {
 select#jury_decision {
     display: inline-block;
     width: 150px;
+}
+
+input#subirRoles {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+label#id_registerju {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 50%;
+}
+
+input#subirEvaluadores, input#subirTutor, input#subirJurados {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 

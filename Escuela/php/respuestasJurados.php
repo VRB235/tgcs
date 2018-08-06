@@ -13,12 +13,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-    <center><img src="../../Estudiante/recursos/Logo-UCAB-04.png"></center>
+    <header>
+        <img src="../recursos/Logo-UCAB-04.png" alt="logo_UCAB" class="logo_UCAB">
+    </header>
     <h1 style="text-align: center">Cargar Respuestas de Jurados</h1>
     <br>
     <div class="form fix">
         <form action="../php/jurados.php" method="post" id="jurados">
-            <label for="id_register" id="id_registerj">N° Registro <input type="text" name="id_register" id="id_register" class="form-control" required></label>
+            <label for="id_registerjr" id="id_registerjr">N° Registro <input type="text" name="id_register" id="id_register" class="form-control" required></label>
             <label for="version"> Version
                 <select name="version" id="version" class="form-control">
                     <option value="-">-</option>
