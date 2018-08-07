@@ -509,10 +509,10 @@ class MongoDataBase extends Credentials {
 
             // Filtro para que verigfique si existe un proyecto con ese nro de registro y version
             if($version!="-"){
-                $filter = array("id_register"=>$id_register,"version"=>$version);
+                $filter = array("id_register"=>$id_register,"version"=>$version,"format"=>"formatAAnual");
             }
             else{
-                $filter = array("id_register"=>$id_register);
+                $filter = array("id_register"=>$id_register,"format"=>"formatASemestral");
             }
 
             $options = array();
@@ -1062,6 +1062,147 @@ class MongoDataBase extends Credentials {
                 }
             }
         }
+    }
+
+    /**
+     * Verifica si el periodo de un proyecto es semestral o anual
+     * @param $id_register
+     * @return bool|null|string
+     * @throws \MongoDB\Driver\Exception\Exception
+     */
+    function verifyPeriod($id_register){
+
+        $connetion = $this->conexionMongoDB();
+
+        // Si se dio la conexion
+        if ($connetion!=null){
+
+            $filter = array('id_register'=>$id_register);
+
+            $options = array();
+
+            try{
+
+                $query = new MongoDB\Driver\Query($filter,$options);
+                $cursor = $connetion->executeQuery($this->credentials->getNameMongoDB().".".$this->credentials->getCollection(),$query);
+
+                foreach ($cursor as $element){
+                    if($element->format=="formatAAnual" ){
+                        return "anual";
+                    }
+                    else{
+                        if($element->format=="formatASemestral"){
+                            return "semestral";
+                        }
+                    }
+                }
+                return null;
+
+            }catch (MongoDB\Driver\Exception $e){
+
+                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
+                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                header("Location: ../php/mensaje.php");
+
+            }
+            catch (Exception $e){
+                echo $e->getMessage();
+                die();
+            }
+            return false;
+        }
+
+    }
+
+    /**
+     * Modifica la fecha de defensa de los proyectos semestrales
+     * @param $id_register
+     * @param $defense_date
+     * @return \MongoDB\Driver\WriteResult|null
+     */
+    function setDefenseDateSemestral($id_register,$defense_date){
+
+        $connetion = $this->conexionMongoDB();
+
+        // Si se dio la conexion
+        if ($connetion!=null){
+
+            $filter = array("id_register"=>$id_register,"format"=>"formatASemestral");
+
+            $newObj = array('$set'=>array("defense_date"=>$defense_date));
+
+            $options = array('multi'=>true,'upsert'=>false);
+
+            try{
+
+                $bulk = new MongoDB\Driver\BulkWrite;
+                $bulk->update($filter,$newObj,$options);
+                $cursor = $connetion->executeBulkWrite($this->credentials->getNameMongodb().".".$this->credentials->getCollection(),$bulk);
+                return $cursor;
+
+            }catch (MongoDB\Driver\Exception $e){
+
+                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
+                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                header("Location: ../php/mensaje.php");
+
+            }
+            catch (Exception $e){
+                echo $e->getMessage();
+                die();
+            }
+            return null;
+        }
+
+    }
+
+    /**
+     * Modifica la fecha de defensa
+     * @param $id_register
+     * @param $defense_date
+     * @return \MongoDB\Driver\WriteResult|null
+     */
+    function setDefenseDateAnual($id_register,$defense_date,$version){
+
+        $connetion = $this->conexionMongoDB();
+
+        // Si se dio la conexion
+        if ($connetion!=null){
+            if($version=="first_version"){
+                $filter = array("id_register"=>$id_register,"format"=>"formatAAnual","version"=>"first_version");
+            }
+            else{
+                if($version=="second_version"){
+                    $filter = array("id_register"=>$id_register,"format"=>"formatAAnual","version"=>"second_version");
+                }
+            }
+
+
+            $newObj = array('$set'=>array("defense_date"=>$defense_date));
+
+            $options = array('multi'=>true,'upsert'=>false);
+
+            try{
+
+                $bulk = new MongoDB\Driver\BulkWrite;
+                $bulk->update($filter,$newObj,$options);
+                $cursor = $connetion->executeBulkWrite($this->credentials->getNameMongodb().".".$this->credentials->getCollection(),$bulk);
+                return $cursor;
+
+            }catch (MongoDB\Driver\Exception $e){
+
+                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
+                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                header("Location: ../php/mensaje.php");
+
+            }
+            catch (Exception $e){
+                echo $e->getMessage();
+                die();
+            }
+            return null;
+        }
+
     }
 
 }

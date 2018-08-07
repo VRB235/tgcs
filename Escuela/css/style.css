@@ -327,6 +327,13 @@ form#roles {
     width: 31%;
 }
 
+form#defensa {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 22%;
+}
+
 .formContent{
     display: block;
     margin-left: auto;
@@ -381,10 +388,24 @@ label#id_registerju {
     width: 50%;
 }
 
-input#subirEvaluadores, input#subirTutor, input#subirJurados {
+input#subirEvaluadores, input#subirTutor, input#subirJurados,  input#subirFechaDefensa {
     margin-left: auto;
     margin-right: auto;
     display: block;
+}
+
+label[for="defense_date"] {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 65%;
+}
+
+label#id_registerfd {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 65%;
 }
 
 

@@ -38,10 +38,12 @@
                     if($result!=null){
 
                         if($faltan==1){
-                            $mongo->setApprovalDate($_POST["id_register"].$_POST["version"]);
+
+                            $mongo->setApprovalDate($_POST["id_register"],$_POST["version"]);
                         }
                         header("Location: ./respuestasJurados.php");
                     }
+                    die();
                 }
             }
             else{

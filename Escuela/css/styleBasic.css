@@ -36,12 +36,8 @@ div#table_id_wrapper {
     width: 90%;
     margin-left: 3%;
 }
-label#id_registerfd{
-    margin-left: 1%;
-}
-input#subirFechaDefensa{
-    margin-left: 10%;
-}
+
+
 div#table_id_wrapper {
     background: #d9e4f9;
     padding-top: 20px;
