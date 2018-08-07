@@ -12,9 +12,7 @@
     color: white;
 }
 
-label[for="id_register"] {
-    margin-left: 30%;
-}
+
 input[id="subirEvaluadores"] {
     margin-left: 35%;
 }
@@ -44,9 +42,7 @@ div#table_id_wrapper {
     padding-bottom: 20px;
     margin-bottom: 50px;
 }
-label#id_registerNotas{
-    margin-left: 1%;
-}
+
 input#cargarNotas{
     margin-left: 10%;
 }

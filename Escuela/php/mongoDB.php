@@ -1205,4 +1205,96 @@ class MongoDataBase extends Credentials {
 
     }
 
+    /**
+     * Modificar nota y mencion de un proyecto semestral
+     * @param $id_register
+     * @param $note
+     * @param $mention
+     * @return \MongoDB\Driver\WriteResult|null
+     */
+    function setProjectNoteSemestral($id_register,$note,$mention){
+        $connetion = $this->conexionMongoDB();
+
+        // Si se dio la conexion
+        if ($connetion!=null){
+
+            $filter = array("id_register"=>$id_register,"format"=>"formatASemestral");
+
+            $newObj = array('$set'=>array("note"=>$note,"mention"=>$mention));
+
+            $options = array('multi'=>true,'upsert'=>false);
+
+            try{
+
+                $bulk = new MongoDB\Driver\BulkWrite;
+                $bulk->update($filter,$newObj,$options);
+                $cursor = $connetion->executeBulkWrite($this->credentials->getNameMongodb().".".$this->credentials->getCollection(),$bulk);
+                return $cursor;
+
+            }catch (MongoDB\Driver\Exception $e){
+
+                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
+                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                header("Location: ../php/mensaje.php");
+
+            }
+            catch (Exception $e){
+                echo $e->getMessage();
+                die();
+            }
+            return null;
+        }
+    }
+
+    /**
+     * Modificar nota y mencion de proyecto anual
+     * @param $id_register
+     * @param $note
+     * @param $mention
+     * @param $version
+     * @return \MongoDB\Driver\WriteResult|null
+     */
+    function setProjectNoteAnual($id_register,$note,$mention,$version){
+
+        $connetion = $this->conexionMongoDB();
+
+        // Si se dio la conexion
+        if ($connetion!=null){
+            if($version=="first_version"){
+                $filter = array("id_register"=>$id_register,"format"=>"formatAAnual","version"=>"first_version");
+            }
+            else{
+                if($version=="second_version"){
+                    $filter = array("id_register"=>$id_register,"format"=>"formatAAnual","version"=>"second_version");
+                }
+            }
+
+
+            $newObj = array('$set'=>array("note"=>$note,'mention'=>$mention));
+
+            $options = array('multi'=>true,'upsert'=>false);
+
+            try{
+
+                $bulk = new MongoDB\Driver\BulkWrite;
+                $bulk->update($filter,$newObj,$options);
+                $cursor = $connetion->executeBulkWrite($this->credentials->getNameMongodb().".".$this->credentials->getCollection(),$bulk);
+                return $cursor;
+
+            }catch (MongoDB\Driver\Exception $e){
+
+                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
+                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                header("Location: ../php/mensaje.php");
+
+            }
+            catch (Exception $e){
+                echo $e->getMessage();
+                die();
+            }
+            return null;
+        }
+
+    }
+
 }
