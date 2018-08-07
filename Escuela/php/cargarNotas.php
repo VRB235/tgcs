@@ -23,11 +23,13 @@
             <br>
             <label for="id_register" id="id_registerNotas">N° Registro <input type="text" name="id_register" id="id_register" class="form-control" required></label>
             <label for="note">Nota : <input type="number" min="0" max="20" id="note" name="note" class="form-control" required></label>
-            <label for="mention">Mención:</label>
-            <select name="mention" id="mention" class="form-control">
-                <option value="-">-</option>
-                <option value="Publicacion">Publicación</option>
-            </select>
+            <label for="mention">Mención:
+                <select name="mention" id="mention" class="form-control">
+                    <option value="-">-</option>
+                    <option value="Publicacion">Publicación</option>
+                </select>
+            </label>
+
             <br><br>
             <input type="submit" value="Actualizar" id="cargarNotas" class="btn">
             <br>

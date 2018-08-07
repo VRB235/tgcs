@@ -43,9 +43,7 @@ div#table_id_wrapper {
     margin-bottom: 50px;
 }
 
-input#cargarNotas{
-    margin-left: 10%;
-}
+
 div#table_id_length {
     padding-left: 25px;
 }
@@ -125,7 +123,7 @@ body{
     background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
     text-decoration: none;
 }
-input#term_code {
+input#term_code, input#id_registerr {
     background: transparent;
     border: none;
     border-bottom: 1px solid;
@@ -150,5 +148,8 @@ input#jury_three_fullname{
 }
 
 label[for="version"] {
-    margin-left: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 70%;
 }

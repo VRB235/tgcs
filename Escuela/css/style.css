@@ -310,7 +310,8 @@ form#tutor {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 31%;
+    margin-top: 20px;
+    width: 30%;
 }
 
 form#jurados {
@@ -416,7 +417,9 @@ label#id_registerfd {
 }
 
 label#id_registerNotas {
-    width: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 input#note {
@@ -437,6 +440,23 @@ input#cargarNotas {
     display: block;
 }
 
+label[for="id_register"] {
+    width: 120px;
+    margin-left: 38%;
+}
+
+form#tutor {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 15%;
+}
+
+input#eliminarProyecto {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
 
 @media screen and (max-width: 800px) {
     img.logo_UCAB, div#form {

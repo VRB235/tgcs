@@ -1297,4 +1297,51 @@ class MongoDataBase extends Credentials {
 
     }
 
+    /**
+     * Elimina un proyecto de la base de datos
+     * @param $id_register
+     * @param $term_code
+     * @return \MongoDB\Driver\WriteResult|null
+     */
+    function removeProject($id_register,$term_code,$version){
+
+        $connetion = $this->conexionMongoDB();
+
+        // Si se dio la conexion
+        if ($connetion!=null){
+
+            if($version=="-"){
+                $filter = array("id_register"=>$id_register,"term_code"=>$term_code);
+            }
+            else{
+                $filter = array("id_register"=>$id_register,"term_code"=>$term_code,"version"=>$version);
+            }
+
+
+
+            $options = array('limit'=>true);
+
+            try{
+
+                $bulk = new MongoDB\Driver\BulkWrite;
+                $bulk->delete($filter,$options);
+                $cursor = $connetion->executeBulkWrite($this->credentials->getNameMongodb().".".$this->credentials->getCollection(),$bulk);
+                return $cursor;
+
+            }catch (MongoDB\Driver\Exception $e){
+
+                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
+                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                header("Location: ../php/mensaje.php");
+
+            }
+            catch (Exception $e){
+                echo $e->getMessage();
+                die();
+            }
+            return null;
+        }
+
+    }
+
 }
