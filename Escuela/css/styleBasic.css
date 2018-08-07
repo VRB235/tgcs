@@ -147,7 +147,7 @@ input#jury_three_fullname{
     width: 15%;
 }
 
-label[for="version"] {
+label[for="versionn"] {
     margin-left: auto;
     margin-right: auto;
     display: block;

@@ -199,11 +199,11 @@ p.clean.consig {
     color: black;
 
 }
-/*
+
 div#menu_acciones, #reportes {
     border-bottom: 2px solid #6d6666;
 }
-*/
+
 div#menu_acciones a p, div#reportes a p, div#excel a p {
     border-radius: 30px;
 }
@@ -449,7 +449,7 @@ form#tutor {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 15%;
+    width: 30%;
 }
 
 input#eliminarProyecto {
@@ -458,8 +458,24 @@ input#eliminarProyecto {
     display: block;
 }
 
+.formReport {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 15%;
+    margin-top: 40px;
+}
+
+input.btn.gen {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 15px;
+}
+
 @media screen and (max-width: 800px) {
     img.logo_UCAB, div#form {
         width: 70%;
     }
 }
+

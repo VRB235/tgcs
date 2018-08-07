@@ -16,9 +16,9 @@
         if($_POST['version']!='-'){
 
             // Si no existe el proyecto
-            if($mongo->verifyIfExist($_POST["id_registerr"],$_POST["version"])){
+            if($mongo->verifyIfExist($_POST["id_registerr"],$_POST["versionn"])){
                 // Elimina el proyecto de la base de datos
-                $mongo->removeProject($_POST["id_registerr"],$_POST["term_code"],$_POST["version"]);
+                $mongo->removeProject($_POST["id_registerr"],$_POST["term_code"],$_POST["versionn"]);
                 echo "Elimnada";
             }
             else{
@@ -26,9 +26,9 @@
             }
         }
         else{
-            if($mongo->verifyIfExist($_POST["id_registerr"],$_POST["version"])){
+            if($mongo->verifyIfExist($_POST["id_registerr"],$_POST["versionn"])){
                 // Elimina el proyecto de la base de datos
-                $mongo->removeProject($_POST["id_registerr"],$_POST["term_code"],$_POST["version"]);
+                $mongo->removeProject($_POST["id_registerr"],$_POST["term_code"],$_POST["versionn"]);
                 echo "Elimnada";
             }
             else{
