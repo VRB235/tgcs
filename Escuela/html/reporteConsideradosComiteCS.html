@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Proyectos Presentados al Comite de CS</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/styleBasic.css">
+    <link rel="stylesheet" href="../css/talento.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<center><img src="../recursos/Logo-UCAB-04.png" alt="">
+    <div class="form fix">
+        <form action="../php/reporteProyectosCosideradosComiteCS.php" method="post">
+            <h1>Reporte Propuestas Consideradas por Comite de Ciencias Sociales</h1>
+            <div class="formReport">
+                <label for="term_code">Term Code: <input type="text" name="term_code" id="term_code" class="form-control"></label>
+                <br>
+                <br>
+                <input type="submit" value="Generar" class="btn">
+                <br>
+                <br>
+            </div>
+
+        </form>
+    </div>
+    </center>
+<div>
+    <a href="../index.html" class="regresar"><button type="button" class="btn btn-outline-primary">Regresar</button></a>
+</div>
+</body>
+</html>

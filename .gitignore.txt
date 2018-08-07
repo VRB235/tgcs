@@ -1,2 +1,2 @@
 /Estudiante/PHP/credenciales.php
-/Escuela/vendor
+/Escuela/vendor/*
