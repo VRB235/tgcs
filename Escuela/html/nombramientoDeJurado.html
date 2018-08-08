@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nombramiento del Juraado</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/styleBasic.css">
+    <link rel="stylesheet" href="../css/talento.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <center><img src="../recursos/Logo-UCAB-04.png" alt="">
+        <div class="form fix">
+            <form action="../php/reporteNombramientoJurados.php" method="post">
+                <h1>Reporte de Nombramiento de Jurados</h1>
+                <div class="formReport">
+                    <label for="term_code">Term Code: <input type="text" name="term_code" id="term_code" class="form-control"></label>
+                    <br>
+                    <br>
+                    <label for="date">Fecha: </label><input type="date" name="date" id="date" class="form-control">
+                    <br>
+                    <br>
+                    <input type="submit" value="Generar" class="btn">
+                    <br>
+                    <br>
+                </div>
+
+            </form>
+        </div>
+    </center>
+    <div>
+        <a href="../index.html" class="regresar"><button type="button" class="btn btn-outline-primary">Regresar</button></a>
+    </div>
+</body>
+</html>
