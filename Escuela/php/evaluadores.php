@@ -21,25 +21,25 @@
                     header("Location: ../php/registrarEvaluadores.php");
                 }
                 else{
-                    $_SESSION['title'] = $_TITLE_MESSAGE_INVALID_FIELD;
-                    $_SESSION['message'] = $_MESSAGE_INVALID_FIELD;
+                    $_SESSION['title'] = TITLE_MESSAGE_INVALID_FIELD;
+                    $_SESSION['message'] = MESSAGE_INVALID_FIELD;
                     header("Location: ../php/mensaje.php");
                 }
             }
             else{
-                $_SESSION['title'] = $_TITLE_MESSAGE_INVALID_FIELD;
-                $_SESSION['message'] = $_MESSAGE_INVALID_FIELD;
+                $_SESSION['title'] = TITLE_MESSAGE_INVALID_FIELD;
+                $_SESSION['message'] = MESSAGE_INVALID_FIELD;
                 header("Location: ../php/mensaje.php");
             }
         }
         else{
-            $_SESSION['title'] = $_TITLE_MESSAGE_INVALID_FIELD;
-            $_SESSION['message'] = $_MESSAGE_INVALID_FIELD;
+            $_SESSION['title'] = TITLE_MESSAGE_INVALID_FIELD;
+            $_SESSION['message'] = MESSAGE_INVALID_FIELD;
             header("Location: ../php/mensaje.php");
         }
     }
     else{
-        $_SESSION['title'] = $_TITLE_MESSAGE_INVALID_FIELD;
-        $_SESSION['message'] = $_MESSAGE_INVALID_FIELD;
+        $_SESSION['title'] = TITLE_MESSAGE_INVALID_FIELD;
+        $_SESSION['message'] = MESSAGE_INVALID_FIELD;
         header("Location: ../php/mensaje.php");
     }

@@ -15,15 +15,20 @@
     
     if($verify->verifyTermCode($_POST["term_code"],"formatAAnual")){
         
-        $projectsA = $mongo->getProjectsFormatAAnual();
+        $projectsA = $mongo->getProjectsFormatAAnualByTermCode($_POST["term_code"]);
         
     }
     else{
         
         if($verify->verifyTermCode($_POST["term_code"],"formatASemestral")){
+
+            $projectsA = $mongo->getProjectsFormatASemestralByTermCode($_POST["term_code"]);
             
-            $projectsASemestral = $mongo->getProjectsFormatASemestral();
-            
+        }
+        else{
+            $_SESSION["title"] = TITLE_WRONG_TERMCODE;
+            $_SESSION["message"] = MESSAGE_WRONG_TERMCODE;
+            header("Location: ./mensaje.php");
         }
         
     }

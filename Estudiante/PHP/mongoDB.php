@@ -1,6 +1,6 @@
 <?php
 
-    require_once 'mensajes.php';
+    include_once 'mensajes.php';
     require_once 'credenciales.php';
 
 /**
@@ -28,7 +28,6 @@
 
 
             //$connetion = new MongoDB\Driver\Manager($credentials->getDirMongoDB());
-            echo  $this->credentials->get;
             $connetion = new MongoDB\Driver\Manager($this->credentials->getLocalMongoDB());
             $command = new MongoDB\Driver\Command(array("serverStatus" => 1));
             try {
@@ -38,13 +37,13 @@
                 return $connetion;
 
             } catch(MongoDB\Driver\Exception\ConnectionTimeoutException $e) {
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_connection_timeout_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_CONNECTION_TIMEOUT_EXCEPTION;
                 header("Location: ../php/mensaje.php");
             }
             catch(MongoDB\Driver\Exception\AuthenticationException $e) {
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_authentication_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_AUTHENTICATION_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -79,8 +78,8 @@
 
                 }catch (MongoDB\Driver\Exception $e){
 
-                    $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                    $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                    $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                    $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                     header("Location: ../php/mensaje.php");
 
                 }
@@ -126,8 +125,8 @@
 
                 }catch(MongoDB\Driver\Exception\BulkWriteException $e){
 
-                    $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                    $_SESSION['message'] = $_SESSION["message_bulk_write_exception"];
+                    $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                    $_SESSION['message'] = MESSAGE_BULK_WRITE_EXCEPTION;
                     header("Location: ../php/mensaje.php");
 
                 }

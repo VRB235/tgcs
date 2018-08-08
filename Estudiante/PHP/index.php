@@ -1,13 +1,13 @@
 <?php
 
     require_once "./recaptchalib.php";
-    include_once ("../PHP/mensajes.php");
+    include_once("../PHP/mensajes.php");
 
     session_start();
 
     $response = null;
     // Comprueba la clave secreta
-    $reCaptcha = new ReCaptcha($_SECRET_KET_RECAPTCHA);
+    $reCaptcha = new ReCaptcha(SECRET_KET_RECAPTCHA);
 
     // Si hubo respuesta del repatcha
     if ($_POST["g-recaptcha-response"]) {
@@ -64,7 +64,7 @@
         }
     }
     else{
-        $_SESSION['tltle'] = $_TITLE_ROBOT_MESSAGE;
-        $_SESSION['message'] = $_MESSAGE_ROBOT_DETECTED;
+        $_SESSION['title'] = TITLE_ROBOT_MESSAGE;
+        $_SESSION['message'] = MESSAGE_ROBOT_DETECTED;
         header("Location: ../PHP/mensaje.php");
     }

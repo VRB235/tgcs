@@ -19,21 +19,29 @@
             if($mongo->verifyIfExist($_POST["id_registerr"],$_POST["versionn"])){
                 // Elimina el proyecto de la base de datos
                 $mongo->removeProject($_POST["id_registerr"],$_POST["term_code"],$_POST["versionn"]);
-                echo "Elimnada";
+                $_SESSION["title"] = TITLE_PROJEC_DELETED;
+                $_SESSION["message"] = MESSAGE_PROJECT_DELETED;
+                header("Location: ./mensaje.php");
             }
             else{
-                echo "No se encontro proyecto";
+                $_SESSION["title"] = TITLE_NOT_FOUND_PROJECT;
+                $_SESSION["message"] = MESSAGE_NOT_FOUND_PROJECT;
+                header("Location: ./mensaje.php");
             }
         }
         else{
             if($mongo->verifyIfExist($_POST["id_registerr"],$_POST["versionn"])){
                 // Elimina el proyecto de la base de datos
                 $mongo->removeProject($_POST["id_registerr"],$_POST["term_code"],$_POST["versionn"]);
-                echo "Elimnada";
+                $_SESSION["title"] = TITLE_PROJEC_DELETED;
+                $_SESSION["message"] = MESSAGE_PROJECT_DELETED;
+                header("Location: ./mensaje.php");
             }
             else{
 
-                echo "No se encontro proyecto";
+                $_SESSION["title"] = TITLE_NOT_FOUND_PROJECT;
+                $_SESSION["message"] = MESSAGE_NOT_FOUND_PROJECT;
+                header("Location: ./mensaje.php");
             }
 
         }

@@ -78,7 +78,9 @@
 
     foreach ($projectsA as $projectA){
         foreach ($projectsF as $projectF){
+            // Si el id del proyecto es distinto a null quiere decir que el proyecto ya fue aprobado
             if($projectA->id_register!=null){
+                // Si se tiene formato A y F de ese proyecto
                 if($projectA->id_register==$projectF->id_register){
                     echo "<tr>";
                     echo "<td>".$projectA->id_register."</td>";

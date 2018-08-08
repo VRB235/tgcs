@@ -14,24 +14,28 @@
             if(!empty($_POST["id_register"]) && isset($_POST["id_register"])){
 
                 $mongo = new mongoDataBase();
-
+                // Verifica que el periodo sea semestral
                 if($mongo->verifyPeriod($_POST["id_register"])=="semestral"){
-                    echo "semestral";
                     $mongo->setProjectNoteSemestral($_POST["id_register"],$_POST["note"],$_POST["mention"]);
                 }
                 else{
+                    // Verifica que el periodo sea anual
                     if($mongo->verifyPeriod($_POST["id_register"])=="anual"){
-                        echo "anual";
+                        // Verifica que existe un 1era version
                         if($mongo->verifyIfFirstVersionFromProjectExist($_POST["id_register"])){
-                            echo "1rst version";
                             $mongo->setProjectNoteAnual($_POST["id_register"],$_POST["note"],$_POST["mention"],"first_version");
                         }
                         else{
+                            // Verifica si existe 2da version
                             if($mongo->verifyIfSecondVersionFromProjectExist($_POST["id_register"])){
-                                echo "second_version";
                                 $mongo->setProjectNoteAnual($_POST["id_register"],$_POST["note"],$_POST["mention"],"second_version");
                             }
                         }
+                    }
+                    else{
+                        $_SESSION["title"] = TITLE_WRONG_TERMCODE;
+                        $_SESSION["message"] = MESSAGE_WRONG_TERMCODE;
+                        header("Location: ./mensaje.php");
                     }
                 }
                 header("Location: ./cargarNotas.php");

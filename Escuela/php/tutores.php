@@ -17,8 +17,8 @@
             header("Location: ../php/tutorProyecto.php");
         }
         else{
-            $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-            $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+            $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+            $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
             header("Location: ../php/mensaje.php");
         }
 

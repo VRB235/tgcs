@@ -1,12 +1,14 @@
 <?php
 
+include_once ("mensajes.php");
+
 /**
  * Class managementTXT
  * Clase para el manejo de archivos TXT
  */
 class ManagementTXT {
 
-    private $root = "../recursos/credenciales.txt";
+    private $root = CREDENTIALS_ROOT;
 
     /**
      * Lee archivo TXT con las credenciales

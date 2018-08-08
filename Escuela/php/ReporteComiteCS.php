@@ -14,18 +14,23 @@
     $verify = new verify();
 
     $mongo = new mongoDataBase();
-
+    // Verifica que el termcode sea anual
     if($verify->verifyTermCode($_POST["term_code"],"formatAAnual")){
 
         $projectsA = $mongo->getProjectsFormatAAnual();
 
     }
     else{
-
+        // Verifiac que el termcode sea semestral
         if($verify->verifyTermCode($_POST["term_code"],"formatASemestral")){
 
             $projectsA = $mongo->getProjectsFormatASemestral();
 
+        }
+        else{
+            $_SESSION["title"] = TITLE_WRONG_TERMCODE;
+            $_SESSION["message"] = MESSAGE_WRONG_TERMCODE;
+            header("Location: ./mensaje.php");
         }
 
     }

@@ -493,6 +493,13 @@ form#excel {
     margin-right: auto;
 }
 
+p#mensajeRegresar {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90px;
+}
+
 @media screen and (max-width: 800px) {
     img.logo_UCAB, div#form {
         width: 70%;

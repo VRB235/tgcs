@@ -1,14 +1,14 @@
 <?php
 
-require_once ("credenciales.php");
-require_once ("mongoDB.php");
+    require_once ("credenciales.php");
+    require_once ("mongoDB.php");
 
-session_start();
+    session_start();
 
-$_SESSION['page'] = $_SERVER['HTTP_REFERER'];
+    $_SESSION['page'] = $_SERVER['HTTP_REFERER'];
 
-$mongo = new mongoDataBase();
-$cursor = $mongo->getNotApproveProjects();
+    $mongo = new mongoDataBase();
+    $cursor = $mongo->getNotApproveProjects();
 
 ?>
 

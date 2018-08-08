@@ -113,8 +113,8 @@
         sentido en el documento acarreará sanciones por parte de la Escuela de Ciencias Sociales
     </p>
     <div class="botones">
-        <input type="submit" value="Aprobar" id="aprobar" name="aprobar" class="btn btn-outline-success">
-        <input type="submit" value="Rechazar" id="rechazar" name="rechazar" class="btn btn-outline-danger">
+        <input type="submit" value="Aprobar" id="aprobar" name="aprobar" class="btn btn-outline-success" >
+        <input type="submit" value="Rechazar" id="rechazar" name="rechazar" class="btn btn-outline-danger" onclick="verifyRejectButtom()">
     </div>
 
 </form>

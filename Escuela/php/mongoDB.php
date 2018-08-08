@@ -37,13 +37,13 @@ class MongoDataBase extends Credentials {
             return $connetion;
 
         } catch(MongoDB\Driver\Exception\ConnectionTimeoutException $e) {
-            $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-            $_SESSION['message'] = $_SESSION["message_connection_timeout_exception"];
+            $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+            $_SESSION['message'] = MESSAGE_CONNECTION_TIMEOUT_EXCEPTION;
             header("Location: ../php/mensaje.php");
         }
         catch(MongoDB\Driver\Exception\AuthenticationException $e) {
-            $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-            $_SESSION['message'] = $_SESSION["message_authentication_exception"];
+            $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+            $_SESSION['message'] = MESSAGE_AUTHENTICATION_EXCEPTION;
             header("Location: ../php/mensaje.php");
 
         }
@@ -78,8 +78,8 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -126,8 +126,8 @@ class MongoDataBase extends Credentials {
 
             }catch(MongoDB\Driver\Exception\BulkWriteException $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_bulk_write_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_BULK_WRITE_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -166,8 +166,8 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -205,8 +205,8 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -249,8 +249,8 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -290,8 +290,8 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -328,8 +328,8 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -379,8 +379,8 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -428,8 +428,8 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -479,8 +479,8 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -532,8 +532,8 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -574,8 +574,8 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -628,8 +628,8 @@ class MongoDataBase extends Credentials {
 
                 }catch (MongoDB\Driver\Exception $e){
 
-                    $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                    $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                    $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                    $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                     header("Location: ../php/mensaje.php");
 
                 }
@@ -641,7 +641,9 @@ class MongoDataBase extends Credentials {
 
             }
             else{
-                echo "Jurado 1 no existe";
+                $_SESSION["title"] = TITLE_JURY_ERROR;
+                $_SESSION["message"] = MESSAGE_JURY_ERROR;
+                header("Location: ./mensaje.php");
             }
 
             if($this->verifyJuryFullname($filterTwo)){
@@ -656,8 +658,8 @@ class MongoDataBase extends Credentials {
 
                 }catch (MongoDB\Driver\Exception $e){
 
-                    $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                    $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                    $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                    $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                     header("Location: ../php/mensaje.php");
 
                 }
@@ -669,7 +671,9 @@ class MongoDataBase extends Credentials {
 
             }
             else{
-                echo "Jurado 2 no existe";
+                $_SESSION["title"] = TITLE_JURY_ERROR;
+                $_SESSION["message"] = MESSAGE_JURY_ERROR;
+                header("Location: ./mensaje.php");
             }
             if($this->verifyJuryFullname($filterThree)){
 
@@ -683,8 +687,8 @@ class MongoDataBase extends Credentials {
 
                 }catch (MongoDB\Driver\Exception $e){
 
-                    $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                    $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                    $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                    $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                     header("Location: ../php/mensaje.php");
 
                 }
@@ -696,7 +700,9 @@ class MongoDataBase extends Credentials {
 
             }
             else{
-                echo "Jurado 3 no existe";
+                $_SESSION["title"] = TITLE_JURY_ERROR;
+                $_SESSION["message"] = MESSAGE_JURY_ERROR;
+                header("Location: ./mensaje.php");
             }
 
         }
@@ -736,8 +742,8 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -776,8 +782,8 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -816,8 +822,8 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -843,7 +849,7 @@ class MongoDataBase extends Credentials {
         // Si se dio la conexion
         if ($connetion!=null){
 
-            $filter = array('id_register'=>$_POST["id_register"],'version'=>'second_version');
+            $filter = array('id_register'=>$id_register,'version'=>'second_version');
 
             $options = array();
 
@@ -861,8 +867,8 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -888,7 +894,7 @@ class MongoDataBase extends Credentials {
         // Si se dio la conexion
         if ($connetion!=null){
 
-            $filter = array('id_register'=>$_POST["id_register"],'version'=>'first_version');
+            $filter = array('id_register'=>$id_register,'version'=>'first_version');
 
             $options = array();
 
@@ -906,8 +912,8 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -945,8 +951,8 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -1034,14 +1040,14 @@ class MongoDataBase extends Credentials {
                 if($this->verifyIfExist($id_register,"-")){
 
                     // Arreglo para buscar la segunda version del proyecto en formato A Anual o Semestral con su jurado # 1
-                    $filterOne = array('$and'=>array(array("id_register"=>$_POST['id_register']),
-                        array("jury_one_fullname"=>$_POST['jury_fullname']),array('$or'=>array(array('format'=>'formatASemestral')))));
+                    $filterOne = array('$and'=>array(array("id_register"=>$id_register),
+                        array("jury_one_fullname"=>$jury_fullname),array('$or'=>array(array('format'=>'formatASemestral')))));
                     // Arreglo para buscar la segunda version del proyecto en formato A Anual o Semestral con su jurado # 2
-                    $filterTwo = array('$and'=>array(array("id_register"=>$_POST['id_register']),
-                        array("jury_two_fullname"=>$_POST['jury_fullname']),array('$or'=>array(array('format'=>'formatASemestral')))));
+                    $filterTwo = array('$and'=>array(array("id_register"=>$id_register),
+                        array("jury_two_fullname"=>$jury_fullname),array('$or'=>array(array('format'=>'formatASemestral')))));
                     // Arreglo para buscar la segunda version del proyecto en formato A Anual o Semestral con su jurado # 3
-                    $filterThree = array('$and'=>array(array("id_register"=>$_POST['id_register']),
-                        array("jury_three_fullname"=>$_POST['jury_fullname']),array('$or'=>array(array('format'=>'formatASemestral')))));
+                    $filterThree = array('$and'=>array(array("id_register"=>$id_register),
+                        array("jury_three_fullname"=>$jury_fullname),array('$or'=>array(array('format'=>'formatASemestral')))));
 
                     // Verifica si existe ese evaluador en el proyecto
                     if($this->verifyJuryFullname($filterOne)) {
@@ -1100,8 +1106,8 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -1142,8 +1148,8 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -1191,8 +1197,8 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -1233,8 +1239,8 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -1283,8 +1289,8 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -1330,8 +1336,8 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -1367,8 +1373,45 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
+                header("Location: ../php/mensaje.php");
+
+            }
+            catch (Exception $e){
+                echo $e->getMessage();
+                die();
+            }
+            return null;
+        }
+    }
+
+    /**
+     * Obtiene los proyectos en formato A anual por el term code
+     * @param $termcode
+     * @return \MongoDB\Driver\Cursor|null
+     * @throws \MongoDB\Driver\Exception\Exception
+     */
+    function getProjectsFormatAAnualByTermCode($termcode){
+        $connetion = $this->conexionMongoDB();
+
+        // Si se dio la conexion
+        if ($connetion!=null){
+
+            // Filtro para que solo se traiga los proyectos no aprobados y no rechazados anteriormente
+            $filter = array('$or'=>array(array("format"=>"formatAAnual")),'approve'=>'1',"term_code"=>$termcode);
+            $options = ['sort' => ['id' => -1]];
+
+            try{
+
+                $query = new MongoDB\Driver\Query($filter,$options);
+                $cursor = $connetion->executeQuery($this->credentials->getNameMongoDB().".".$this->credentials->getCollection(),$query);
+                return $cursor;
+
+            }catch (MongoDB\Driver\Exception $e){
+
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -1403,8 +1446,45 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
+                header("Location: ../php/mensaje.php");
+
+            }
+            catch (Exception $e){
+                echo $e->getMessage();
+                die();
+            }
+            return null;
+        }
+    }
+
+    /**
+     * Obtiene los proyectos en formato A semestral por el term code
+     * @param $termcode
+     * @return \MongoDB\Driver\Cursor|null
+     * @throws \MongoDB\Driver\Exception\Exception
+     */
+    function getProjectsFormatASemestralByTermCode($termcode){
+        $connetion = $this->conexionMongoDB();
+
+        // Si se dio la conexion
+        if ($connetion!=null){
+
+            // Filtro para que solo se traiga los proyectos no aprobados y no rechazados anteriormente
+            $filter = array('$or'=>array(array("format"=>"formatASemestral")),'approve'=>'1',"term_code"=>$termcode);
+            $options = ['sort' => ['id' => -1]];
+
+            try{
+
+                $query = new MongoDB\Driver\Query($filter,$options);
+                $cursor = $connetion->executeQuery($this->credentials->getNameMongoDB().".".$this->credentials->getCollection(),$query);
+                return $cursor;
+
+            }catch (MongoDB\Driver\Exception $e){
+
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -1421,7 +1501,7 @@ class MongoDataBase extends Credentials {
      * @return \MongoDB\Driver\Cursor|null
      * @throws \MongoDB\Driver\Exception\Exception
      */
-    function getProjectsFormatAAnualAndSemestral(){
+    function getProjectsFormatAAnualAndSemestral($termcode){
 
         $connetion = $this->conexionMongoDB();
 
@@ -1429,7 +1509,7 @@ class MongoDataBase extends Credentials {
         if ($connetion!=null){
 
             // Filtro para que solo se traiga los proyectos no aprobados y no rechazados anteriormente
-            $filter = array('$and'=>array(array('term_code'=>$_POST['term_code']),
+            $filter = array('$and'=>array(array('term_code'=>$termcode),
                 array('$or'=>array(array('format'=>'formatAAnual'),array('format'=>'formatASemestral')))));
             $options = ['sort' => ['id' => -1]];
 
@@ -1441,8 +1521,8 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -1460,7 +1540,7 @@ class MongoDataBase extends Credentials {
      * @return \MongoDB\Driver\Cursor|null
      * @throws \MongoDB\Driver\Exception\Exception
      */
-    function getProjectsFormatFAnualAndSemestral(){
+    function getProjectsFormatFAnualAndSemestral($termcode){
 
         $connetion = $this->conexionMongoDB();
 
@@ -1468,7 +1548,7 @@ class MongoDataBase extends Credentials {
         if ($connetion!=null){
 
             // Filtro para que solo se traiga los proyectos no aprobados y no rechazados anteriormente
-            $filter = array('$and'=>array(array('term_code'=>$_POST['term_code']),
+            $filter = array('$and'=>array(array('term_code'=>$termcode),
                 array('$or'=>array(array('format'=>'formatFAnual'),array('format'=>'formatFSemestral')))));
             $options = ['sort' => ['id' => -1]];
 
@@ -1480,8 +1560,8 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }
@@ -1519,8 +1599,8 @@ class MongoDataBase extends Credentials {
 
             }catch (MongoDB\Driver\Exception $e){
 
-                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
-                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
                 header("Location: ../php/mensaje.php");
 
             }

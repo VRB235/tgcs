@@ -64,53 +64,53 @@
 
 <?php
 
-$projectsA = $mongo->getProjectsInFormatA();
+    $projectsA = $mongo->getProjectsInFormatA();
 
-$projectsF = $mongo->getProjectsInFormatF();
+    $projectsF = $mongo->getProjectsInFormatF();
 
-foreach ($projectsA as $elementA){
-    foreach ($projectsF as $elementF){
-        // Si existe un proyecto con su version A y F
-        if($elementA->id_register==$elementF->id_register)
-        {
-            echo "<tr>";
-            echo "<td>".$elementA->id_register."</td>";
-            if(isset($elementA->version))
+    foreach ($projectsA as $elementA){
+        foreach ($projectsF as $elementF){
+            // Si existe un proyecto con su version A y F
+            if($elementA->id_register==$elementF->id_register)
             {
-                if($elementA->version=="first_version"){
-                    echo "<td>"."1era Version"."</td>";
-                }
-                else{
-                    if($elementA->version=="second_version"){
-                        echo "<td>"."2nda Version"."</td>";
+                echo "<tr>";
+                echo "<td>".$elementA->id_register."</td>";
+                if(isset($elementA->version))
+                {
+                    if($elementA->version=="first_version"){
+                        echo "<td>"."1era Version"."</td>";
                     }
                     else{
-                        echo "<td>"."</td>";
+                        if($elementA->version=="second_version"){
+                            echo "<td>"."2nda Version"."</td>";
+                        }
+                        else{
+                            echo "<td>"."</td>";
+                        }
                     }
                 }
-            }
-            else{
+                else{
 
-                echo "<td></td>";
+                    echo "<td></td>";
+
+                }
+
+                echo "<td>".$elementA->title."</td>";
+                echo "<td>".$elementA->student_one_name."</td>";
+                echo "<td>".$elementA->student_one_id."</td>";
+                echo "<td>".$elementA->student_two_name."</td>";
+                echo "<td>".$elementA->student_two_id."</td>";
+                if(isset($elementA->defense_date)){
+                    echo "<td>".$elementA->defense_date."</td>";
+                }
+                else{
+                    echo "<td> </td>";
+                }
+                echo "</tr>";
 
             }
-
-            echo "<td>".$elementA->title."</td>";
-            echo "<td>".$elementA->student_one_name."</td>";
-            echo "<td>".$elementA->student_one_id."</td>";
-            echo "<td>".$elementA->student_two_name."</td>";
-            echo "<td>".$elementA->student_two_id."</td>";
-            if(isset($elementA->defense_date)){
-                echo "<td>".$elementA->defense_date."</td>";
-            }
-            else{
-                echo "<td> </td>";
-            }
-            echo "</tr>";
-
         }
     }
-}
 ?>
 </tbody>
 </table>

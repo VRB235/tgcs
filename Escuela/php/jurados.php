@@ -12,8 +12,9 @@
         if(!empty($_POST["id_register"]) && isset($_POST["id_register"])){
 
             $mongo = new mongoDataBase();
-
+            // Si existe el proyecto
             if($mongo->verifyIfExist($_POST["id_register"],$_POST["version"])){
+
                 $element = $mongo->getProject($_POST["id_register"],$_POST["version"]);
 
 
@@ -43,11 +44,12 @@
                         }
                         header("Location: ./respuestasJurados.php");
                     }
-                    die();
                 }
             }
             else{
-                echo "Campo incorrecto";
+                $_SESSION["title"] = TITLE_NOT_FOUND_PROJECT;
+                $_SESSION["message"] = MESSAGE_NOT_FOUND_PROJECT;
+                header("Location: ./mensaje.php");
             }
         }
     }

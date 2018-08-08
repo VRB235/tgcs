@@ -253,14 +253,26 @@
                     // Si realizo la insersion en la base de datos
                     if($mongo->insert($arrProject)){
 
-                        $_SESSION['project'] = $project;
-                        $_SESSION['title'] = $_TITLE_TESIS_REGISTER;
-                        $_SESSION['message'] = $_MESSAGE_TESIS_REGISTER;
+                        $_SESSION['project'] = $arrProject;
+                        $_SESSION['title'] = TITLE_TESIS_REGISTER;
+                        $_SESSION['message'] = MESSAGE_TESIS_REGISTER;
                         header("Location: ../PHP/mensaje.php");
 
                     }
                 }
             }
+            else{
+                echo "<script>
+                            alert('Cedula de Identidad Invalida, La cedula de identidad es de 8 digitos');
+                            window.history.back();
+                        </script>";
+            }
+        }
+        else{
+            echo "<script>
+                        alert('Numero de Telefono Invalido, Debe introducirlo con el siguiente formato: xxxx-xxx-xxxx Ej. 0212-123-4567');
+			            window.history.back();
+                    </script>";
         }
     }
 
