@@ -473,6 +473,13 @@ input.btn.gen {
     margin-top: 15px;
 }
 
+input.btn {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
 @media screen and (max-width: 800px) {
     img.logo_UCAB, div#form {
         width: 70%;

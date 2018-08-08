@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Presentacion de Trabajos de Grado</title>
+    <link rel="stylesheet" href="../css/styleBasic.css">
+    <link rel="stylesheet" href="../css/talento.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <img src="../recursos/Logo-UCAB-04.png" alt="logo_UCAB" class="logo_UCAB">
+    </header>
+<div class="form fix">
+    <form action="../php/reportePresentacionCS.php" method="post" id="registrarProyecto">
+        <div class="formReport">
+            <label for="term_code">Term Code: </label><input type="text" id="term_code" name="term_code" class="form-control">
+            <input type="submit" value="Generar" class="btn" >
+        </div>
+
+    </form>
+</div>
+    <div>
+        <a href="../index.html" class="regresar"><button type="button" class="btn btn-outline-primary">Regresar</button></a>
+    </div>
+</body>
+</html>

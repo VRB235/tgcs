@@ -1494,4 +1494,43 @@ class MongoDataBase extends Credentials {
 
     }
 
+    /**
+     * Obtiene los proyectos de acuerdo al term code
+     * @param $termCode
+     * @return \MongoDB\Driver\Cursor|null
+     * @throws \MongoDB\Driver\Exception\Exception
+     */
+    function getProyectsByTermCode($termCode){
+
+        $connetion = $this->conexionMongoDB();
+
+        // Si se dio la conexion
+        if ($connetion!=null){
+
+            // Filtro para que solo se traiga los proyectos no aprobados y no rechazados anteriormente
+            $filter = array('term_code'=>$termCode);
+            $options = ['sort' => ['id' => -1]];
+
+            try{
+
+                $query = new MongoDB\Driver\Query($filter,$options);
+                $cursor = $connetion->executeQuery($this->credentials->getNameMongoDB().".".$this->credentials->getCollection(),$query);
+                return $cursor;
+
+            }catch (MongoDB\Driver\Exception $e){
+
+                $_SESSION['title'] = $_SESSION["title_fail_connetion"];
+                $_SESSION['message'] = $_SESSION["message_mongo_exception"];
+                header("Location: ../php/mensaje.php");
+
+            }
+            catch (Exception $e){
+                echo $e->getMessage();
+                die();
+            }
+            return null;
+        }
+
+    }
+
 }
