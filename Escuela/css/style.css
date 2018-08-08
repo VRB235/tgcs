@@ -480,6 +480,19 @@ input.btn {
     margin-top: 20px;
 }
 
+form#excel {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 15%;
+}
+
+#generarExcel {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 @media screen and (max-width: 800px) {
     img.logo_UCAB, div#form {
         width: 70%;
