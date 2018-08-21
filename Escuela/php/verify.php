@@ -4,7 +4,7 @@ class Verify{
 
     /**
      * Verifica que el numero corresponda  a un numero de telefono con el formato 0000-000-0000
-     * @param $number:string
+     * @param $number
      * @return bool
      */
     function verifyPhoneNumber ($number){
@@ -19,7 +19,7 @@ class Verify{
 
     /**
      * Verifica que la cedula de identidad tenga el formato 00000000
-     * @param $id:string
+     * @param $id
      * @return bool
      */
     function verifyID ($id){
@@ -35,8 +35,8 @@ class Verify{
 
     /**
      * Verifica que el termcode corresponda al formato
-     * @param $term_code:string
-     * @param $format:string
+     * @param $term_code
+     * @param $format
      * @return bool
      */
     function verifyTermCode($term_code,$format){

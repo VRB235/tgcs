@@ -1,6 +1,7 @@
 /**
  * Verifica que al rechazar una propuesta
  * los campos de nro de registro, fecha de registro y term code no sean requeridas
+ * @memberOf js
  */
 function verifyRejectButtom() {
 
