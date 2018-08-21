@@ -1,0 +1,5 @@
+db_ip = 'ip_DB'
+db_name = 'nombre_DB'
+db_user = 'usuario_DB'
+;db_pass = 'syh%ahsy*!516'
+db_pass = 'contraseña_DB' // Si existen caracteres especiales en la contraseña se debe usuar Percent-Encoding (https://en.wikipedia.org/wiki/Percent-encoding)

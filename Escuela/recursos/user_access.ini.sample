@@ -1,0 +1,2 @@
+[users]
+user[] = "usuario" // Agregar esta linea para darle acceso a otros usuarios
