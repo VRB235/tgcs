@@ -18,8 +18,7 @@
         );
     }
 
-    // DESCOMENTAR!!!!!
-    //$_SESSION['robot'] = true;
+    $_SESSION['robot'] = true;
 
     // Si es un robot
     if($response == null && $response->success == null){
@@ -29,12 +28,13 @@
         $_SESSION['robot'] = false;
     }
 
-    // Probando....
+    // COMENTAR NUEVAMENTE
     $_SESSION['robot'] = false;
-
+    
     // Si no es un robot
     if(!$_SESSION['robot'])
     {
+        $_SESSION['register'] = false;
         $_SESSION['period'] = $_POST['period'];
         // Si el periodo es anual y formato A
         if($_POST['period']=='Anual' && $_POST['format']=='formatA'){

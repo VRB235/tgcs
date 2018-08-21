@@ -6,6 +6,9 @@
     session_start();
     $project = $_SESSION['project'];
     $html2pdf = new Html2Pdf();
+    $oneStudent = false;
+    $html="";
+
     if($_SESSION['period']=='Anual'){
         if($_SESSION['formato']=='formatAAnual'){
             $html = "<table><tr><td style='padding: 0px; padding-left:150px;'><img src=../recursos/Logo-UCAB-04.png ></td></tr></table>
@@ -17,9 +20,9 @@
             <tr><td style='padding-left: 150px; font-size: 15px; padding-bottom: 10px'><strong>FICHA DE REGISTRO DEL PROYECTO DE TRABAJO DE GRADO</strong></td></tr></table>
             ";
             if($project['version']=='first_version'){
-                $html .= "<p>1era Version</p>";
+                $html .= "<p>1era versión</p>";
             }else{
-                $html .= "<p>2da Version</p>";
+                $html .= "<p>2da versión</p>";
             }
                 $html .= "<label><strong>TITULO COMPLETO DE PROYECTO DE TRABAJO DE GRADO : </strong></label><label>".$project["title"]."</label>
                 <br>
@@ -30,7 +33,7 @@
                 <br>
                 <br>
                 <label for='student_one_hab_phone'><strong>Teléfono Habitación : </strong></label><label>".$project["student_one_hab_phone"]."</label>
-                <label for='student_one_cel_phone'><strong>Telefono Celular : </strong></label><label>".$project["student_one_cel_phone"]."</label>
+                <label for='student_one_cel_phone'><strong>Teléfono Celular : </strong></label><label>".$project["student_one_cel_phone"]."</label>
                 <label for='student_one_ucab_email'><strong>E-mail UCAB : </strong></label><label>".$project["student_one_ucab_email"]."</label>
                 <br>
                 <br>
@@ -49,7 +52,7 @@
                 $html .="
                 <br>
                 <br>
-                <label for='student_one_mention'>Mención</label>
+                <label for='student_one_mention'><strong>Mención : </strong></label>
             ";
                 if($project['student_one_mention']=='Sin O'){
                     $html .= "<label>Sin Opcion</label>";
@@ -90,74 +93,79 @@
                 if($project['student_one_same_seminar']=='no'){
                     $html .= "<label>No</label>";
                 }
-                $html .= "
-                <br>
-                <br>
-                <br>
-                <label for='student_two_name'><strong>Estudiante 2) Nombre y Apellido</strong></label><label>".$project["student_two_name"]."</label>
-                <label for='student_two_id'><strong>Cédula de Identidad : </strong></label><label>".$project["student_two_id"]."</label>
-                <br>
-                <br>
-                <label for='student_two_hab_phone'><strong>Teléfono Habitación : </strong></label><label>".$project["student_two_hab_phone"]."</label>
-                <label for='student_two_cel_phone'><strong>Teléfono Celular : </strong></label><label>".$project["student_two_cel_phone"]."</label>
-                <label for='student_two_ucab_email'><strong>E-mail UCAB : </strong></label><label>".$project["student_two_ucab_email"]."</label>
-                <br>
-                <br>
-                <label for='student_two_personal_email'><strong>E-mail Personal : </strong></label><label>".$project["student_two_personal_email"]."</label>
-                <label for='student_two_specialty'><strong>Especialidad : </strong></label>
+                if(!empty($project['student_two_name'])) {
+                    $html .= "
+                    <br>
+                    <br>
+                    <br>
+                    <label for='student_two_name'><strong>Estudiante 2) Nombre y Apellido</strong></label><label>" . $project["student_two_name"] . "</label>
+                    <label for='student_two_id'><strong>Cédula de Identidad : </strong></label><label>" . $project["student_two_id"] . "</label>
+                    <br>
+                    <br>
+                    <label for='student_two_hab_phone'><strong>Teléfono Habitación : </strong></label><label>" . $project["student_two_hab_phone"] . "</label>
+                    <label for='student_two_cel_phone'><strong>Teléfono Celular : </strong></label><label>" . $project["student_two_cel_phone"] . "</label>
+                    <label for='student_two_ucab_email'><strong>E-mail UCAB : </strong></label><label>" . $project["student_two_ucab_email"] . "</label>
+                    <br>
+                    <br>
+                    <label for='student_two_personal_email'><strong>E-mail Personal : </strong></label><label>" . $project["student_two_personal_email"] . "</label>
+                    <label for='student_two_specialty'><strong>Especialidad : </strong></label>
+                    ";
+                    if ($project['student_two_specialty'] == 'Sin O') {
+                        $html .= "<label>Sin Opcion</label>";
+                    }
+                    if ($project['student_two_specialty'] == 'RR.II') {
+                        $html .= "<label>Relaciones Industriales</label>";
+                    }
+                    if ($project['student_two_specialty'] == 'Soc.') {
+                        $html .= "<label>Sociología</label>";
+                    }
+                    $html .= "
+                    <br>
+                    <br>
+                    <label for='student_two_mention'><strong>Mención : </strong></label>
                 ";
-                if($project['student_two_specialty']=='Sin O'){
-                    $html .= "<label>Sin Opcion</label>";
-                }
-                if($project['student_two_specialty']=='RR.II'){
-                    $html .= "<label>Relaciones Industriales</label>";
-                }
-                if($project['student_two_specialty']=='Soc.'){
-                    $html .= "<label>Sociología</label>";
-                }
-                $html .="
-                <br>
-                <br>
-                <label for='student_two_mention'><strong>Mención : </strong></label>
-            ";
-                if($project['student_two_mention']=='Sin O'){
-                    $html .= "<label>Sin Opcion</label>";
-                }
-                if($project['student_two_mention']=='RR.HH'){
-                    $html .= "<label>Recursos Humanos</label>";
-                }
-                if($project['student_two_mention']=='RR.LL'){
-                    $html .= "<label>Relaciones Laboralesa</label>";
-                }
-            if($project['student_two_mention']=='CyB'){
-                    $html .= "<label>Compensación y Beneficios</label>";
-                }
-                $html .= "<label> <strong>Escolaridad : </strong></label>";
+                    if ($project['student_two_mention'] == 'Sin O') {
+                        $html .= "<label>Sin Opcion</label>";
+                    }
+                    if ($project['student_two_mention'] == 'RR.HH') {
+                        $html .= "<label>Recursos Humanos</label>";
+                    }
+                    if ($project['student_two_mention'] == 'RR.LL') {
+                        $html .= "<label>Relaciones Laboralesa</label>";
+                    }
+                    if ($project['student_two_mention'] == 'CyB') {
+                        $html .= "<label>Compensación y Beneficios</label>";
+                    }
+                    $html .= "<label> <strong>Escolaridad : </strong></label>";
 
-            if($project['student_two_scholarship']=='fourth_year'){
-                $html .= "<label>4to Año</label>";
-            }
-            if($project['student_two_scholarship']=='fifth_year'){
-                $html .= "<label>5to Año</label>";
-            }
-            if($project['student_two_scholarship']=='scholarship_ended'){
-                $html .= "<label>Escolaridad Finalizada</label>";
-            }
-            $html .="
-                <label for='student_two_year_ended'><strong>Año de Finalización : </strong></label><label>".$project["student_two_year_ended"]."</label>
-                <br>
-                <br>
-                <label for='student_two_seminar_title'><strong>Titulo del Proyecto de Seminario : </strong></label><label>".$project["student_two_seminar_title"]."</label>
-                <br>
-                <br>
-                <label for='student_two_professor'><strong>Profesor de Seminario : </strong></label><label>".$project["student_two_professor"]."</label>
-                <label for='student_two_approval_year'><strong>Año de Aprobación : </strong></label><label>".$project["student_two_approval_year"]."</label>
-                <label for='student_two_same_seminar'><strong>¿Este proyecto es el mismo del Seminario? : </strong></label>";
-                if($project['student_two_same_seminar']=='yes'){
-                    $html .= "<label>Si</label>";
+                    if ($project['student_two_scholarship'] == 'fourth_year') {
+                        $html .= "<label>4to Año</label>";
+                    }
+                    if ($project['student_two_scholarship'] == 'fifth_year') {
+                        $html .= "<label>5to Año</label>";
+                    }
+                    if ($project['student_two_scholarship'] == 'scholarship_ended') {
+                        $html .= "<label>Escolaridad Finalizada</label>";
+                    }
+                    $html .= "
+                    <label for='student_two_year_ended'><strong>Año de Finalización : </strong></label><label>" . $project["student_two_year_ended"] . "</label>
+                    <br>
+                    <br>
+                    <label for='student_two_seminar_title'><strong>Titulo del Proyecto de Seminario : </strong></label><label>" . $project["student_two_seminar_title"] . "</label>
+                    <br>
+                    <br>
+                    <label for='student_two_professor'><strong>Profesor de Seminario : </strong></label><label>" . $project["student_two_professor"] . "</label>
+                    <label for='student_two_approval_year'><strong>Año de Aprobación : </strong></label><label>" . $project["student_two_approval_year"] . "</label>
+                    <label for='student_two_same_seminar'><strong>¿Este proyecto es el mismo del Seminario? : </strong></label>";
+                    if ($project['student_two_same_seminar'] == 'yes') {
+                        $html .= "<label>Si</label>";
+                    }
+                    if ($project['student_two_same_seminar'] == 'no') {
+                        $html .= "<label>No</label>";
+                    }
                 }
-                if($project['student_two_same_seminar']=='no'){
-                    $html .= "<label>No</label>";
+                else{
+                    $oneStudent = true;
                 }
                 $html .= "
 
@@ -179,13 +187,42 @@
                 <br>
                 <br>
                 <br>
-                <table><tr><td style='padding-left: 100px'><label >Firma del Estudiante No.1</label ></td><td style='padding-left: 200px'><label >Firma del Estudiante No.2</label></td></tr></table>
+                ";
+                if($oneStudent) {
+                    $html .= "
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>";
+                }
+
+                if(!$oneStudent) {
+                    $html.="<table><tr><td style='padding-left: 100px; text-align: center'><label >Firma del Estudiante No.1</label ></td><td style='padding-left: 200px'>";
+                    $html .="<label >Firma del Estudiante No.2</label>";
+                }
+                else{
+                    $html.="<table><tr><td style='padding-left: 300px; text-align: center'><label >Firma del Estudiante No.1</label ></td><td style='padding-left: 200px'>";
+                }
+                $html.="</td></tr></table>";
+                $html .="
                 <br>
                 <br>
                 <br>
                 <br>
                 <br>
-                <p class='text'>Nosotros los estudiantes de la Escuela de Ciencias Sociales firmantes de la presente ficha de registro 
+                <p class='text' style='text-align: justify'>Nosotros los estudiantes de la Escuela de Ciencias Sociales firmantes de la presente ficha de registro 
                     declaramos que el presente Proyecto de Trabajo de Grado ha sido elaborado respetando las normas de 
                     derecho de autor y propiedad intelectual y que conocemos que cualquier tipo de irregularidad en este 
                     sentido en el documento acarreará sanciones por parte de la Escuela de Ciencias Sociales
@@ -263,62 +300,69 @@
         if($project['student_one_scholarship']=='scholarship_ended'){
             $html .= "<label>Escolaridad Finalizada</label>";
         }
-        $html .="
-                <label for='student_one_year_ended'><strong>Año de Finalización : </strong></label><label>".$project["student_one_year_ended"]."</label>
-                <br>
-                <br>
-                <br>
-                <label for='student_two_name'><strong>Estudiante 2) Nombre y Apellido : </strong></label><label>".$project["student_two_name"]."</label>
-                <label for='student_two_id'><strong>Cédula de Identidad : </strong></label><label>".$project["student_two_id"]."</label>
-                <br>
-                <br>
-                <label for='student_two_hab_phone'><strong>Teléfono Habitación : </strong></label><label>".$project["student_two_hab_phone"]."</label>
-                <label for='student_two_cel_phone'><strong>Teléfono Celular : </strong></label><label>".$project["student_two_cel_phone"]."</label>
-                <label for='student_two_ucab_email'><strong>E-mail UCAB : </strong></label><label>".$project["student_two_ucab_email"]."</label>
-                <br>
-                <br>
-                <label for='student_two_personal_email'><strong>E-mail Personal : </strong></label><label>".$project["student_two_personal_email"]."</label>
-                <label for='student_two_specialty'><strong>Especialidad : </strong></label>
-                ";
-            if($project['student_two_specialty']=='Sin O'){
+        $html .="<label for='student_one_year_ended'><strong>Año de Finalización : </strong></label><label>".$project["student_one_year_ended"]."</label>";
+
+        if(!empty($project['student_two_name'])) {
+            $html .= "
+                    <br>
+                    <br>
+                    <br>
+                    <label for='student_two_name'><strong>Estudiante 2) Nombre y Apellido : </strong></label><label>" . $project["student_two_name"] . "</label>
+                    <label for='student_two_id'><strong>Cédula de Identidad : </strong></label><label>" . $project["student_two_id"] . "</label>
+                    <br>
+                    <br>
+                    <label for='student_two_hab_phone'><strong>Teléfono Habitación : </strong></label><label>" . $project["student_two_hab_phone"] . "</label>
+                    <label for='student_two_cel_phone'><strong>Teléfono Celular : </strong></label><label>" . $project["student_two_cel_phone"] . "</label>
+                    <label for='student_two_ucab_email'><strong>E-mail UCAB : </strong></label><label>" . $project["student_two_ucab_email"] . "</label>
+                    <br>
+                    <br>
+                    <label for='student_two_personal_email'><strong>E-mail Personal : </strong></label><label>" . $project["student_two_personal_email"] . "</label>
+                    <label for='student_two_specialty'><strong>Especialidad : </strong></label>
+                    ";
+            if ($project['student_two_specialty'] == 'Sin O') {
                 $html .= "<label>Sin Opcion</label>";
             }
-            if($project['student_two_specialty']=='RR.II'){
+            if ($project['student_two_specialty'] == 'RR.II') {
                 $html .= "<label>Relaciones Industriales</label>";
             }
-            if($project['student_two_specialty']=='Soc.'){
+            if ($project['student_two_specialty'] == 'Soc.') {
                 $html .= "<label>Sociología</label>";
             }
-            $html .="
-            <br>
-            <br>
-            <label for='student_two_mention'><strong>Mención : </strong></label>
-        ";
-            if($project['student_two_mention']=='Sin O'){
+            $html .= "
+                <br>
+                <br>
+                <label for='student_two_mention'><strong>Mención : </strong></label>
+            ";
+            if ($project['student_two_mention'] == 'Sin O') {
                 $html .= "<label>Sin Opcion</label>";
             }
-            if($project['student_two_mention']=='RR.HH'){
+            if ($project['student_two_mention'] == 'RR.HH') {
                 $html .= "<label>Recursos Humanos</label>";
             }
-            if($project['student_two_mention']=='RR.LL'){
+            if ($project['student_two_mention'] == 'RR.LL') {
                 $html .= "<label>Relaciones Laboralesa</label>";
             }
-         if($project['student_two_mention']=='CyB'){
+            if ($project['student_two_mention'] == 'CyB') {
                 $html .= "<label>Compensación y Beneficios</label>";
             }
             $html .= "<label> <strong>Escolaridad : </strong></label>";
 
-        if($project['student_two_scholarship']=='fourth_year'){
-            $html .= "<label>4to Año</label>";
+            if ($project['student_two_scholarship'] == 'fourth_year') {
+                $html .= "<label>4to Año</label>";
+            }
+            if ($project['student_two_scholarship'] == 'fifth_year') {
+                $html .= "<label>5to Año</label>";
+            }
+            if ($project['student_two_scholarship'] == 'scholarship_ended') {
+                $html .= "<label>Escolaridad Finalizada</label>";
+            }
+            $html .="
+                <label for='student_two_year_ended'><strong>Año de Finalización : </strong></label><label>".$project["student_two_year_ended"]."</label>";
         }
-        if($project['student_two_scholarship']=='fifth_year'){
-            $html .= "<label>5to Año</label>";
-        }
-        if($project['student_two_scholarship']=='scholarship_ended'){
-            $html .= "<label>Escolaridad Finalizada</label>";
+        else{
+            $oneStudent = true;
         }
         $html .="
-                <label for='student_two_year_ended'><strong>Año de Finalización : </strong></label><label>".$project["student_two_year_ended"]."</label>
                 <br>
                 <br>
                 <br>
@@ -334,15 +378,37 @@
                 <br>
                 <br>
                 <br>
-                <br>
+                <br>";
+            if($oneStudent) {
+                $html .= "
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>";
+            }
+        $html.="
                 <table><tr><td style='padding-left: 100px'><label class='approvation'>Aprobación por parte del Tutor <br> (firma)</label></td><td style='padding-left: 200px'><label class='date_sign'>Día y Fecha</label></td></tr></table>
                 <br>
                 <br>
+                <br>";
+                if(!$oneStudent) {
+                    $html.="<table><tr><td style='padding-left: 100px; text-align: center'><label >Firma del Estudiante No.1</label ></td><td style='padding-left: 200px'>";
+                    $html .="<label >Firma del Estudiante No.2</label>";
+                }
+                else{
+                    $html.="<table><tr><td style='padding-left: 300px; text-align: center'><label >Firma del Estudiante No.1</label ></td><td style='padding-left: 200px'>";
+
+                }
+                $html.="</td></tr></table>";
+                $html .="
                 <br>
-                <table><tr><td style='padding-left: 100px'><label >Firma del Estudiante No.1</label ></td><td style='padding-left: 200px'><label >Firma del Estudiante No.2</label></td></tr></table>
                 <br>
-                <br>
-                <label class='clean'>Se Consigna:</label>
+                <label class='clean'>Se consigna:</label>
                 <br>
                 <br>";
 
@@ -360,7 +426,7 @@
                 <br>
                 <br>
                 <br>
-                <p class='text2'>Nosotros los estudiantes de la Escuela de Ciencias Sociales firmantes de la presente ficha de registro 
+                <p class='text2' style='text-align: justify'>Nosotros los estudiantes de la Escuela de Ciencias Sociales firmantes de la presente ficha de registro 
                                 declaramos que el presente Proyecto de Trabajo de Grado ha sido elaborado respetando las normas de 
                                 derecho de autor y propiedad intelectual y que conocemos que cualquier tipo de irregularidad en este 
                                 sentido en el documento acarreará sanciones por parte de la Escuela de Ciencias Sociales
@@ -393,7 +459,7 @@
             <br>
             <br>
             <label for='student_one_hab_phone'><strong>Teléfono Habitación : </strong></label><label>".$project["student_one_hab_phone"]."</label>
-            <label for='student_one_cel_phone'><strong>Telefono Celular : </strong></label><label>".$project["student_one_cel_phone"]."</label>
+            <label for='student_one_cel_phone'><strong>Teléfono Celular : </strong></label><label>".$project["student_one_cel_phone"]."</label>
             <label for='student_one_ucab_email'><strong>E-mail UCAB : </strong></label><label>".$project["student_one_ucab_email"]."</label>
             <br>
             <br>
@@ -402,31 +468,38 @@
             <br>
             <label for='student_one_professor'><strong>Profesor de Seminario TG : </strong></label><label>".$project["student_one_professor"]."</label>
             <label for='student_one_approval_date'><strong>Fecha de Aprobación : </strong></label><label>".$project["student_one_approval_year"]."</label>
-            <br>
-            <br>
-            <label for='student_two_name'><strong>Estudiante 2) Nombre y Apellido : </strong></label><label>".$project["student_two_name"]."</label>
-            <label for='student_two_id'><strong>Cédula de Identidad : </strong></label><label>".$project["student_two_id"]."</label>
-            <br>
-            <br>
-            <br>
-            <label for='student_two_hab_phone'><strong>Teléfono Habitación : </strong></label><label>".$project["student_two_hab_phone"]."</label>
-            <label for='student_two_cel_phone'><strong>Teléfono Celular : </strong></label><label>".$project["student_two_cel_phone"]."</label>
-            <label for='student_two_ucab_email'><strong>E-mail UCAB : </strong></label><label>".$project["student_two_ucab_email"]."</label>
-            <br>
-            <br>
-            <label for='student_two_personal_email'><strong>E-mail Personal : </strong></label><label>".$project["student_two_personal_email"]."</label>
-            <br>
-            <br>
-            <label for='student_two_professor'><strong>Profesor de Seminario  TG : </strong></label><label>".$project["student_two_professor"]."</label>
-            <label for='student_two_approval_date'><strong>Fecha de Aprobación : </strong></label><label>".$project["student_two_approval_year"]."</label>
-            <br>
-            <br>
-            <label for='same_seminar'><strong>¿Este proyecto es el mismo del Seminario? : </strong></label>";
-            if($project['same_seminar']=='yes'){
-                $html .= "<label>Si</label>";
+            ";
+            if(!empty($project['student_two_name'])) {
+                $html .= "
+                <br>
+                <br>
+                <label for='student_two_name'><strong>Estudiante 2) Nombre y Apellido : </strong></label><label>" . $project["student_two_name"] . "</label>
+                <label for='student_two_id'><strong>Cédula de Identidad : </strong></label><label>" . $project["student_two_id"] . "</label>
+                <br>
+                <br>
+                <br>
+                <label for='student_two_hab_phone'><strong>Teléfono Habitación : </strong></label><label>" . $project["student_two_hab_phone"] . "</label>
+                <label for='student_two_cel_phone'><strong>Teléfono Celular : </strong></label><label>" . $project["student_two_cel_phone"] . "</label>
+                <label for='student_two_ucab_email'><strong>E-mail UCAB : </strong></label><label>" . $project["student_two_ucab_email"] . "</label>
+                <br>
+                <br>
+                <label for='student_two_personal_email'><strong>E-mail Personal : </strong></label><label>" . $project["student_two_personal_email"] . "</label>
+                <br>
+                <br>
+                <label for='student_two_professor'><strong>Profesor de Seminario  TG : </strong></label><label>" . $project["student_two_professor"] . "</label>
+                <label for='student_two_approval_date'><strong>Fecha de Aprobación : </strong></label><label>" . $project["student_two_approval_year"] . "</label>
+                <br>
+                <br>
+                <label for='same_seminar'><strong>¿Este proyecto es el mismo del Seminario? : </strong></label>";
+                if ($project['same_seminar'] == 'yes') {
+                    $html .= "<label>Si</label>";
+                }
+                if ($project['same_seminar'] == 'no') {
+                    $html .= "<label>No</label>";
+                }
             }
-            if($project['same_seminar']=='no'){
-                $html .= "<label>No</label>";
+            else{
+                $oneStudent = true;
             }
             $html .= "
             <br>
@@ -447,8 +520,37 @@
             <br>
             <br>
             <br>
+            <br>";
+            if($oneStudent) {
+                $html .= "
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>";
+            }
+            if(!$oneStudent) {
+                $html.="<table><tr><td style='padding-left: 100px; text-align: center'><label >Firma del Estudiante No.1</label ></td><td style='padding-left: 200px'>";
+                $html .="<label >Firma del Estudiante No.2</label>";
+            }
+            else{
+                $html.="<table><tr><td style='padding-left: 300px; text-align: center'><label >Firma del Estudiante No.1</label ></td><td style='padding-left: 200px'>";
+
+            }
+            $html.="</td></tr></table>";
+            $html .="
             <br>
-            <table><tr><td style='padding-left: 100px'><label >Firma del Estudiante No.1</label ></td><td style='padding-left: 200px'><label >Firma del Estudiante No.2</label></td></tr></table>
             <br>
             <br>
             <br>
@@ -456,8 +558,7 @@
             <br>
             <br>
             <br>
-            <br>
-            <p class='text2 clean'>Nosotros los estudiantes de la Escuela de Ciencias Sociales firmantes de la presente ficha de registro 
+            <p class='text2 clean' style='text-align: justify'>Nosotros los estudiantes de la Escuela de Ciencias Sociales firmantes de la presente ficha de registro 
                     declaramos que el presente Proyecto de Trabajo de Grado ha sido elaborado respetando las normas de 
                     derecho de autor y propiedad intelectual y que conocemos que cualquier tipo de irregularidad en este 
                     sentido en el documento acarreará sanciones por parte de la Escuela de Ciencias Sociales
@@ -497,19 +598,25 @@
             <label for='student_one_personal_email'><strong>E-mail Personal : </strong></label><label>".$project["student_one_personal_email"]."</label>
             <br>
             <br>
-            <br>
-            <label for='student_two_name'><strong>Estudiante 2) Nombre y Apellido : </strong></label><label>".$project["student_two_name"]."</label>
-            <label for='student_two_id'><strong>Cédula de Identidad : </strong></label><label>".$project["student_two_id"]."</label>
-            <br>
-            <br>
-            <label for='student_two_hab_phone'><strong>Teléfono Habitación : </strong></label><label>".$project["student_two_hab_phone"]."</label>
-            <label for='student_two_cel_phone'><strong>Teléfono Celular : </strong></label><label>".$project["student_two_cel_phone"]."</label>
-            <label for='student_two_ucab_email'><strong>E-mail UCAB : </strong></label><label>".$project["student_two_ucab_email"]."</label>
-            <br>
-            <br>
-            <label for='student_two_personal_email'><strong>E-mail Personal : </strong></label><label>".$project["student_two_personal_email"]."</label>
-            <br>
-            <br>
+            <br>";
+            if(!empty($project['student_two_name'])) {
+                $html .= "
+                <label for='student_two_name'><strong>Estudiante 2) Nombre y Apellido : </strong></label><label>" . $project["student_two_name"] . "</label>
+                <label for='student_two_id'><strong>Cédula de Identidad : </strong></label><label>" . $project["student_two_id"] . "</label>
+                <br>
+                <br>
+                <label for='student_two_hab_phone'><strong>Teléfono Habitación : </strong></label><label>" . $project["student_two_hab_phone"] . "</label>
+                <label for='student_two_cel_phone'><strong>Teléfono Celular : </strong></label><label>" . $project["student_two_cel_phone"] . "</label>
+                <label for='student_two_ucab_email'><strong>E-mail UCAB : </strong></label><label>" . $project["student_two_ucab_email"] . "</label>
+                <br>
+                <br>
+                <label for='student_two_personal_email'><strong>E-mail Personal : </strong></label><label>" . $project["student_two_personal_email"] . "</label>
+                ";
+            }
+            else{
+                $oneStudent = true;
+            }
+            $html.="
             <label for='tutor_name'><strong>Nombre y Apellido del Tutor : </strong></label><label>".$project["tutor_name"]."</label>
             <label for='tutor_email'><strong>E-mail : </strong></label><label>".$project["tutor_email"]."</label>
             <br>
@@ -521,7 +628,16 @@
             <br>
             <br>
             <br>
-            <br>
+            <br>";
+            if($oneStudent) {
+                $html .= "
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>";
+            }
+            $html.="
             <table><tr><td style='padding-left: 100px'><label class='approvation'>Aprobación por parte del Tutor <br> (firma)</label></td><td style='padding-left: 200px'><label class='date_sign'>Día y Fecha</label></td></tr></table>
             <br>
             <br>
@@ -530,12 +646,22 @@
             <br>
             <br>
             <br>
-            <table><tr><td style='padding-left: 100px'><label >Firma del Estudiante No.1</label ></td><td style='padding-left: 200px'><label >Firma del Estudiante No.2</label></td></tr></table>
+            ";
+            if(!$oneStudent) {
+                $html.="<table><tr><td style='padding-left: 100px; text-align: center'><label >Firma del Estudiante No.1</label ></td><td style='padding-left: 200px'>";
+                $html .="<label >Firma del Estudiante No.2</label>";
+            }
+            else{
+                $html.="<table><tr><td style='padding-left: 300px; text-align: center'><label >Firma del Estudiante No.1</label ></td><td style='padding-left: 200px'>";
+
+            }
+            $html.="</td></tr></table>";
+            $html .="
             <br>
             <br>
             <br>
             <br>
-            <p class='clean'>Se Consigna:</p>
+            <p class='clean'>Se consigna:</p>
             <br>
             <br>";
             if($project['cd']=='on'){
@@ -549,7 +675,7 @@
             <br>
             <br>
             <br>
-            <p class='text2'>Nosotros los estudiantes de la Escuela de Ciencias Sociales firmantes de la presente ficha de registro 
+            <p class='text2' style='text-align: justify'>Nosotros los estudiantes de la Escuela de Ciencias Sociales firmantes de la presente ficha de registro 
                     declaramos que el presente Proyecto de Trabajo de Grado ha sido elaborado respetando las normas de 
                     derecho de autor y propiedad intelectual y que conocemos que cualquier tipo de irregularidad en este 
                     sentido en el documento acarreará sanciones por parte de la Escuela de Ciencias Sociales
@@ -558,11 +684,12 @@
 
     }
 
-    
+
     // Agrega el HTML al PDF
     $html2pdf->writeHTML($html);
+
     // Despliega el PDF
-    $html2pdf->output();
+    $html2pdf->output('imprimir.pdf','D');
 
 ?>
 

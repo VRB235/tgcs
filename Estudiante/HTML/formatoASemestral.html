@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="../CSS/style.css">
         <link rel="stylesheet" href="../CSS/talento.css">
+        <script src="../js/verify.js"></script>
 </head>
 <body>
     <img src="../recursos/Logo-UCAB-04.png" id="logo" alt="logo_UCAB" class="logo_UCAB">
@@ -18,14 +19,14 @@
                 <spam> (llenar en el computador, no a mano)</spam>
             </div>
             <label for="title">TITULO COMPLETO DE PROYECTO DE TRABAJO DE GRADO <br> (Máximo 120 caracteres, incluyendo espacios y signos)
-                    <input type="text" id="title" name="title" class="form-control" required>
+                    <input type="text" id="title" name="title" maxlength="120" class="form-control" required>
             </label>
             <label for="investigation_area">Area de Investigación
-                    <input type="text" id="investigation_area" name="investigation_area" class="form-control" required>
+                    <input type="text" id="investigation_area" name="investigation_area" onkeyup="onlyText('investigation_area')" class="form-control" required>
             </label>
             <spam class="split">Estudiante 1)</spam>
             <label for="student_one_name"><strong>Nombre y Apellido</strong>
-                    <input type="text" id="student_one_name" name="student_one_name" class="form-control" required>
+                    <input type="text" id="student_one_name" name="student_one_name" onkeyup="onlyText('student_one_name')" class="form-control" required>
             </label>
             <label for="student_one_id">Cédula de Identidad
                     <input type="text" id="student_one_id" min="0" name="student_one_id" class="form-control" required>
@@ -33,7 +34,7 @@
             <label for="student_one_hab_phone">Teléfono Habitación
                     <input type="tel" id="student_one_hab_phone" name="student_one_hab_phone" class="form-control" placeholder="0000-000-0000" required>
             </label>
-            <label for="student_one_cel_phone">Telefono Celular
+            <label for="student_one_cel_phone">Teléfono Celular
                     <input type="tel" id="student_one_cel_phone" name="student_one_cel_phone" class="form-control" placeholder="0000-000-0000" required>
             </label>
             <label for="student_one_ucab_email">E-mail UCAB
@@ -43,35 +44,35 @@
                     <input type="email" id="student_one_personal_email" name="student_one_personal_email" class="form-control" placeholder ="ejemplo@correo.com" required>
             </label>
             <label for="student_one_professor">Profesor de Seminario TG
-                    <input type="text" id="student_one_professor" name="student_one_professor" class="form-control" required>
+                    <input type="text" id="student_one_professor" name="student_one_professor" class="form-control" onkeyup="onlyText('student_one_professor')" required>
             </label>
             <label for="student_one_approval_date">Fecha de Aprobación
                     <input type="date" id="student_one_approval_date" name="student_one_approval_date" class="form-control" required>
             </label>
             <spam class="split">Estudiante 2)</spam>
             <label for="student_two_name"><strong>Nombre y Apellido</strong>
-                    <input type="text" id="student_two_name" name="student_two_name" class="form-control" required>
+                    <input type="text" id="student_two_name" name="student_two_name" class="form-control" onkeyup="onlyText('student_two_name')"  onkeypress="verify2ndStudent()">
             </label>
             <label for="student_two_id">Cédula de Identidad
-                    <input type="text" id="student_two_id" min="0" name="student_two_id" class="form-control" required>
+                    <input type="text" id="student_two_id" min="0" name="student_two_id" class="form-control" onkeypress="verify2ndStudent()">
             </label>
             <label for="student_two_hab_phone">Teléfono Habitación
-                    <input type="tel" id="student_two_hab_phone" name="student_two_hab_phone" class="form-control" placeholder="0000-000-0000" required>
+                    <input type="tel" id="student_two_hab_phone" name="student_two_hab_phone" class="form-control" placeholder="0000-000-0000" onkeypress="verify2ndStudent()">
             </label>
             <label for="student_two_cel_phone">Teléfono Celular
-                    <input type="tel" id="student_two_cel_phone" name="student_two_cel_phone" class="form-control" placeholder="0000-000-0000" required>
+                    <input type="tel" id="student_two_cel_phone" name="student_two_cel_phone" class="form-control" placeholder="0000-000-0000" onkeypress="verify2ndStudent()">
             </label>
             <label for="student_two_ucab_email">E-mail UCAB
-                    <input type="email" id="student_two_ucab_email" name="student_two_ucab_email" class="form-control" placeholder ="ejemplo@correo.com" required>
+                    <input type="email" id="student_two_ucab_email" name="student_two_ucab_email" class="form-control" placeholder ="ejemplo@correo.com" onkeypress="verify2ndStudent()">
             </label>
             <label for="student_two_personal_email">E-mail Personal
-                    <input type="email" id="student_two_personal_email" name="student_two_personal_email" class="form-control" placeholder ="ejemplo@correo.com" required>
+                    <input type="email" id="student_two_personal_email" name="student_two_personal_email" class="form-control" placeholder ="ejemplo@correo.com" onkeypress="verify2ndStudent()">
             </label>
             <label for="student_two_professor">Profesor de Seminario  TG
-                    <input type="text" id="student_two_professor" name="student_two_professor" class="form-control" required>
+                    <input type="text" id="student_two_professor" name="student_two_professor" class="form-control" onkeyup="onlyText('student_two_professor')" onkeypress="verify2ndStudent()">
             </label>
             <label for="student_two_approval_date">Fecha de Aprobación
-                    <input type="date" id="student_two_approval_date" min="1900" name="student_two_approval_date" class="form-control" required>
+                    <input type="date" id="student_two_approval_date" min="1900" name="student_two_approval_date" class="form-control" onkeypress="verify2ndStudent()">
             </label>
             <label for="same_seminar">¿Este proyecto es el mismo del Seminario?
                     <select id="same_seminar" name="same_seminar" class="form-control">
@@ -81,7 +82,7 @@
             </label>
             <spam class="split">Tutor</spam>
             <label for="tutor_name"><strong>Nombre y Apellido del Tutor</strong>
-                    <input type="text" id="tutor_name" name="tutor_name" class="form-control" required>
+                    <input type="text" id="tutor_name" name="tutor_name" class="form-control" onkeyup="onlyText('tutor_name')" required>
             </label>
             <label for="tutor_email">E-mail
                     <input type="email" id="tutor_email" name="tutor_email" class="form-control" placeholder ="ejemplo@correo.com" required>
@@ -100,7 +101,7 @@
                     derecho de autor y propiedad intelectual y que conocemos que cualquier tipo de irregularidad en este 
                     sentido en el documento acarreará sanciones por parte de la Escuela de Ciencias Sociales
             </p>
-            <input type="submit" value="Enviar Formulario" name="print" class="btn btn-primary">
+            <input type="submit" value="Enviar Formulario" name="print" class="btn btn-primary" onclick="verify2ndStudentForLastTime()">
     </form>
     <div class="back">
             <a href="../index.html"><div class="btn btn-primary">Regresar</div></a>

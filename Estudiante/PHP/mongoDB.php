@@ -17,7 +17,8 @@
          */
         function __construct()
         {
-            $this->credentials = new credentiales();
+
+            $this->credentials = new Credentials();
         }
 
         /**
@@ -26,13 +27,13 @@
          */
         function conexionMongoDB() {
 
-
-            //$connetion = new MongoDB\Driver\Manager($credentials->getDirMongoDB());
-            $connetion = new MongoDB\Driver\Manager($this->credentials->getLocalMongoDB());
-            $command = new MongoDB\Driver\Command(array("serverStatus" => 1));
             try {
 
-                $connetion->executeCommand($this->credentials->getNameMongoDB(), $command);
+                $connetion = new MongoDB\Driver\Manager($this->credentials->getDirMongoDB());
+                //$connetion = new MongoDB\Driver\Manager($this->credentials->getLocalMongoDB());
+                //$command = new MongoDB\Driver\Command(array("serverStatus" => 1));
+
+                //$connetion->executeCommand($this->credentials->getNameMongoDB(), $command);
 
                 return $connetion;
 

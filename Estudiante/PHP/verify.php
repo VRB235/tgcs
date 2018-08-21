@@ -23,10 +23,11 @@ class verify{
      * @return bool
      */
     function verifyID ($id){
-
-        if(preg_match("/^[0-9]{8}$/", $id)){
-
-            return true;
+        if(preg_match("/[0-9]*$/", $id)){
+            if(strlen($id)>=6)
+            {
+                return true;
+            }
 
         }
         return false;

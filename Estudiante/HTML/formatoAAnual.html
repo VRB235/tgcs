@@ -19,10 +19,10 @@
         </div>
         <div class="form-check">
             <label for="version1" class="form-check-label">
-                <input type="radio" name="version" id="version1"  value="first_version" class="form-check-input"> Primera Version
+                <input type="radio" name="version" id="version1"  value="first_version" class="form-check-input"> Primera versión
             </label>
             <label for="version2" class="form-check-label">
-                <input type="radio" name="version" id="version2"  value="second_version" class="form-check-input" required> Segunda Versión
+                <input type="radio" name="version" id="version2"  value="second_version" class="form-check-input" required> Segunda versión
             </label>
         </div>
             <label for="title">TITULO COMPLETO DE PROYECTO DE TRABAJO DE GRADO <br> (Máximo 120 caracteres, incluyendo espacios y signos)
@@ -30,7 +30,7 @@
             </label>
             <spam class="split">Estudiante 1)</spam>
             <label for="student_one_name"><strong>Nombre y Apellido</strong>
-                <input type="text" id="student_one_name" name="student_one_name" class="form-control"   required>
+                <input type="text" id="student_one_name" name="student_one_name" class="form-control" onkeyup="onlyText('student_one_name')" required>
             </label>
             <label for="student_one_id">Cédula de Identidad
                 <input type="text" id="student_one_id" name="student_one_id" class="form-control"  required>
@@ -38,7 +38,7 @@
             <label for="student_one_hab_phone">Teléfono Habitación
                 <input type="tel" id="student_one_hab_phone" name="student_one_hab_phone" class="form-control" placeholder="0000-000-0000" required>
             </label>
-            <label for="student_one_cel_phone">Telefono Celular
+            <label for="student_one_cel_phone">Teléfono Celular
                 <input type="tel" id="student_one_cel_phone" name="student_one_cel_phone" class="form-control" placeholder="0000-000-0000" required>
             </label>
             <label for="student_one_ucab_email">E-mail UCAB
@@ -48,8 +48,7 @@
                 <input type="email" id="student_one_personal_email" name="student_one_personal_email" class="form-control" placeholder ="ejemplo@correo.com"  required>
             </label>
             <label for="student_one_specialty">Especialidad
-                <select id="student_one_specialty" name="student_one_specialty" class="form-control">
-                    <option value="Sin O">Sin Opción</option>
+                <select id="student_one_specialty" name="student_one_specialty" class="form-control" onclick="verifySpecialty('student_one_specialty','student_one_mention')">
                     <option value="RR.II">Relaciones Industriales</option>
                     <option value="Soc.">Sociología</option>
                 </select>
@@ -76,7 +75,7 @@
                 <input type="text" id="student_one_seminar_title" name="student_one_seminar_title" class="form-control"  required>
             </label>
             <label for="student_one_professor">Profesor de Seminario
-                <input type="text" id="student_one_professor" name="student_one_professor" class="form-control"  required>
+                <input type="text" id="student_one_professor" name="student_one_professor" class="form-control" onkeyup="onlyText('student_one_professor')"  required>
             </label>
             <label for="student_one_approval_year">Año de Aprobación
                 <input type="number" id="student_one_approval_year" min="1900" class="form-control" name="student_one_approval_year"  required>
@@ -89,26 +88,25 @@
             </label>
             <spam class="split">Estudiante 2)</spam>
             <label for="student_two_name"><strong>Nombre y Apellido</strong>
-                <input type="text" id="student_two_name" name="student_two_name" class="form-control"  required>
+                <input type="text" id="student_two_name" name="student_two_name" class="form-control" onkeyup="onlyText('student_two_name')"  onkeypress="verify2ndStudentAAnual()">
             </label>
             <label for="student_two_id">Cédula de Identidad
-                <input type="text" id="student_two_id" min="0" name="student_two_id" class="form-control"  required>
+                <input type="text" id="student_two_id" min="0" name="student_two_id" class="form-control"  onkeypress="verify2ndStudentAAnual()">
             </label>
             <label for="student_two_hab_phone">Teléfono Habitación
-                <input type="tel" id="student_two_hab_phone" name="student_two_hab_phone" class="form-control" placeholder="0000-000-0000" required>
+                <input type="tel" id="student_two_hab_phone" name="student_two_hab_phone" class="form-control" placeholder="0000-000-0000" onkeypress="verify2ndStudentAAnual()">
             </label>
             <label for="student_two_cel_phone">Teléfono Celular
-                <input type="tel" id="student_two_cel_phone" name="student_two_cel_phone" class="form-control" placeholder="0000-000-0000" required>
+                <input type="tel" id="student_two_cel_phone" name="student_two_cel_phone" class="form-control" placeholder="0000-000-0000" onkeypress="verify2ndStudentAAnual()">
             </label>
             <label for="student_two_ucab_email">E-mail UCAB
-                <input type="email" id="student_two_ucab_email" name="student_two_ucab_email" class="form-control" placeholder ="ejemplo@correo.com" required>
+                <input type="email" id="student_two_ucab_email" name="student_two_ucab_email" class="form-control" placeholder ="ejemplo@correo.com" onkeypress="verify2ndStudentAAnual()">
             </label>
             <label for="student_two_personal_email">E-mail Personal
-                <input type="email" id="student_two_personal_email" name="student_two_personal_email" class="form-control" placeholder ="ejemplo@correo.com" required>
+                <input type="email" id="student_two_personal_email" name="student_two_personal_email" class="form-control" placeholder ="ejemplo@correo.com" onkeypress="verify2ndStudentAAnual()">
             </label>
             <label for="student_two_specialty">Especialidad
-                <select id="student_two_specialty" name="student_two_specialty" class="form-control">
-                        <option value="Sin O">Sin Opción</option>
+                <select id="student_two_specialty" name="student_two_specialty" class="form-control" onclick="verifySpecialty('student_two_specialty','student_two_mention')">
                         <option value="RR.II">Relaciones Industriales</option>
                         <option value="Soc.">Sociología</option>
                 </select>
@@ -132,13 +130,13 @@
                 <input type="number" min="1900" id="student_two_year_ended" name="student_two_year_ended" class="form-control">
             </label>
             <label for="student_two_seminar_title">Titulo del Proyecto de Seminario
-                <input type="text" id="student_two_seminar_title" name="student_two_seminar_title" class="form-control"  required>
+                <input type="text" id="student_two_seminar_title" name="student_two_seminar_title" class="form-control"  onkeypress="verify2ndStudentAAnual()">
             </label>
             <label for="student_two_professor">Profesor de Seminario
-                <input type="text" id="student_two_professor" name="student_two_professor" class="form-control"  required>
+                <input type="text" id="student_two_professor" name="student_two_professor" class="form-control" onkeyup="onlyText('student_two_professor')"  onkeypress="verify2ndStudentAAnual()">
             </label>
             <label for="student_two_approval_year">Año de Aprobación
-                <input type="number" id="student_two_approval_year" min="1900" class="form-control" name="student_two_approval_year"  required>
+                <input type="number" id="student_two_approval_year" min="1900" class="form-control" name="student_two_approval_year"  onkeypress="verify2ndStudentAAnual()">
             </label>
             <label for="student_two_same_seminar">¿Este proyecto es el mismo del Seminario?
                 <select name="student_two_same_seminar" id="student_two_same_seminar" class="form-control">
@@ -148,7 +146,7 @@
             </label>
             <spam class="split">Tutor</spam>
             <label for="tutor_name"><strong>Nombre y Apellido del Tutor</strong>
-                <input type="text" id="tutor_name" name="tutor_name" class="form-control"  required>
+                <input type="text" id="tutor_name" name="tutor_name" class="form-control" onkeyup="onlyText('tutor_name')"  required>
             </label>
             <label for="tutor_email">E-mail
                 <input type="email" id="tutor_email" name="tutor_email" class="form-control" placeholder ="ejemplo@correo.com" required>
@@ -167,7 +165,7 @@
                 derecho de autor y propiedad intelectual y que conocemos que cualquier tipo de irregularidad en este 
                 sentido en el documento acarreará sanciones por parte de la Escuela de Ciencias Sociales
             </p>
-            <input type="submit" value="Enviar Formulario" name="print" class="btn btn-primary">
+            <input type="submit" value="Enviar Formulario" name="print" class="btn btn-primary" onclick="verify2ndStudentAAnualForLastTimeAAnual()">
     </form>
     <div class="back">
         <a href="../index.html"><div class="btn btn-primary">Regresar</div></a>

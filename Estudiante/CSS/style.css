@@ -180,6 +180,12 @@ p#mensajeRegresar {
     margin-right: auto;
     width: 90px;
 }
+p#mensajeImprimir {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 110px;
+}
 
 .goBack {
     margin-top: 20px;
