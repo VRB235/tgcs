@@ -46,7 +46,7 @@
     }
 
 
-    
+if($_SESSION['verify']==true) {
     $html2pdf = new Html2Pdf();
     $html = "<page backtop=\"7mm\" backbottom=\"7mm\">";
     $html .= "<table>
@@ -54,7 +54,7 @@
                     <td style='margin: 0px;margin-bottom: 5px;padding-left:270px;font-size: 15px;'><strong>Universidad Católica Andres Bello</strong></td>
                 </tr>
                 <tr>
-                    <td style='margin: 0px;margin-bottom: 5px;padding-left:220px;font-size: 15px;'><strong>Facultad de Ciencias Sociales conómicas y Sociales</strong></td>
+                    <td style='margin: 0px;margin-bottom: 5px;padding-left:220px;font-size: 15px;'><strong>Facultad de Ciencias Sociales Económicas y Sociales</strong></td>
                 </tr>
                 <tr>
                     <td style='margin: 0px;margin-bottom: 5px;padding-left:280px;font-size: 15px;'><strong>Escuela de Ciencias Sociales</strong></td>
@@ -63,18 +63,18 @@
                     <td style='margin: 0px;margin-bottom: 5px;padding-left:212px;font-size: 15px;'><strong>Nombramiento del Jurado para los Trabajos de Grado</strong></td>
                 </tr>
                 <tr>
-                    <td style='margin: 0px;margin-bottom: 5px;padding-left:265px;font-size: 15px;'><strong>Consejo de Escuela del ".date("d/m/Y", strtotime($_POST["date"]))."</strong></td>
+                    <td style='margin: 0px;margin-bottom: 5px;padding-left:265px;font-size: 15px;'><strong>Consejo de Escuela del " . date("d/m/Y", strtotime($_POST["date"])) . "</strong></td>
                 </tr>
                 
               </table>";
 
     // Si es anual
-    if($periodo=="anual"){
+    if ($periodo == "anual") {
         $version = "";
         foreach ($projectsA as $elementA) {
             foreach ($projectsF as $elementF) {
                 // Si existe un formato A y F del proyecto
-                if($elementA->id_register==$elementF->id_register) {
+                if ($elementA->id_register == $elementF->id_register) {
                     // Si el proyecto tiene:
                     // Fecha de aprobacion
                     // Tutor
@@ -88,8 +88,7 @@
                         $elementA->jury_two_rol != null && $elementA->jury_three_rol != null && isset($elementA->defense_date) && isset($elementA->version)) {
                         $html .= "<div>";
                         // Si la variable version existe
-                        if(isset($elementA->version))
-                        {
+                        if (isset($elementA->version)) {
                             // Si es 1era version
                             if ($elementA->version == 'first_version') {
                                 $version = "Versión 1";
@@ -130,7 +129,7 @@
                                                 </table>";
                         $html .= "<table>
                                                 <tr>
-                                                    <td style='border:solid 1px black; width: 730px'><strong>Fecha Defensa: </strong>" . date("d/m/Y", strtotime($elementA->defense_date))  . "</td>
+                                                    <td style='border:solid 1px black; width: 730px'><strong>Fecha Defensa: </strong>" . date("d/m/Y", strtotime($elementA->defense_date)) . "</td>
                                                 </tr>
                                                 </table></div>";
                         $html .= "<page_footer>" . date('d/m/Y', time()) . "</page_footer>";
@@ -138,12 +137,11 @@
                 }
             }
         }
-    }
-    else{
-        foreach ($projectsA as $elementA){
+    } else {
+        foreach ($projectsA as $elementA) {
             foreach ($projectsF as $elementF) {
                 // Si existe el proyecto en formato A y F
-                if($elementA->id_register==$elementF->id_register) {
+                if ($elementA->id_register == $elementF->id_register) {
                     // Si el proyecto tiene:
                     // Fecha de aprobacion
                     // Tutor
@@ -198,10 +196,14 @@
     }
 
 
-
-
-    $html.="</page>";
+    $html .= "</page>";
     // Agrega el HTML al PDF
     $html2pdf->writeHTML($html);
     // Despliega el PDF
-    $html2pdf->output();
+    $html2pdf->output('ReporteNombramientoJurados.pdf','D');
+}
+else{
+    $_SESSION["title"] = TITLE_NO_ACCESS;
+    $_SESSION["message"] = MESSAGE_NO_ACCESS;
+    header("Location: ./mensaje.php");
+}

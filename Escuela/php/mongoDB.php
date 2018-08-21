@@ -5,7 +5,7 @@ require_once 'credenciales.php';
 
 /**
  * Class mongoDataBase
- *
+ *z
  * Realiza las respectivas operaciones con la base de datos mongoDB
  */
 class MongoDataBase extends Credentials {
@@ -27,12 +27,10 @@ class MongoDataBase extends Credentials {
     function conexionMongoDB() {
 
 
-        //$connetion = new MongoDB\Driver\Manager($credentials->getDirMongoDB());
-        $connetion = new MongoDB\Driver\Manager($this->credentials->getLocalMongoDB());
-        $command = new MongoDB\Driver\Command(array("serverStatus" => 1));
         try {
 
-            $connetion->executeCommand($this->credentials->getNameMongoDB(), $command);
+            $connetion = new MongoDB\Driver\Manager($this->credentials->getDirMongoDB());
+            //$connetion = new MongoDB\Driver\Manager($this->credentials->getLocalMongoDB());
 
             return $connetion;
 
@@ -47,12 +45,13 @@ class MongoDataBase extends Credentials {
             header("Location: ../php/mensaje.php");
 
         }
-        catch(Exception $e) {
+        catch(MongoDB\Driver\Exception $e) {
             echo $e->getMessage();
 
         }
 
         return null;
+
     }
 
     /**
@@ -594,7 +593,7 @@ class MongoDataBase extends Credentials {
      * @param $version
      * @param $jury_fullname
      * @param $jury_status
-     * @return null
+     * @return \MongoDB\Driver\Cursor
      * @throws \MongoDB\Driver\Exception\Exception
      */
     function setJuryStatus($id_register,$version,$jury_fullname, $jury_status){
@@ -768,7 +767,7 @@ class MongoDataBase extends Credentials {
         // Si se dio la conexion
         if ($connetion!=null){
 
-            $filter = array('$or' =>array(array("format"=>"formatAAnual"),array("format"=>"formatASemestral")));
+            $filter = array('$or' =>array(array("format"=>"formatAAnual"),array("format"=>"formatASemestral")),"approve"=>"1");
 
             $options = array();
 
@@ -808,7 +807,7 @@ class MongoDataBase extends Credentials {
         // Si se dio la conexion
         if ($connetion!=null){
 
-            $filter = array('$or' =>array(array("format"=>"formatFAnual"),array("format"=>"formatFSemestral")));
+            $filter = array('$or' =>array(array("format"=>"formatFAnual"),array("format"=>"formatFSemestral")),"approve"=>"1");
 
             $options = array();
 
@@ -1611,6 +1610,131 @@ class MongoDataBase extends Credentials {
             return null;
         }
 
+    }
+
+    /**
+     * Obtiene todos los proyectos en la base de datos
+     * @return \MongoDB\Driver\Cursor|null
+     * @throws \MongoDB\Driver\Exception\Exception
+     */
+    function getAllProjects(){
+
+        $connetion = $this->conexionMongoDB();
+
+        // Si se dio la conexion
+        if ($connetion!=null){
+
+            // Filtro para que solo se traiga todos los proyectos
+            $filter = array('approve'=>"1");
+            $options = ['sort' => ['id' => -1]];
+
+            try{
+
+                $query = new MongoDB\Driver\Query($filter,$options);
+                $cursor = $connetion->executeQuery($this->credentials->getNameMongoDB().".".$this->credentials->getCollection(),$query);
+                return $cursor;
+
+            }catch (MongoDB\Driver\Exception $e){
+
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
+                header("Location: ../php/mensaje.php");
+
+            }
+            catch (Exception $e){
+                echo $e->getMessage();
+                die();
+            }
+            return null;
+        }
+
+    }
+
+    /**
+     * Verifica si existe un formato A de ese proyecto
+     * @param $id_register
+     * @param $format
+     * @return \MongoDB\Driver\Cursor|null
+     * @throws \MongoDB\Driver\Exception\Exception
+     */
+    function verifyIfExistFormatA($id_register,$tipoPeriodo){
+        $connetion = $this->conexionMongoDB();
+
+        // Si se dio la conexion
+        if ($connetion!=null){
+
+            // Filtro para que solo se traiga todos los proyectos
+            if($tipoPeriodo=="anual")
+            {
+                $filter = array('id_register'=>$id_register,'format'=>"formatAAnual");
+            }
+            else{
+                $filter = array('id_register'=>$id_register,'format'=>"formatASemestral");
+            }
+
+            $options = ['sort' => ['id' => -1]];
+
+            try{
+
+                $query = new MongoDB\Driver\Query($filter,$options);
+                $cursor = $connetion->executeQuery($this->credentials->getNameMongoDB().".".$this->credentials->getCollection(),$query);
+                return $cursor;
+
+            }catch (MongoDB\Driver\Exception $e){
+
+                $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
+                header("Location: ../php/mensaje.php");
+
+            }
+            catch (Exception $e){
+                echo $e->getMessage();
+                die();
+            }
+            return null;
+        }
+
+        /**
+         * Verifica si existe el proyecto en formato F
+         * @param $id_register
+         * @param $tipoPeriodo
+         * @return \MongoDB\Driver\Cursor|null
+         */
+        function verifyIfExistFormatF($id_register,$tipoPeriodo)
+        {
+            $connetion = $this->conexionMongoDB();
+
+            // Si se dio la conexion
+            if ($connetion != null) {
+
+                // Filtro para que solo se traiga todos los proyectos
+                if ($tipoPeriodo == "anual") {
+                    $filter = array('id_register' => $id_register, 'format' => "formatFAnual");
+                } else {
+                    $filter = array('id_register' => $id_register, 'format' => "formatFSemestral");
+                }
+
+                $options = ['sort' => ['id' => -1]];
+
+                try {
+
+                    $query = new MongoDB\Driver\Query($filter, $options);
+                    $cursor = $connetion->executeQuery($this->credentials->getNameMongoDB() . "." . $this->credentials->getCollection(), $query);
+                    return $cursor;
+
+                } catch (MongoDB\Driver\Exception $e) {
+
+                    $_SESSION['title'] = TITLE_FAIL_CONNECTION;
+                    $_SESSION['message'] = MESSAGE_MONGO_EXCEPTION;
+                    header("Location: ../php/mensaje.php");
+
+                } catch (Exception $e) {
+                    echo $e->getMessage();
+                    die();
+                }
+                return null;
+            }
+        }
     }
 
 }

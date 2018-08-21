@@ -13,8 +13,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Presentación TG Semestral</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../CSS/style.css">
-    <link rel="stylesheet" href="../CSS/talento.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/talento.css">
 </head>
 <body>
 <img src="../recursos/Logo-UCAB-04.png" id="logo" alt="logo_UCAB" class="logo_UCAB">
@@ -27,7 +27,7 @@
         <label for="deliverDate">Fecha de Entrega : <input type="date" name="deliverDate" id="deliverDate" class="form-control"  required></label>
         <br>
         <br>
-        <label for="termCode">Term Code : <input type="text" name="termcode" id="termcode" class="form-control" required></label>
+        <label for="termCode">Periodo : <input type="text" name="termcode" id="termcode" class="form-control" required></label>
         <br>
         <br>
     </div>
@@ -95,7 +95,7 @@
     <label for="tutor_id">Cédula de Identidad
         <input type="text" id="tutor_id" name="tutor_id" class="form-control" value="<?php echo $element->tutor_id?>" disabled>
     </label>
-    <p class="clean consig">Se Consigna:</p>
+    <p class="clean consig">Se consigna:</p>
     <label for="cd" class="form-check-label check">
         <input type="checkbox" id="cd" name="cd" class="form-check-input" <?php if($element->cd=="on"){echo "checked";} ?> disabled> CD con el documento del Trabajo de Grado en word y PDF.Ficha Resumen del Trabajo de Grado (Formato G)
     </label>

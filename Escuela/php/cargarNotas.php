@@ -60,60 +60,56 @@
         <thead>
                 <tr>
                     <th>N° Registro</th>
-                    <th>Version</th>
+                    <th>Versión</th>
                     <th>Titulo</th>
                     <th>Estudiante N° 1</th>
-                    <th>Cedula</th>
+                    <th>Cédula</th>
                     <th>Estudiante N° 2</th>
-                    <th>Cedula</th>
+                    <th>Cédula</th>
                     <th>Nota</th>
-                    <th>Mencion</th>
+                    <th>Mención</th>
                  </tr>
         </thead>
         <tbody>
 
 <?php
-
-    foreach ($projectsA as $elementA){
-        foreach ($projectsF as $elementF){
-            // Si el proyecto esta en formato A y D
-            if($elementA->id_register==$elementF->id_register){
-                echo "<tr>";
-                echo "<td>".$elementA->id_register."</td>";
-                if(isset($elementA->version)){
-                    if($elementA->version=="first_version"){
-                        echo "<td>"."1era Version"."</td>";
-                    }
-                    else{
-                        if($elementA->version=="second_version"){
-                            echo "<td>"."2nda Version"."</td>";
+    if($_SESSION['verify']==true) {
+        foreach ($projectsA as $elementA) {
+            foreach ($projectsF as $elementF) {
+                // Si el proyecto esta en formato A y D
+                if ($elementA->id_register == $elementF->id_register) {
+                    echo "<tr>";
+                    echo "<td>" . $elementA->id_register . "</td>";
+                    if (isset($elementA->version)) {
+                        if ($elementA->version == "first_version") {
+                            echo "<td>" . "1era Versión" . "</td>";
+                        } else {
+                            if ($elementA->version == "second_version") {
+                                echo "<td>" . "2nda Versión" . "</td>";
+                            } else {
+                                echo "<td>" . "</td>";
+                            }
                         }
-                        else{
-                            echo "<td>"."</td>";
-                        }
+                    } else {
+                        echo "<td></td>";
                     }
+                    echo "<td>" . $elementA->title . "</td>";
+                    echo "<td>" . $elementA->student_one_name . "</td>";
+                    echo "<td>" . $elementA->student_one_id . "</td>";
+                    echo "<td>" . $elementA->student_two_name . "</td>";
+                    echo "<td>" . $elementA->student_two_id . "</td>";
+                    if (isset($elementA->note)) {
+                        echo "<td>" . $elementA->note . "</td>";
+                    } else {
+                        echo "<td> </td>";
+                    }
+                    if (isset($elementA->mention)) {
+                        echo "<td>" . $elementA->mention . "</td>";
+                    } else {
+                        echo "<td> </td>";
+                    }
+                    echo "</tr>";
                 }
-                else{
-                    echo "<td></td>";
-                }
-                echo "<td>".$elementA->title."</td>";
-                echo "<td>".$elementA->student_one_name."</td>";
-                echo "<td>".$elementA->student_one_id."</td>";
-                echo "<td>".$elementA->student_two_name."</td>";
-                echo "<td>".$elementA->student_two_id."</td>";
-                if(isset($elementA->note)){
-                    echo "<td>".$elementA->note."</td>";
-                }
-                else{
-                    echo "<td> </td>";
-                }
-                if(isset($elementA->mention)){
-                    echo "<td>".$elementA->mention."</td>";
-                }
-                else{
-                    echo "<td> </td>";
-                }
-                echo "</tr>";
             }
         }
     }

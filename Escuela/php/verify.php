@@ -42,7 +42,7 @@ class Verify{
     function verifyTermCode($term_code,$format){
 
         if($format=="formatAAnual" || $format=="formatFAnual"){
-            // Si los ultimos 2 digitos terminan en 10, 15 o 25
+            // Si los ultimos 2 digitos terminan en 10
             if(substr($term_code,-2)=="10") {
                 return true;
             }
@@ -51,7 +51,7 @@ class Verify{
             }
         }
         if($format=="formatASemestral" || $format=="formatFSemestral"){
-            // Si los ultimos 2 digitos terminan en 10, 15 o 25
+            // Si los ultimos 2 digitos terminan en 15 o 25
             if(substr($term_code,-2)=="15" || substr($term_code,-2)=="25") {
                 return true;
             }

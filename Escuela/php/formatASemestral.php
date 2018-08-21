@@ -14,8 +14,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Registro del Proyecto de TG Semestral</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../CSS/style.css">
-    <link rel="stylesheet" href="../CSS/talento.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/talento.css">
 </head>
 <body>
 <img src="../recursos/Logo-UCAB-04.png" id="logo" alt="logo_UCAB" class="logo_UCAB">
@@ -28,7 +28,7 @@
         <label for="deliverDate">Fecha de Entrega : <input type="date" name="deliverDate" id="deliverDate" class="form-control"  required></label>
         <br>
         <br>
-        <label for="termCode">Term Code : <input type="text" name="termcode" id="termcode" class="form-control" required></label>
+        <label for="termCode">Periodo : <input type="text" name="termcode" id="termcode" class="form-control" required></label>
         <br>
         <br>
     </div>
@@ -52,7 +52,7 @@
     <label for="student_one_hab_phone">Teléfono Habitación
         <input type="tel" id="student_one_hab_phone" name="student_one_hab_phone" class="form-control" placeholder="0000-000-0000" value="<?php echo $element->student_one_hab_phone?>" disabled>
     </label>
-    <label for="student_one_cel_phone">Telefono Celular
+    <label for="student_one_cel_phone">Teléfono Celular
         <input type="tel" id="student_one_cel_phone" name="student_one_cel_phone" class="form-control" placeholder="0000-000-0000" value="<?php echo $element->student_one_cel_phone?>" disabled>
     </label>
     <label for="student_one_ucab_email">E-mail UCAB

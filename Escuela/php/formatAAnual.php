@@ -28,7 +28,7 @@
         <label for="deliverDate">Fecha de Entrega : <input type="date" name="deliverDate" id="deliverDate" class="form-control" required></label>
         <br>
         <br>
-        <label for="termCode">Term Code : <input type="text" name="termcode" id="termcode" class="form-control" required></label>
+        <label for="termCode">Periodo : <input type="text" name="termcode" id="termcode" class="form-control" required></label>
         <br>
         <br>
     </div>
@@ -38,10 +38,10 @@
     </div>
     <div class="form-check">
         <label for="version1" class="form-check-label">
-            <input type="radio" name="version" id="version1"  value="first_version" <?php if($element->version=='first_version'){echo "checked='checked'";}?> class="form-check-input" disabled> Primera Version
+            <input type="radio" name="version" id="version1"  value="first_version" <?php if($element->version=='first_version'){echo "checked='checked'";}?> class="form-check-input" disabled> Primera versión
         </label>
         <label for="version2" class="form-check-label">
-            <input type="radio" name="version" id="version2"  value="second_version" <?php if($element->version=='second_version'){echo "checked='checked'";}?> class="form-check-input" disabled> Segunda Versión
+            <input type="radio" name="version" id="version2"  value="second_version" <?php if($element->version=='second_version'){echo "checked='checked'";}?> class="form-check-input" disabled> Segunda versión
         </label>
     </div>
     <label for="title">TITULO COMPLETO DE PROYECTO DE TRABAJO DE GRADO <br> (Máximo 120 caracteres, incluyendo espacios y signos)
@@ -57,7 +57,7 @@
     <label for="student_one_hab_phone">Teléfono Habitación
         <input type="tel" id="student_one_hab_phone" name="student_one_hab_phone" class="form-control" placeholder="0000-000-0000" value="<?php echo $element->student_one_hab_phone?>" disabled>
     </label>
-    <label for="student_one_cel_phone">Telefono Celular
+    <label for="student_one_cel_phone">Teléfono Celular
         <input type="tel" id="student_one_cel_phone" name="student_one_cel_phone" class="form-control" placeholder="0000-000-0000" value="<?php echo $element->student_one_cel_phone?>" disabled>
     </label>
     <label for="student_one_ucab_email">E-mail UCAB

@@ -1,6 +1,6 @@
 <?php
 
-require_once "managementTXT.php";
+require_once ("./managementConfig.php");
 
 /**
  * Class credentials
@@ -17,21 +17,16 @@ class Credentials {
     /**
      * credentials constructor.
      */
-    function __construct(){
+    function __construct()
+    {
 
-        $managementTXT = new ManagementTXT();
-        $credentials = $managementTXT->readTXT();
+        $managementINI = new ManagementConfig();
+        $credentials = $managementINI->readINI();
         $this->domain_mongodb = $credentials[0];
         $this->name_mongodb = $credentials[1];
         $this->user_mongodb = $credentials[2];
         $this->password_mongodb = $credentials[3];
         $this->collection = "project";
-        // Se los trae del txt con espacio adicional
-        // Este codigo quita ese espacio adicional para que sea manipulable
-        $this->domain_mongodb = substr($this->domain_mongodb,0,strlen($this->domain_mongodb)-2);
-        $this->name_mongodb = substr($this->name_mongodb,0,strlen($this->name_mongodb)-2);
-        $this->user_mongodb = substr($this->user_mongodb,0,strlen($this->user_mongodb)-2);
-        $this->password_mongodb = substr($this->password_mongodb,0,strlen($this->password_mongodb)-2);
     }
 
     /**

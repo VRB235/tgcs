@@ -21,11 +21,11 @@
     <div class="form fix">
         <form action="../php/jurados.php" method="post" id="jurados">
             <label for="id_registerjr" id="id_registerjr">N° Registro <input type="text" name="id_register" id="id_register" class="form-control" required></label>
-            <label for="version"> Version
+            <label for="version"> Versión
                 <select name="version" id="version" class="form-control">
                     <option value="-">-</option>
-                    <option value="first_version">Version 1</option>
-                    <option value="second_version">Version 2</option>
+                    <option value="first_version">Versión 1</option>
+                    <option value="second_version">Versión 2</option>
                 </select>
             </label>
             <br><br>
@@ -62,7 +62,7 @@
         <thead>
                 <tr>
                     <th>N° Registro</th>
-                    <th>Version</th>
+                    <th>Versión</th>
                     <th>Titulo</th>
                     <th>Jurado #1</th>
                     <th>Respuesta</th>
@@ -77,68 +77,70 @@
         
 <?php
 
-    $cursor = $mongo->getProjectsInFormatAApprove();
+    if($_SESSION['verify']==true) {
 
-    foreach ($cursor as $element){
-        echo "<tr>";
-        echo "<td>".$element->id_register."</td>";
-        // Si tiene version quiere decir que es anual
-        if (isset($element->version)) {
-            if($element->version=="first_version"){
-                echo "<td>Version 1</td>";
+        $cursor = $mongo->getProjectsInFormatAApprove();
+
+        foreach ($cursor as $element) {
+            echo "<tr>";
+            echo "<td>" . $element->id_register . "</td>";
+            // Si tiene version quiere decir que es anual
+            if (isset($element->version)) {
+                if ($element->version == "first_version") {
+                    echo "<td>Versión 1</td>";
+                }
+                if ($element->version == "second_version") {
+                    echo "<td>Versión 2</td>";
+                }
+
+            } else {
+                echo "<td>" . " " . "</td>";
             }
-            if($element->version=="second_version"){
-                echo "<td>Version 2</td>";
+            echo "<td>" . $element->title . "</td>";
+            echo "<td>" . $element->jury_one_fullname . "</td>";
+            if ($element->jury_one_status == "approve") {
+                echo "<td>Aprobado</td>";
+            }
+            if ($element->jury_one_status == "denied") {
+                echo "<td>Negado</td>";
+            }
+            if ($element->jury_one_status == "approve_observations") {
+                echo "<td>Devuelto para Correcciones</td>";
+            }
+            if ($element->jury_one_status == NULL) {
+                echo "<td>-</td>";
             }
 
-        }
-        else{
-            echo "<td>"." "."</td>";
-        }
-        echo "<td>".$element->title."</td>";
-        echo "<td>".$element->jury_one_fullname."</td>";
-        if($element->jury_one_status=="approve"){
-            echo "<td>Aprobado</td>";
-        }
-        if($element->jury_one_status=="denied"){
-            echo "<td>Negado</td>";
-        }
-        if($element->jury_one_status=="approve_observations"){
-            echo "<td>Devuelto para Correcciones</td>";
-        }
-        if($element->jury_one_status==NULL){
-            echo "<td>-</td>";
-        }
+            echo "<td>" . $element->jury_two_fullname . "</td>";
+            if ($element->jury_two_status == "approve") {
+                echo "<td>Aprobado</td>";
+            }
+            if ($element->jury_two_status == "denied") {
+                echo "<td>Negado</td>";
+            }
+            if ($element->jury_two_status == "approve_observations") {
+                echo "<td>Devuelto para Correcciones</td>";
+            }
+            if ($element->jury_two_status == NULL) {
+                echo "<td>-</td>";
+            }
 
-        echo "<td>".$element->jury_two_fullname."</td>";
-        if($element->jury_two_status=="approve"){
-            echo "<td>Aprobado</td>";
-        }
-        if($element->jury_two_status=="denied"){
-            echo "<td>Negado</td>";
-        }
-        if($element->jury_two_status=="approve_observations"){
-            echo "<td>Devuelto para Correcciones</td>";
-        }
-        if($element->jury_two_status==NULL){
-            echo "<td>-</td>";
-        }
+            echo "<td>" . $element->jury_three_fullname . "</td>";
+            if ($element->jury_three_status == "approve") {
+                echo "<td>Aprobado</td>";
+            }
+            if ($element->jury_three_status == "denied") {
+                echo "<td>Negado</td>";
+            }
+            if ($element->jury_three_status == "approve_observations") {
+                echo "<td>Devuelto para Correcciones</td>";
+            }
+            if ($element->jury_three_status == NULL) {
+                echo "<td>-</td>";
+            }
 
-        echo "<td>".$element->jury_three_fullname."</td>";
-        if($element->jury_three_status=="approve"){
-            echo "<td>Aprobado</td>";
+            echo "</tr>";
         }
-        if($element->jury_three_status=="denied"){
-            echo "<td>Negado</td>";
-        }
-        if($element->jury_three_status=="approve_observations"){
-            echo "<td>Aprovado c/Observaciones</td>";
-        }
-        if($element->jury_three_status==NULL){
-            echo "<td>-</td>";
-        }
-
-        echo "</tr>";
     }
 
 

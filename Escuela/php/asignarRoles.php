@@ -55,7 +55,7 @@
     <thead>
     <tr>
         <th>N° Registro</th>
-        <th>Version</th>
+        <th>Versión</th>
         <th>Titulo</th>
         <th>Jurado #1</th>
         <th>Rol</th>
@@ -69,62 +69,56 @@
 
 
     <?php
+    if($_SESSION['verify']==true) {
+        $mongo = new mongoDataBase();
 
-    $mongo = new mongoDataBase();
-
-    $projectsA = $mongo->getProjectsInFormatA();
-    $projectsF = $mongo->getProjectsInFormatF();
+        $projectsA = $mongo->getProjectsInFormatA();
+        $projectsF = $mongo->getProjectsInFormatF();
 
 
-    foreach ($projectsA as $projectA){
-        foreach ($projectsF as $projectF){
-            // Si el id del proyecto es distinto a null quiere decir que el proyecto ya fue aprobado
-            if($projectA->id_register!=null){
-                // Si se tiene formato A y F de ese proyecto
-                if($projectA->id_register==$projectF->id_register){
-                    echo "<tr>";
-                    echo "<td>".$projectA->id_register."</td>";
-                    if(isset($projectA->version))
-                    {
-                        if($projectA->version=="first_version"){
-                            echo "<td>"."1era Version"."</td>";
-                        }
-                        else{
-                            if($projectA->version=="second_version"){
-                                echo "<td>"."2nda Version"."</td>";
+        foreach ($projectsA as $projectA) {
+            foreach ($projectsF as $projectF) {
+                // Si el id del proyecto es distinto a null quiere decir que el proyecto ya fue aprobado
+                if ($projectA->id_register != null) {
+                    // Si se tiene formato A y F de ese proyecto
+                    if ($projectA->id_register == $projectF->id_register) {
+                        echo "<tr>";
+                        echo "<td>" . $projectA->id_register . "</td>";
+                        if (isset($projectA->version)) {
+                            if ($projectA->version == "first_version") {
+                                echo "<td>" . "1era Versión" . "</td>";
+                            } else {
+                                if ($projectA->version == "second_version") {
+                                    echo "<td>" . "2nda Versión" . "</td>";
+                                } else {
+                                    echo "<td>" . "</td>";
+                                }
                             }
-                            else{
-                                echo "<td>"."</td>";
-                            }
+                        } else {
+                            echo "<td>" . "</td>";
                         }
-                    }
-                    else{
-                        echo "<td>"."</td>";
-                    }
 
-                    echo "<td>".$projectA->title."</td>";
-                    echo "<td>".$projectA->jury_one_fullname."</td>";
-                    if(isset($projectA->jury_one_rol)){
-                        echo "<td>".$projectA->jury_one_rol."</td>";
+                        echo "<td>" . $projectA->title . "</td>";
+                        echo "<td>" . $projectA->jury_one_fullname . "</td>";
+                        if (isset($projectA->jury_one_rol)) {
+                            echo "<td>" . $projectA->jury_one_rol . "</td>";
+                        } else {
+                            echo "<td>-</td>";
+                        }
+                        echo "<td>" . $projectA->jury_two_fullname . "</td>";
+                        if (isset($projectA->jury_two_rol)) {
+                            echo "<td>" . $projectA->jury_two_rol . "</td>";
+                        } else {
+                            echo "<td>-</td>";
+                        }
+                        echo "<td>" . $projectA->jury_three_fullname . "</td>";
+                        if (isset($projectA->jury_three_rol)) {
+                            echo "<td>" . $projectA->jury_three_rol . "</td>";
+                        } else {
+                            echo "<td>-</td>";
+                        }
+                        echo "</tr>";
                     }
-                    else{
-                        echo "<td>-</td>";
-                    }
-                    echo "<td>".$projectA->jury_two_fullname."</td>";
-                    if(isset($projectA->jury_two_rol)){
-                        echo "<td>".$projectA->jury_two_rol."</td>";
-                    }
-                    else{
-                        echo "<td>-</td>";
-                    }
-                    echo "<td>".$projectA->jury_three_fullname."</td>";
-                    if(isset($projectA->jury_three_rol)){
-                        echo "<td>".$projectA->jury_three_rol."</td>";
-                    }
-                    else{
-                        echo "<td>-</td>";
-                    }
-                    echo "</tr>";
                 }
             }
         }

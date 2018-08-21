@@ -23,11 +23,11 @@
         <form action="../php/evaluadores.php" method="post" id="evaluadores">
             <div class="formContent">
                 <label for="id_register">N° Registro <input type="text" name="id_register" id="id_register" class="form-control"></label>
-                <label for="version">Version:
+                <label for="version">Versión:
                     <select name="version" id="version" class="form-control">
                         <option value="-">-</option>
-                        <option value="first_version">Version 1</option>
-                        <option value="second_version">Version 2</option>
+                        <option value="first_version">Versión 1</option>
+                        <option value="second_version">Versión 2</option>
                     </select>
                 </label>
                 <br>
@@ -49,12 +49,12 @@
         <thead>
                 <tr>
                     <th>N° Registro</th>
-                    <th>Version</th>
+                    <th>Versión</th>
                     <th>Titulo</th>
                     <th>Estudiante N° 1</th>
-                    <th>Cedula</th>
+                    <th>Cédula</th>
                     <th>Estudiante N° 2</th>
-                    <th>Cedula</th>
+                    <th>Cédula</th>
                     <th>Jurado #1</th>
                     <th>Jurado #2</th>
                     <th>Jurado #3</th>
@@ -75,33 +75,35 @@
     $mongo = new mongoDataBase();
     $cursor = $mongo->getProjectsInFormatAApprove();
 
+    if($_SESSION['verify']==true) {
+
 
         // Se llena la tabla con los datos de los registros obtenidos
         foreach ($cursor as $element) {
             echo "<tr>";
-            echo "<td>".$element->id_register."</td>";
+            echo "<td>" . $element->id_register . "</td>";
             if (isset($element->version)) {
-                if($element->version=="first_version"){
-                    echo "<td>Version 1</td>";
+                if ($element->version == "first_version") {
+                    echo "<td>Versión 1</td>";
                 }
-                if($element->version=="second_version"){
-                    echo "<td>Version 2</td>";
+                if ($element->version == "second_version") {
+                    echo "<td>Versión 2</td>";
                 }
 
+            } else {
+                echo "<td>" . " " . "</td>";
             }
-            else{
-                echo "<td>"." "."</td>";
-            }
-            echo "<td>".$element->title."</td>";
-            echo "<td>".$element->student_one_name."</td>";
-            echo "<td>".$element->student_one_id."</td>";
-            echo "<td>".$element->student_two_name."</td>";
-            echo "<td>".$element->student_two_id."</td>";
-            echo "<td>".$element->jury_one_fullname."</td>";
-            echo "<td>".$element->jury_two_fullname."</td>";
-            echo "<td>".$element->jury_three_fullname."</td>";
+            echo "<td>" . $element->title . "</td>";
+            echo "<td>" . $element->student_one_name . "</td>";
+            echo "<td>" . $element->student_one_id . "</td>";
+            echo "<td>" . $element->student_two_name . "</td>";
+            echo "<td>" . $element->student_two_id . "</td>";
+            echo "<td>" . $element->jury_one_fullname . "</td>";
+            echo "<td>" . $element->jury_two_fullname . "</td>";
+            echo "<td>" . $element->jury_three_fullname . "</td>";
             echo "</tr>";
         }
+    }
 
 ?>
 <div>
