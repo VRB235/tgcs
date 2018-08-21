@@ -114,7 +114,9 @@
     <title>Log In</title>
 </head>
 <body>
-    <center><img src="../recursos/Logo-UCAB-04.png"></center>
+    <header>
+        <img src="./recursos/Logo-UCAB-04.png" alt="logo_UCAB" class="logo_UCAB">
+    </header>
     <div class="text-center" style="padding:50px 0">
         <div class="logo">login</div>
         <!-- Main Form -->

@@ -5,7 +5,7 @@
     session_start();
 
     $_SESSION['page'] = $_SERVER['HTTP_REFERER'];
-
+    // si el usuario tiene permisos
     if($_SESSION['verify']==true){
         // Si el nombre no esta vacio y existe la variable
         if(!empty($_POST["jury_fullname"])&&isset($_POST["jury_fullname"])) {

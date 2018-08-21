@@ -1,6 +1,6 @@
 <?php
 
-class verify{
+class Verify{
 
     /**
      * Verifica que el numero corresponda  a un numero de telefono con el formato 0000-000-0000

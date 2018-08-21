@@ -1,2 +1,0 @@
-/Estudiante/PHP/credenciales.php
-/Escuela/vendor/*

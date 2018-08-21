@@ -13,8 +13,9 @@
 
     $mongo = new mongoDataBase();
     $verify = new verify();
-
+    // Si existen proyectos en formato A
     if(count($mongo->getProjectsFormatAAnualAndSemestral($_POST["term_code"]))>0){
+        // Si existen proyectos en formato F
         if(count($mongo->getProjectsFormatFAnualAndSemestral($_POST["term_code"]))>0){
             $projectsA = $mongo->getProjectsFormatAAnualAndSemestral($_POST["term_code"]);
             $projectsF = $mongo->getProjectsFormatFAnualAndSemestral($_POST["term_code"]);
@@ -30,11 +31,12 @@
         $_SESSION["message"] = MESSAGE_NOT_FOUND_PROJECTS;
         header("Location: ./mensaje.php");
     }
-
+    // Si el periodo es anual
     if($verify->verifyTermCode($_POST["term_code"],"formatAAnual")){
         $periodo = "anual";
     }
     else{
+        // Si el periodo es semestral
         if($verify->verifyTermCode($_POST["term_code"],"formatASemestral")){
             $periodo="semestral";
         }
@@ -45,7 +47,7 @@
         }
     }
 
-
+// Si el usuario tiene permisos
 if($_SESSION['verify']==true) {
     $html2pdf = new Html2Pdf();
     $html = "<page backtop=\"7mm\" backbottom=\"7mm\">";

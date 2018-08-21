@@ -14,6 +14,7 @@
     $mongo = new MongoDataBase();
     $cursor = $mongo->findProject($project->id);
 
+    // Si fue verificado como usuario con permisos
     if($_SESSION['verify']==true){
         // Si el boton de aprobar fue seleccionado
         if(isset($_POST['aprobar'])){
@@ -23,6 +24,7 @@
                 // Si el term code corresponde al formato
                 if($verify->verifyTermCode($_POST['termcode'],$element->format)){
                     if($element->format=="formatAAnual"){
+                        // Si no existe un proyecto con ese nro de registro
                         if(!$mongo->verifyIfExist($_POST["id_register"],$element->version))
                         {
                             $mongo->approveProject($element->id,$_POST["IDRegister"],$_POST["deliverDate"],$_POST["termcode"]);
@@ -36,6 +38,7 @@
                     }
                     else{
                         if($element->format=="formatASemestral"){
+                            // Si no existe un proyecto con ese nro de registro
                             if(!$mongo->verifyIfExist($_POST["id_register"],"-")){
                                 $mongo->approveProject($element->id,$_POST["IDRegister"],$_POST["deliverDate"],$_POST["termcode"]);
                                 header("Location: ../php/aprobarProyectos.php");
@@ -48,8 +51,10 @@
                         }
                         else{
                             if($element->format=="formatFAnual"){
+                                // Si existe un proyecto con ese numero de registro en formato A
                                 if($mongo->verifyIfExistFormatA($_POST["id_register"],"anual"))
                                 {
+                                    // Si no existe un proyecto con ese nro de registro
                                     if(!$mongo->verifyIfExist($_POST["id_register"],$element->format)){
                                         $mongo->approveProject($element->id,$_POST["IDRegister"],$_POST["deliverDate"],$_POST["termcode"]);
                                         header("Location: ../php/aprobarProyectos.php");
@@ -69,8 +74,10 @@
                             }
                             else{
                                 if($element->format=="formatFSemestral"){
+                                    // Si existe un proyecto con ese nro de registro en formato A
                                     if($mongo->verifyIfExistFormatA($_POST["id_register"],"semestral"))
                                     {
+                                        // Si no existe un proyecto con ese nro de registro
                                         if(!$mongo->verifyIfExist($_POST["id_register"],$element->format)){
                                             $mongo->approveProject($element->id,$_POST["IDRegister"],$_POST["deliverDate"],$_POST["termcode"]);
                                             header("Location: ../php/aprobarProyectos.php");
@@ -117,8 +124,3 @@
         $_SESSION["message"] = MESSAGE_NO_ACCESS;
         header("Location: ./mensaje.php");
     }
-
-
-
-
-?>

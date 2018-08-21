@@ -76,7 +76,7 @@
 
         
 <?php
-
+    // Si el usuario tiene permisos
     if($_SESSION['verify']==true) {
 
         $cursor = $mongo->getProjectsInFormatAApprove();

@@ -68,7 +68,7 @@
     </thead>
     <tbody>
     <?php
-
+    // Si el usuario tiene permisos
     if($_SESSION['verify']==true){
         foreach ($cursor as $element){
 

@@ -5,10 +5,9 @@ require_once 'credenciales.php';
 
 /**
  * Class mongoDataBase
- *z
  * Realiza las respectivas operaciones con la base de datos mongoDB
  */
-class MongoDataBase extends Credentials {
+class MongoDataBase {
 
     private $credentials;
 
@@ -23,6 +22,7 @@ class MongoDataBase extends Credentials {
     /**
      * Realiza la conexion hacia la base de datos
      * @throws \MongoDB\Driver\Exception\Exception
+     * @return \MongoDB\Driver\Manager|null
      */
     function conexionMongoDB() {
 
@@ -101,8 +101,7 @@ class MongoDataBase extends Credentials {
 
     /**
      * Inserta un projecto en la base de datos
-     * @param $project
-     * @throws \MongoDB\Driver\Exception\Exception
+     * @throws \MongoDB\Driver\Exception\BulkWriteException
      * @return bool
      */
     function insert ($project){
@@ -143,7 +142,8 @@ class MongoDataBase extends Credentials {
 
     /**
      * Obtiene los proyectos que no ahn sido aprobados por la escuela y que no han sido rechazados anteriormente para su aprobacion
-     * @return \MongoDB\Driver\Cursor|
+     * @param $project:array
+     * @return \MongoDB\Driver\Cursor|null
      * @throws \MongoDB\Driver\Exception\Exception
      */
     function getNotApproveProjects (){
@@ -181,7 +181,6 @@ class MongoDataBase extends Credentials {
 
     /**
      * Obtiene las informacion de un proyecto correspondiente al id
-     * @param $id
      * @return \MongoDB\Driver\Cursor|null
      * @throws \MongoDB\Driver\Exception\Exception
      */
@@ -220,10 +219,10 @@ class MongoDataBase extends Credentials {
 
     /**
      * Aprueba un proyecto
-     * @param $id
-     * @param $id_register
-     * @param $date_register
-     * @param $termcode
+     * @param $id:int
+     * @param $id_register:string
+     * @param $date_register:string
+     * @param $termcode:string
      * @return \MongoDB\Driver\WriteResult|null
      */
     function approveProject($id,$id_register,$date_register,$termcode){
@@ -264,7 +263,7 @@ class MongoDataBase extends Credentials {
 
     /**
      * Rechaza un proyecto en particular
-     * @param $id
+     * @param $id:int
      * @return \MongoDB\Driver\WriteResult|null
      */
     function rejectProject($id){
@@ -343,11 +342,11 @@ class MongoDataBase extends Credentials {
 
     /**
      * Le agrega al proyecto los 3 jurados
-     * @param $version
-     * @param $id_register
-     * @param $jury_one_fullname
-     * @param $jury_two_fullname
-     * @param $jury_three_fullname
+     * @param $version:string
+     * @param $id_register:string
+     * @param $jury_one_fullname:string
+     * @param $jury_two_fullname:string
+     * @param $jury_three_fullname:string
      * @return \MongoDB\Driver\WriteResult|null
      */
     function setJuryOnProject($version,$id_register,$jury_one_fullname,$jury_two_fullname,$jury_three_fullname){
@@ -393,10 +392,10 @@ class MongoDataBase extends Credentials {
 
     /**
      * Aprueba el tutor de un proyecto
-     * @param $id_register
-     * @param $version
-     * @param $extern
-     * @param $desicion
+     * @param $id_register:string
+     * @param $version:string
+     * @param $extern:string
+     * @param $desicion:string
      * @return \MongoDB\Driver\WriteResult|null
      */
     function approveTutor($id_register, $version,$extern, $desicion){
@@ -443,8 +442,8 @@ class MongoDataBase extends Credentials {
 
     /**
      * Verifica si existe un proyecto con el nro de registro y version ingresado
-     * @param $id_register
-     * @param $version
+     * @param $id_register:string
+     * @param $version:string
      * @return bool
      * @throws \MongoDB\Driver\Exception\Exception
      */
@@ -494,9 +493,9 @@ class MongoDataBase extends Credentials {
 
     /**
      * Devuelve un array con el proyecto
-     * @param $id_register
-     * @param $version
-     * @return array|bool
+     * @param $id_register:string
+     * @param $version:string
+     * @return array|bool Array si existe un proyecto con ese numero de registro y version, false si no se encontro
      * @throws \MongoDB\Driver\Exception\Exception
      */
     function getProject ($id_register,$version){
@@ -547,7 +546,7 @@ class MongoDataBase extends Credentials {
 
     /**
      * Verificar si existe el evaluador
-     * @param $filter
+     * @param $filter:array
      * @return bool
      * @throws \MongoDB\Driver\Exception\Exception
      */
@@ -589,11 +588,11 @@ class MongoDataBase extends Credentials {
 
     /**
      * Modificar respuesta de jurado
-     * @param $id_register
-     * @param $version
-     * @param $jury_fullname
-     * @param $jury_status
-     * @return \MongoDB\Driver\Cursor
+     * @param $id_register:string
+     * @param $version:string
+     * @param $jury_fullname:string
+     * @param $jury_status:string
+     * @return \MongoDB\Driver\Cursor|null
      * @throws \MongoDB\Driver\Exception\Exception
      */
     function setJuryStatus($id_register,$version,$jury_fullname, $jury_status){
@@ -710,8 +709,8 @@ class MongoDataBase extends Credentials {
 
     /**
      * Modificr fecha de aprobacion de propuesta
-     * @param $id_register
-     * @param $version
+     * @param $id_register:string
+     * @param $version:string
      * @return \MongoDB\Driver\WriteResult|null
      */
     function setApprovalDate($id_register,$version){
@@ -837,7 +836,7 @@ class MongoDataBase extends Credentials {
 
     /**
      * Verifica si existe 2da version del proyecto
-     * @param $id_register
+     * @param $id_register:string
      * @return bool
      * @throws \MongoDB\Driver\Exception\Exception
      */
@@ -882,7 +881,7 @@ class MongoDataBase extends Credentials {
 
     /**
      * Verifica si existe 1era version del proyecto
-     * @param $id_register
+     * @param $id_register:string
      * @return bool
      * @throws \MongoDB\Driver\Exception\Exception
      */
@@ -928,8 +927,8 @@ class MongoDataBase extends Credentials {
 
     /**
      * Realiza la actializacion en la base de datos
-     * @param $filter
-     * @param $newObj
+     * @param $filter:array
+     * @param $newObj:array
      * @return \MongoDB\Driver\WriteResult|null
      */
     function setJuryRol ($filter,$newObj){
@@ -966,9 +965,9 @@ class MongoDataBase extends Credentials {
 
     /**
      * Modifica el rol del jurado
-     * @param $id_register
-     * @param $jury_fullname
-     * @param $jury_rol
+     * @param $id_register:string
+     * @param $jury_fullname:string
+     * @param $jury_rol:string
      * @throws \MongoDB\Driver\Exception\Exception
      */
     function setJuryRols($id_register, $jury_fullname, $jury_rol){
@@ -1071,8 +1070,9 @@ class MongoDataBase extends Credentials {
 
     /**
      * Verifica si el periodo de un proyecto es semestral o anual
-     * @param $id_register
-     * @return bool|null|string
+     * @param $id_register:string
+     * @return bool|null|string Retorna bool(false) si hubo un error,
+     * null si no encontro proyectos con ese nro de registro y string si el proyecto es semestral o anual
      * @throws \MongoDB\Driver\Exception\Exception
      */
     function verifyPeriod($id_register){
@@ -1121,8 +1121,8 @@ class MongoDataBase extends Credentials {
 
     /**
      * Modifica la fecha de defensa de los proyectos semestrales
-     * @param $id_register
-     * @param $defense_date
+     * @param $id_register:string
+     * @param $defense_date:string
      * @return \MongoDB\Driver\WriteResult|null
      */
     function setDefenseDateSemestral($id_register,$defense_date){
@@ -1163,8 +1163,8 @@ class MongoDataBase extends Credentials {
 
     /**
      * Modifica la fecha de defensa
-     * @param $id_register
-     * @param $defense_date
+     * @param $id_register:string
+     * @param $defense_date:string
      * @return \MongoDB\Driver\WriteResult|null
      */
     function setDefenseDateAnual($id_register,$defense_date,$version){
@@ -1212,9 +1212,9 @@ class MongoDataBase extends Credentials {
 
     /**
      * Modificar nota y mencion de un proyecto semestral
-     * @param $id_register
-     * @param $note
-     * @param $mention
+     * @param $id_register:string
+     * @param $note:string
+     * @param $mention:string
      * @return \MongoDB\Driver\WriteResult|null
      */
     function setProjectNoteSemestral($id_register,$note,$mention){
@@ -1253,10 +1253,10 @@ class MongoDataBase extends Credentials {
 
     /**
      * Modificar nota y mencion de proyecto anual
-     * @param $id_register
-     * @param $note
-     * @param $mention
-     * @param $version
+     * @param $id_register:string
+     * @param $note:string
+     * @param $mention:string
+     * @param $version:string
      * @return \MongoDB\Driver\WriteResult|null
      */
     function setProjectNoteAnual($id_register,$note,$mention,$version){
@@ -1304,8 +1304,8 @@ class MongoDataBase extends Credentials {
 
     /**
      * Elimina un proyecto de la base de datos
-     * @param $id_register
-     * @param $term_code
+     * @param $id_register:string
+     * @param $term_code:string
      * @return \MongoDB\Driver\WriteResult|null
      */
     function removeProject($id_register,$term_code,$version){
@@ -1387,7 +1387,7 @@ class MongoDataBase extends Credentials {
 
     /**
      * Obtiene los proyectos en formato A anual por el term code
-     * @param $termcode
+     * @param $termcode:string
      * @return \MongoDB\Driver\Cursor|null
      * @throws \MongoDB\Driver\Exception\Exception
      */
@@ -1460,7 +1460,7 @@ class MongoDataBase extends Credentials {
 
     /**
      * Obtiene los proyectos en formato A semestral por el term code
-     * @param $termcode
+     * @param $termcode:string
      * @return \MongoDB\Driver\Cursor|null
      * @throws \MongoDB\Driver\Exception\Exception
      */
@@ -1497,6 +1497,7 @@ class MongoDataBase extends Credentials {
 
     /**
      * Obtiene los proyectos en formato A semestrales y anuales
+     * @param $termcode:string
      * @return \MongoDB\Driver\Cursor|null
      * @throws \MongoDB\Driver\Exception\Exception
      */
@@ -1536,6 +1537,7 @@ class MongoDataBase extends Credentials {
 
     /**
      * Obtiene los proyectos en formato F semestrales y anuales
+     * @param $termcode:string
      * @return \MongoDB\Driver\Cursor|null
      * @throws \MongoDB\Driver\Exception\Exception
      */
@@ -1575,7 +1577,7 @@ class MongoDataBase extends Credentials {
 
     /**
      * Obtiene los proyectos de acuerdo al term code
-     * @param $termCode
+     * @param $termCode:string
      * @return \MongoDB\Driver\Cursor|null
      * @throws \MongoDB\Driver\Exception\Exception
      */
@@ -1652,8 +1654,8 @@ class MongoDataBase extends Credentials {
 
     /**
      * Verifica si existe un formato A de ese proyecto
-     * @param $id_register
-     * @param $format
+     * @param $id_register:string
+     * @param $tipoPeriodo:string
      * @return \MongoDB\Driver\Cursor|null
      * @throws \MongoDB\Driver\Exception\Exception
      */

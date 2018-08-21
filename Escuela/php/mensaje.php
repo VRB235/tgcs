@@ -1,6 +1,6 @@
 <?php
-session_start();
-include_once("mensajes.php");
+    session_start();
+    include_once("mensajes.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">

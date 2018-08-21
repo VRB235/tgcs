@@ -34,7 +34,7 @@
         }
 
     }
-
+// Si el usuario tiene permisos
 if($_SESSION['verify']==true) {
     $html2pdf = new Html2Pdf();
     $html = "<page backtop=\"7mm\" backbottom=\"7mm\">";

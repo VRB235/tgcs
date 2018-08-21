@@ -5,7 +5,7 @@
     session_start();
 
     $_SESSION['page'] = $_SERVER['HTTP_REFERER'];
-
+    // Si el usuario tiene permisos
     if($_SESSION['verify']==true) {
 
         // Si los campos de nro de registro y term code no estan vacios

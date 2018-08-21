@@ -5,7 +5,7 @@
     session_start();
 
     $_SESSION['page'] = $_SERVER['HTTP_REFERER'];
-
+    // Si el usuario tiene permisos
     if($_SESSION['verify']==true){
         // Si el vampo fecha de defensa no esta vacio y exite la variable
         if(!empty($_POST["defense_date"])&&isset($_POST["defense_date"])){

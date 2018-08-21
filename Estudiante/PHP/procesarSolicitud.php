@@ -11,8 +11,8 @@
 
     $_SESSION['page'] = $_SERVER['HTTP_REFERER'];
 
-    $verify = new verify();
-    $mongo = new mongoDataBase();
+    $verify = new Verify();
+    $mongo = new MongoDataBase();
     // Si se dio la coneccion
 
     if(isset($_SESSION['register']) && !$_SESSION['register'])

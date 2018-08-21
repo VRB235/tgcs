@@ -691,5 +691,5 @@
     // Despliega el PDF
     $html2pdf->output('imprimir.pdf','D');
 
-?>
+
 

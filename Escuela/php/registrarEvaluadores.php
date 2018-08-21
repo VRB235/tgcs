@@ -74,7 +74,7 @@
 
     $mongo = new mongoDataBase();
     $cursor = $mongo->getProjectsInFormatAApprove();
-
+    // Si el usuario tiene permisos
     if($_SESSION['verify']==true) {
 
 
