@@ -13,7 +13,6 @@
     $cursor2 = $cursor;
     $format = "todos";
 
-    // Si el metodo de request fue POST
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if(isset($_POST["formatAAnual"])){
             $format = "formatAAnual";

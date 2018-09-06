@@ -1,6 +1,6 @@
 <?php
 
-class Verify{
+class verify{
 
     /**
      * Verifica que el numero corresponda  a un numero de telefono con el formato 0000-000-0000
@@ -32,6 +32,25 @@ class Verify{
         }
         return false;
 
+    }
+
+    /**
+     * Verifica que el email d ela ucab sea valido
+     * Es decir que finalice en "@est.ucab.edu.ve"
+     * @param $email
+     * @return bool
+     */
+    function verifyUCABEmail($email){
+        if(strlen($email)>=16){
+            if(substr($email,-16)==="@est.ucab.edu.ve"){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }else{
+            return false;
+        }
     }
 
 }

@@ -46,7 +46,7 @@ class ManagementConfig {
      * @return array
      */
     function readUserWithAccess(){
-        $ini_array = parse_ini_file(CREDENTIALS_ROOT,true);
+        $ini_array = parse_ini_file("./recursos/user_access.ini",true);
         $users = array();
         $i = 0;
         foreach ($ini_array["users"]["user"] as $user){

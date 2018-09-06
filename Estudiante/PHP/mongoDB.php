@@ -4,16 +4,16 @@
     require_once 'credenciales.php';
 
 /**
- * Class MongoDataBase
+ * Class mongoDataBase
  *
  * Realiza las respectivas operaciones con la base de datos mongoDB
  */
-    class MongoDataBase{
+    class mongoDataBase{
 
         private $credentials;
 
         /**
-         * MongoDataBase constructor.
+         * mongoDataBase constructor.
          */
         function __construct()
         {
@@ -23,10 +23,7 @@
 
         /**
          * Realiza la conexion hacia la base de datos
-         * @return \MongoDB\Driver\Manager|null
-         * @throws \MongoDB\Driver\Exception\ConnectionTimeoutException
-         * @throws \MongoDB\Driver\Exception\AuthenticationException
-         * @throws \MongoDB\Driver\Exception
+         * @throws \MongoDB\Driver\Exception\Exception
          */
         function conexionMongoDB() {
 
@@ -34,6 +31,9 @@
 
                 $connetion = new MongoDB\Driver\Manager($this->credentials->getDirMongoDB());
                 //$connetion = new MongoDB\Driver\Manager($this->credentials->getLocalMongoDB());
+                //$command = new MongoDB\Driver\Command(array("serverStatus" => 1));
+
+                //$connetion->executeCommand($this->credentials->getNameMongoDB(), $command);
 
                 return $connetion;
 
@@ -104,8 +104,7 @@
         /**
          * Inserta un projecto en la base de datos
          * @param $project
-         * @throws \MongoDB\Driver\Exception\BulkWriteException
-         * @throws \MongoDB\Driver\Exception
+         * @throws \MongoDB\Driver\Exception\Exception
          * @return bool
          */
         function insert ($project){

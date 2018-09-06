@@ -12,7 +12,13 @@
     $mongo = new mongoDataBase();
 
     $projects = $mongo->getProyectsByTermCode($_POST["term_code"]);
-// Si el usuario tiene permisos
+
+    if(is_bool($projects)){
+        $_SESSION["title"] = TITLE_NOT_FOUND_PROJECTS;
+        $_SESSION["message"] = MESSAGE_NOT_FOUND_PROJECTS;
+        header("Location: mensaje.php");
+    }
+
 if($_SESSION['verify']==true) {
     header("Content-Disposition: attachment; filename=sample.pdf");
     $html2pdf = new Html2Pdf();

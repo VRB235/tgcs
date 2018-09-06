@@ -14,21 +14,22 @@
     $mongo = new MongoDataBase();
     $cursor = $mongo->findProject($project->id);
 
-    // Si fue verificado como usuario con permisos
     if($_SESSION['verify']==true){
         // Si el boton de aprobar fue seleccionado
         if(isset($_POST['aprobar'])){
+
 
             $verify = new Verify();
             foreach ($cursor as $element){
                 // Si el term code corresponde al formato
                 if($verify->verifyTermCode($_POST['termcode'],$element->format)){
                     if($element->format=="formatAAnual"){
-                        // Si no existe un proyecto con ese nro de registro
-                        if(!$mongo->verifyIfExist($_POST["id_register"],$element->version))
+                        if(!$mongo->verifyIfExist($_POST["IDRegister"],$element->version))
                         {
                             $mongo->approveProject($element->id,$_POST["IDRegister"],$_POST["deliverDate"],$_POST["termcode"]);
-                            header("Location: ../php/aprobarProyectos.php");
+                            $_SESSION["title"]= TITLE_PROJECT_APPROVE;
+                            $_SESSION["message"]= MESSAGE_PROJECT_APPROVE;
+                            header("Location: ./mensaje.php");
                         }
                         else{
                             $_SESSION["title"]= TITLE_ID_REGISTER_USE;
@@ -38,10 +39,11 @@
                     }
                     else{
                         if($element->format=="formatASemestral"){
-                            // Si no existe un proyecto con ese nro de registro
-                            if(!$mongo->verifyIfExist($_POST["id_register"],"-")){
+                            if(!$mongo->verifyIfExist($_POST["IDRegister"],"-")){
                                 $mongo->approveProject($element->id,$_POST["IDRegister"],$_POST["deliverDate"],$_POST["termcode"]);
-                                header("Location: ../php/aprobarProyectos.php");
+                                $_SESSION["title"]= TITLE_PROJECT_APPROVE;
+                                $_SESSION["message"]= MESSAGE_PROJECT_APPROVE;
+                                header("Location: ./mensaje.php");
                             }
                             else{
                                 $_SESSION["title"]= TITLE_ID_REGISTER_USE;
@@ -51,13 +53,13 @@
                         }
                         else{
                             if($element->format=="formatFAnual"){
-                                // Si existe un proyecto con ese numero de registro en formato A
-                                if($mongo->verifyIfExistFormatA($_POST["id_register"],"anual"))
+                                if(!$mongo->verifyIfExistFormatA($_POST["IDRegister"],"anual"))
                                 {
-                                    // Si no existe un proyecto con ese nro de registro
-                                    if(!$mongo->verifyIfExist($_POST["id_register"],$element->format)){
+                                    if(!$mongo->verifyIfExist($_POST["IDRegister"],$element->format)){
                                         $mongo->approveProject($element->id,$_POST["IDRegister"],$_POST["deliverDate"],$_POST["termcode"]);
-                                        header("Location: ../php/aprobarProyectos.php");
+                                        $_SESSION["title"]= TITLE_PROJECT_APPROVE;
+                                        $_SESSION["message"]= MESSAGE_PROJECT_APPROVE;
+                                        header("Location: ./mensaje.php");
                                     }
                                     else{
                                         $_SESSION["title"]= TITLE_ID_REGISTER_USE;
@@ -74,13 +76,13 @@
                             }
                             else{
                                 if($element->format=="formatFSemestral"){
-                                    // Si existe un proyecto con ese nro de registro en formato A
-                                    if($mongo->verifyIfExistFormatA($_POST["id_register"],"semestral"))
+                                    if(!$mongo->verifyIfExistFormatA($_POST["IDRegister"],"semestral"))
                                     {
-                                        // Si no existe un proyecto con ese nro de registro
-                                        if(!$mongo->verifyIfExist($_POST["id_register"],$element->format)){
+                                        if(!$mongo->verifyIfExist($_POST["IDRegister"],$element->format)){
                                             $mongo->approveProject($element->id,$_POST["IDRegister"],$_POST["deliverDate"],$_POST["termcode"]);
-                                            header("Location: ../php/aprobarProyectos.php");
+                                            $_SESSION["title"]= TITLE_PROJECT_APPROVE;
+                                            $_SESSION["message"]= MESSAGE_PROJECT_APPROVE;
+                                            header("Location: ./mensaje.php");
                                         }
                                         else{
                                             $_SESSION["title"]= TITLE_ID_REGISTER_USE;
@@ -124,3 +126,8 @@
         $_SESSION["message"] = MESSAGE_NO_ACCESS;
         header("Location: ./mensaje.php");
     }
+
+
+
+
+?>

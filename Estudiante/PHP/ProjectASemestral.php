@@ -58,7 +58,10 @@
 
         /**
          * ProjectASemestral constructor.
+         * @param $term_code
          * @param $formato
+         * @param $idRegister
+         * @param $deliverDate
          * @param $title
          * @param $investigationArea
          * @param $student_one_name

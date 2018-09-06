@@ -69,7 +69,6 @@
 
 
     <?php
-    // Si el usuario tiene permisos
     if($_SESSION['verify']==true) {
         $mongo = new mongoDataBase();
 
@@ -99,7 +98,7 @@
                             echo "<td>" . "</td>";
                         }
 
-                        echo "<td>" . $projectA->title . "</td>";
+                        echo "<td>" . $projectF->title . "</td>";
                         echo "<td>" . $projectA->jury_one_fullname . "</td>";
                         if (isset($projectA->jury_one_rol)) {
                             echo "<td>" . $projectA->jury_one_rol . "</td>";

@@ -10,11 +10,11 @@
     session_start();
 
     $_SESSION['page'] = $_SERVER['HTTP_REFERER'];
-    // Si el usuario tiene permisos
+
     if($_SESSION['verify']==true) {
         // Create new Spreadsheet object
         $spreadsheet = new Spreadsheet();
-        // Letras (Columnas que existiran)
+        // Letras
         $letters = array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
             'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AG', 'AH',
             'AI', 'AJ', 'AK', 'AL', 'AM', 'AN', 'AO', 'AP', 'AQ', 'AR', 'AS', 'AT', 'AU', 'AV', 'AW', 'AX',
@@ -43,7 +43,17 @@
 
         $mongo = new mongoDataBase();
 
-        $projects = $mongo->getProyectsByTermCode($_POST["term_code"])->toArray();
+        $cursor = $mongo->getProyectsByTermCode($_POST["term_code"]);
+        if(!is_bool($cursor)){
+            $projects = $mongo->getProyectsByTermCode($_POST["term_code"])->toArray();
+        }
+        else{
+            $_SESSION["title"] = TITLE_NOT_FOUND_PROJECTS;
+            $_SESSION["message"] = MESSAGE_NOT_FOUND_PROJECTS;
+            header("Location: mensaje.php");
+        }
+
+
 
         // Si existen proyectos
         if (count($projects) > 0) {

@@ -6,7 +6,7 @@
     session_start();
 
     $_SESSION['page'] = $_SERVER['HTTP_REFERER'];
-    // Si el usuaro tiene permisos
+
     if($_SESSION['verify']==true){
         $mongo = new mongoDataBase();
         $cursor = $mongo->getNotApproveProjects();
@@ -46,3 +46,4 @@
 
 
 
+?>

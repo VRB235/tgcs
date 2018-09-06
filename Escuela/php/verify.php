@@ -24,7 +24,7 @@ class Verify{
      */
     function verifyID ($id){
 
-        if(preg_match("/^[0-9]{8}$/", $id)){
+        if(preg_match("/^[0-9]{8}$/", $_POST['student_one_id'])){
 
             return true;
 

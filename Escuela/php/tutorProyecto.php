@@ -87,7 +87,7 @@
         </thead>
         <tbody>
 <?php
-// Si el usuario tiene permisos
+
 if($_SESSION['verify']==true) {
     // Llena un tabla con todos los registros traidos
     foreach ($cursor as $element) {

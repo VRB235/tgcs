@@ -1,6 +1,6 @@
 <?php
-    session_start();
-    include_once("mensajes.php");
+session_start();
+include_once("mensajes.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +20,7 @@
         <h1 id="mensaje" style="text-align: center;font-size: 20px; padding-top: 15px"><?php echo $_SESSION['message'] ?></h1>
     </div>
     <div class="goBack">
-        <a href="<?php echo $_SESSION["page"]; ?>"><p class="btn btn-primary" id="mensajeRegresar">Regresar</p></a>
+        <a href="<?php if($_SESSION["title"]!=TITLE_PROJECT_APPROVE){echo $_SESSION["page"];}else{echo "aprobarProyectos.php";} ?>"><p class="btn btn-primary" id="mensajeRegresar">Regresar</p></a>
     </div>
 </body>
 </html>

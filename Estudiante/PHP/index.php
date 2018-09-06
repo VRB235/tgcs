@@ -1,7 +1,7 @@
 <?php
 
     require_once "./recaptchalib.php";
-    include_once("./mensajes.php");
+    include_once("../PHP/mensajes.php");
 
     session_start();
 
@@ -29,7 +29,7 @@
     }
 
     // COMENTAR NUEVAMENTE
-    $_SESSION['robot'] = false;
+    //$_SESSION['robot'] = false;
     
     // Si no es un robot
     if(!$_SESSION['robot'])

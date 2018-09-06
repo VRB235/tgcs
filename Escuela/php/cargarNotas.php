@@ -73,7 +73,6 @@
         <tbody>
 
 <?php
-    // Si el usuario tiene permisos
     if($_SESSION['verify']==true) {
         foreach ($projectsA as $elementA) {
             foreach ($projectsF as $elementF) {
@@ -94,11 +93,11 @@
                     } else {
                         echo "<td></td>";
                     }
-                    echo "<td>" . $elementA->title . "</td>";
-                    echo "<td>" . $elementA->student_one_name . "</td>";
-                    echo "<td>" . $elementA->student_one_id . "</td>";
-                    echo "<td>" . $elementA->student_two_name . "</td>";
-                    echo "<td>" . $elementA->student_two_id . "</td>";
+                    echo "<td>" . $elementF->title . "</td>";
+                    echo "<td>" . $elementF->student_one_name . "</td>";
+                    echo "<td>" . $elementF->student_one_id . "</td>";
+                    echo "<td>" . $elementF->student_two_name . "</td>";
+                    echo "<td>" . $elementF->student_two_id . "</td>";
                     if (isset($elementA->note)) {
                         echo "<td>" . $elementA->note . "</td>";
                     } else {

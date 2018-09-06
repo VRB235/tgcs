@@ -60,7 +60,10 @@ class ProjectAAnual {
 
     /**
      * ProjectAAnual constructor.
+     * @param $term_code
      * @param $formato
+     * @param $idRegister
+     * @param $deliverDate
      * @param $version
      * @param $title
      * @param $student_one_name
@@ -973,3 +976,4 @@ class ProjectAAnual {
 
 
 }
+?>

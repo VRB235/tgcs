@@ -17,14 +17,14 @@
     // Verifica que el termcode sea anual
     if($verify->verifyTermCode($_POST["term_code"],"formatAAnual")){
 
-        $projectsA = $mongo->getProjectsFormatAAnual();
+        $projectsA = $mongo->getProjectsFormatAAnual($_POST["term_code"]);
 
     }
     else{
         // Verifiac que el termcode sea semestral
         if($verify->verifyTermCode($_POST["term_code"],"formatASemestral")){
 
-            $projectsA = $mongo->getProjectsFormatASemestral();
+            $projectsA = $mongo->getProjectsFormatASemestral($_POST["term_code"]);
 
         }
         else{
@@ -34,7 +34,13 @@
         }
 
     }
-// Si el usuario tiene permisos
+
+    if(is_bool($projectsA)){
+        $_SESSION["title"] = TITLE_NOT_FOUND_PROJECTS;
+        $_SESSION["message"] = MESSAGE_NOT_FOUND_PROJECTS;
+        header("Location: ./mensaje.php");
+    }
+
 if($_SESSION['verify']==true) {
     $html2pdf = new Html2Pdf();
     $html = "<page backtop=\"7mm\" backbottom=\"7mm\">";

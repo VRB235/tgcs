@@ -5,7 +5,7 @@
     session_start();
 
     $_SESSION['page'] = $_SERVER['HTTP_REFERER'];
-    // Si el usuario tiene permisos
+
     if($_SESSION['verify']==true){
 
         // Si el nombre del jurado # 1 no esta vacio y la variable existe

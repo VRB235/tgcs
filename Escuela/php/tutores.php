@@ -5,7 +5,7 @@
     session_start();
 
     $_SESSION['page'] = $_SERVER['HTTP_REFERER'];
-    // Si el usuario tiene permisos
+
     if($_SESSION['verify']==true){
         // Si el campo de nro de registro no esta vacio
         if(!empty($_POST["id_register"])&&isset($_POST["id_register"])){

@@ -19,6 +19,7 @@ class Credentials {
      */
     function __construct()
     {
+
         $managementINI = new ManagementConfig();
         $credentials = $managementINI->readINI();
         $this->domain_mongodb = $credentials[0];

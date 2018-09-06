@@ -46,7 +46,7 @@
                     // Se hace la conexion con el usuario y contraseña ingresada
                     $bind=ldap_bind($coneccionUser,$dn_user, $_POST['lg_password'] );
                     // Si se dio la conexion
-                    $bind=true;
+                    //$bind=true;
                     if($bind){
                         $users = new ManagementConfig();
                         $user_list = $users->readUserWithAccess();
@@ -114,9 +114,7 @@
     <title>Log In</title>
 </head>
 <body>
-    <header>
-        <img src="./recursos/Logo-UCAB-04.png" alt="logo_UCAB" class="logo_UCAB">
-    </header>
+    <center><img src="../recursos/Logo-UCAB-04.png"></center>
     <div class="text-center" style="padding:50px 0">
         <div class="logo">login</div>
         <!-- Main Form -->

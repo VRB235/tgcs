@@ -5,9 +5,10 @@ require_once 'credenciales.php';
 
 /**
  * Class mongoDataBase
+ *z
  * Realiza las respectivas operaciones con la base de datos mongoDB
  */
-class MongoDataBase {
+class MongoDataBase extends Credentials {
 
     private $credentials;
 
@@ -22,7 +23,6 @@ class MongoDataBase {
     /**
      * Realiza la conexion hacia la base de datos
      * @throws \MongoDB\Driver\Exception\Exception
-     * @return \MongoDB\Driver\Manager|null
      */
     function conexionMongoDB() {
 
@@ -101,7 +101,8 @@ class MongoDataBase {
 
     /**
      * Inserta un projecto en la base de datos
-     * @throws \MongoDB\Driver\Exception\BulkWriteException
+     * @param $project
+     * @throws \MongoDB\Driver\Exception\Exception
      * @return bool
      */
     function insert ($project){
@@ -142,9 +143,7 @@ class MongoDataBase {
 
     /**
      * Obtiene los proyectos que no ahn sido aprobados por la escuela y que no han sido rechazados anteriormente para su aprobacion
-     * @param $project
-     * @param $project
-     * @return \MongoDB\Driver\Cursor|null
+     * @return \MongoDB\Driver\Cursor|
      * @throws \MongoDB\Driver\Exception\Exception
      */
     function getNotApproveProjects (){
@@ -182,6 +181,7 @@ class MongoDataBase {
 
     /**
      * Obtiene las informacion de un proyecto correspondiente al id
+     * @param $id
      * @return \MongoDB\Driver\Cursor|null
      * @throws \MongoDB\Driver\Exception\Exception
      */
@@ -442,9 +442,10 @@ class MongoDataBase {
     }
 
     /**
-     * Verifica si existe un proyecto con el nro de registro y version ingresado
+     * Verifica si existe un proyecto con el nro de registro, version ingresado y termcode
      * @param $id_register
      * @param $version
+     * @param $term_code
      * @return bool
      * @throws \MongoDB\Driver\Exception\Exception
      */
@@ -456,6 +457,7 @@ class MongoDataBase {
         if ($connetion!=null){
 
             // Filtro para que verigfique si existe un proyecto con ese nro de registro y version
+            if(isset($version))
             if($version!="-"){
                 $filter = array("id_register"=>$id_register,"version"=>$version);
             }
@@ -496,7 +498,7 @@ class MongoDataBase {
      * Devuelve un array con el proyecto
      * @param $id_register
      * @param $version
-     * @return array|bool Array si existe un proyecto con ese numero de registro y version, false si no se encontro
+     * @return array|bool
      * @throws \MongoDB\Driver\Exception\Exception
      */
     function getProject ($id_register,$version){
@@ -593,7 +595,7 @@ class MongoDataBase {
      * @param $version
      * @param $jury_fullname
      * @param $jury_status
-     * @return \MongoDB\Driver\Cursor|null
+     * @return \MongoDB\Driver\Cursor
      * @throws \MongoDB\Driver\Exception\Exception
      */
     function setJuryStatus($id_register,$version,$jury_fullname, $jury_status){
@@ -1072,8 +1074,7 @@ class MongoDataBase {
     /**
      * Verifica si el periodo de un proyecto es semestral o anual
      * @param $id_register
-     * @return bool|null|string Retorna bool(false) si hubo un error,
-     * null si no encontro proyectos con ese nro de registro y string si el proyecto es semestral o anual
+     * @return bool|null|string
      * @throws \MongoDB\Driver\Exception\Exception
      */
     function verifyPeriod($id_register){
@@ -1307,7 +1308,7 @@ class MongoDataBase {
      * Elimina un proyecto de la base de datos
      * @param $id_register
      * @param $term_code
-     * @return \MongoDB\Driver\WriteResult|null
+     * @return bool
      */
     function removeProject($id_register,$term_code,$version){
 
@@ -1332,7 +1333,7 @@ class MongoDataBase {
                 $bulk = new MongoDB\Driver\BulkWrite;
                 $bulk->delete($filter,$options);
                 $cursor = $connetion->executeBulkWrite($this->credentials->getNameMongodb().".".$this->credentials->getCollection(),$bulk);
-                return $cursor;
+                return true;
 
             }catch (MongoDB\Driver\Exception $e){
 
@@ -1345,7 +1346,7 @@ class MongoDataBase {
                 echo $e->getMessage();
                 die();
             }
-            return null;
+            return false;
         }
 
     }
@@ -1355,21 +1356,29 @@ class MongoDataBase {
      * @return \MongoDB\Driver\Cursor|null
      * @throws \MongoDB\Driver\Exception\Exception
      */
-    function getProjectsFormatAAnual(){
+    function getProjectsFormatAAnual($termcode){
         $connetion = $this->conexionMongoDB();
 
         // Si se dio la conexion
         if ($connetion!=null){
 
             // Filtro para que solo se traiga los proyectos no aprobados y no rechazados anteriormente
-            $filter = array('$or'=>array(array("format"=>"formatAAnual")),'approve'=>'1');
+            $filter = array('$or'=>array(array("format"=>"formatAAnual")),'approve'=>'1','term_code'=>$termcode);
             $options = ['sort' => ['id' => -1]];
 
             try{
 
                 $query = new MongoDB\Driver\Query($filter,$options);
                 $cursor = $connetion->executeQuery($this->credentials->getNameMongoDB().".".$this->credentials->getCollection(),$query);
-                return $cursor;
+                $cursorArray = $cursor->toArray();
+                $cursor = $connetion->executeQuery($this->credentials->getNameMongoDB().".".$this->credentials->getCollection(),$query);
+                if(count($cursorArray)!=0){
+                    return $cursor;
+                }
+                else{
+                    return false;
+                }
+
 
             }catch (MongoDB\Driver\Exception $e){
 
@@ -1406,7 +1415,14 @@ class MongoDataBase {
 
                 $query = new MongoDB\Driver\Query($filter,$options);
                 $cursor = $connetion->executeQuery($this->credentials->getNameMongoDB().".".$this->credentials->getCollection(),$query);
-                return $cursor;
+                $cursorArray = $cursor->toArray();
+                if(count($cursorArray)>0){
+                    return $connetion->executeQuery($this->credentials->getNameMongoDB().".".$this->credentials->getCollection(),$query);
+                }
+                else{
+                    return false;
+                }
+
 
             }catch (MongoDB\Driver\Exception $e){
 
@@ -1428,21 +1444,27 @@ class MongoDataBase {
      * @return \MongoDB\Driver\Cursor|null
      * @throws \MongoDB\Driver\Exception\Exception
      */
-    function getProjectsFormatASemestral(){
+    function getProjectsFormatASemestral($termcode){
         $connetion = $this->conexionMongoDB();
 
         // Si se dio la conexion
         if ($connetion!=null){
 
             // Filtro para que solo se traiga los proyectos no aprobados y no rechazados anteriormente
-            $filter = array('$or'=>array(array("format"=>"formatASemestral")),'approve'=>'1');
+            $filter = array('$or'=>array(array("format"=>"formatASemestral")),'approve'=>'1','term_code'=>$termcode);
             $options = ['sort' => ['id' => -1]];
 
             try{
 
                 $query = new MongoDB\Driver\Query($filter,$options);
                 $cursor = $connetion->executeQuery($this->credentials->getNameMongoDB().".".$this->credentials->getCollection(),$query);
-                return $cursor;
+                $cursorArray = $cursor->toArray();
+                if(count($cursorArray)!=0){
+                    return $connetion->executeQuery($this->credentials->getNameMongoDB().".".$this->credentials->getCollection(),$query);;
+                }
+                else{
+                    return false;
+                }
 
             }catch (MongoDB\Driver\Exception $e){
 
@@ -1498,7 +1520,6 @@ class MongoDataBase {
 
     /**
      * Obtiene los proyectos en formato A semestrales y anuales
-     * @param $termcode
      * @return \MongoDB\Driver\Cursor|null
      * @throws \MongoDB\Driver\Exception\Exception
      */
@@ -1538,7 +1559,6 @@ class MongoDataBase {
 
     /**
      * Obtiene los proyectos en formato F semestrales y anuales
-     * @param $termcode
      * @return \MongoDB\Driver\Cursor|null
      * @throws \MongoDB\Driver\Exception\Exception
      */
@@ -1597,7 +1617,13 @@ class MongoDataBase {
 
                 $query = new MongoDB\Driver\Query($filter,$options);
                 $cursor = $connetion->executeQuery($this->credentials->getNameMongoDB().".".$this->credentials->getCollection(),$query);
-                return $cursor;
+                $cursorArray = $cursor->toArray();
+                if(count($cursorArray)>0){
+                    return $connetion->executeQuery($this->credentials->getNameMongoDB().".".$this->credentials->getCollection(),$query);
+                }
+                else{
+                    return false;
+                }
 
             }catch (MongoDB\Driver\Exception $e){
 
@@ -1681,7 +1707,13 @@ class MongoDataBase {
 
                 $query = new MongoDB\Driver\Query($filter,$options);
                 $cursor = $connetion->executeQuery($this->credentials->getNameMongoDB().".".$this->credentials->getCollection(),$query);
-                return $cursor;
+                $cursorArray = $cursor->toArray();
+                if(count($cursorArray)>0){
+                    return true;
+                }
+                else{
+                    return false;
+                }
 
             }catch (MongoDB\Driver\Exception $e){
 

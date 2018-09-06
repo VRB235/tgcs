@@ -36,6 +36,9 @@
         <h1>FORMATO F <br/> PRESENTACIÓN TRABAJO DE GRADO</h1>
         <spam> (llenar en el computador, no a mano)</spam>
     </div>
+    <label for="id_register_estudiante">Nro de Registro:
+        <input type="text" name="id_register_estudiante" id="id_register_estudiante" class="form-control" value="<?php echo $element->id_register_estudiante?>" disabled>
+    </label>
     <label for="approval_date">Fecha de aprobación del Proyecto
         <input type="date" id="approval_date" name="approval_date" class="form-control" value="<?php echo $element->approval_date?>" disabled>
     </label>

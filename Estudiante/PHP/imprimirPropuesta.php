@@ -14,8 +14,19 @@
             $html = "<table><tr><td style='padding: 0px; padding-left:150px;'><img src=../recursos/Logo-UCAB-04.png ></td></tr></table>
             <br>
             <br>
-            <br>
-            <br>
+            <table>
+                    <tr style='padding: 0px;margin:0px;'>
+                        <td style='padding-left: 40px; '>
+                            <div><label>Nro de Registro: </label><div style='border: 1px solid black; width:180px;height:20px;border-radius: 5px'></div></div>
+                        </td>
+                        <td  style='padding: 0px; padding-left: 40px'>
+                            <div><label>Fecha de Entrega: </label><div style='border: 1px solid black; width:180px;height:20px;border-radius: 5px'></div></div>
+                        </td>
+                        <td style='padding: 0px; padding-left: 40px;padding-bottom: 25px;'>
+                            <div><label>Período: </label><div style='border: 1px solid black; width:180px;height:20px;border-radius: 5px;'></div></div>
+                        </td>
+                    </tr>
+                </table>
             <table><tr><td style='padding-left: 300px; font-size: 15px; padding-bottom: 10px'><strong>FORMATO A</strong></td></tr>
             <tr><td style='padding-left: 150px; font-size: 15px; padding-bottom: 10px'><strong>FICHA DE REGISTRO DEL PROYECTO DE TRABAJO DE GRADO</strong></td></tr></table>
             ";
@@ -201,10 +212,6 @@
                             <br>
                             <br>
                             <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
                             <br>";
                 }
 
@@ -222,6 +229,7 @@
                 <br>
                 <br>
                 <br>
+                <br>
                 <p class='text' style='text-align: justify'>Nosotros los estudiantes de la Escuela de Ciencias Sociales firmantes de la presente ficha de registro 
                     declaramos que el presente Proyecto de Trabajo de Grado ha sido elaborado respetando las normas de 
                     derecho de autor y propiedad intelectual y que conocemos que cualquier tipo de irregularidad en este 
@@ -233,12 +241,23 @@
 
                 $html="<table><tr><td style='padding: 0px; padding-left:150px;'><img src=../recursos/Logo-UCAB-04.png ></td></tr></table>
                 <br>
-                <br>
-                <br>
-                <br>
+                <table>
+                    <tr style='padding: 0px;margin:0px;'>
+                        <td style='padding-left: 40px; '>
+                            <div><label>Nro de Registro: </label><div style='border: 1px solid black; width:180px;height:20px;border-radius: 5px'></div></div>
+                        </td>
+                        <td  style='padding: 0px; padding-left: 40px'>
+                            <div><label>Fecha de Entrega: </label><div style='border: 1px solid black; width:180px;height:20px;border-radius: 5px'></div></div>
+                        </td>
+                        <td style='padding: 0px; padding-left: 40px;padding-bottom: 25px;'>
+                            <div><label>Período: </label><div style='border: 1px solid black; width:180px;height:20px;border-radius: 5px;'></div></div>
+                        </td>
+                    </tr>
+                </table>
                 <table><tr><td style='padding-left: 300px; font-size: 15px; padding-bottom: 10px'><strong>FORMATO F</strong></td></tr>
                         <tr><td style='padding-left: 200px; font-size: 15px; padding-bottom: 10px'><strong>PRESENTACIÓN TRABAJO DE GRADO</strong></td></tr></table>
                 <br>
+                <label for='id_register_estudiante'><strong>Nro de Registro : </strong></label><label>".$project["id_register_estudiante"]."</label>
                 <br>
                 <br>
                 <label for='approval_date'><strong>Fecha de aprobación del Proyecto : </strong></label><label>".$project["approval_date"]."</label>
@@ -387,12 +406,11 @@
                             <br>
                             <br>
                             <br>
-                            <br>
-                            <br>
                             <br>";
             }
         $html.="
                 <table><tr><td style='padding-left: 100px'><label class='approvation'>Aprobación por parte del Tutor <br> (firma)</label></td><td style='padding-left: 200px'><label class='date_sign'>Día y Fecha</label></td></tr></table>
+                <br>
                 <br>
                 <br>
                 <br>";
@@ -410,6 +428,7 @@
                 <br>
                 <label class='clean'>Se consigna:</label>
                 <br>
+                <br>
                 <br>";
 
                 if($project['cd']=='on'){
@@ -420,7 +439,6 @@
                 }
                 
                 $html .= "CD con el documento del Trabajo de Grado en word y PDF.Ficha Resumen del Trabajo de Grado (Formato G)
-                <br>
                 <br>
                 <br>
                 <br>
@@ -442,6 +460,19 @@
             <br>
             <br>
             <br>
+            <table>
+                    <tr style='padding: 0px;margin:0px;'>
+                        <td style='padding-left: 40px; '>
+                            <div><label>Nro de Registro: </label><div style='border: 1px solid black; width:180px;height:20px;border-radius: 5px'></div></div>
+                        </td>
+                        <td  style='padding: 0px; padding-left: 40px'>
+                            <div><label>Fecha de Entrega: </label><div style='border: 1px solid black; width:180px;height:20px;border-radius: 5px'></div></div>
+                        </td>
+                        <td style='padding: 0px; padding-left: 40px;padding-bottom: 25px;'>
+                            <div><label>Período: </label><div style='border: 1px solid black; width:180px;height:20px;border-radius: 5px;'></div></div>
+                        </td>
+                    </tr>
+                </table>
             <table><tr><td style='padding-left: 300px; font-size: 15px; padding-bottom: 10px'><strong>FORMATO A</strong></td></tr>
             <tr><td style='padding-left: 150px; font-size: 15px; padding-bottom: 10px'><strong>FICHA DE REGISTRO DEL PROYECTO DE TRABAJO DE GRADO</strong></td></tr></table>
             <br>
@@ -533,11 +564,6 @@
                             <br>
                             <br>
                             <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
                             <br>";
             }
             if(!$oneStudent) {
@@ -571,8 +597,23 @@
             <br>
             <br>
             <br>
+            <table>
+                    <tr style='padding: 0px;margin:0px;'>
+                        <td style='padding-left: 40px; '>
+                            <div><label>Nro de Registro: </label><div style='border: 1px solid black; width:180px;height:20px;border-radius: 5px'></div></div>
+                        </td>
+                        <td  style='padding: 0px; padding-left: 40px'>
+                            <div><label>Fecha de Entrega: </label><div style='border: 1px solid black; width:180px;height:20px;border-radius: 5px'></div></div>
+                        </td>
+                        <td style='padding: 0px; padding-left: 40px;padding-bottom: 25px;'>
+                            <div><label>Período: </label><div style='border: 1px solid black; width:180px;height:20px;border-radius: 5px;'></div></div>
+                        </td>
+                    </tr>
+                </table>
             <table><tr><td style='padding-left: 300px; font-size: 15px; padding-bottom: 10px'><strong>FORMATO F</strong></td></tr>
                         <tr><td style='padding-left: 200px; font-size: 15px; padding-bottom: 10px'><strong>PRESENTACIÓN TRABAJO DE GRADO</strong></td></tr></table>
+            <br>
+            <label for='id_register_estudiante'><strong>Nro de Registro : </strong></label><label>".$project["id_register_estudiante"]."</label>
             <br>
             <br>
             <br>
@@ -583,7 +624,6 @@
             <br>
             <br>        
             <label for='investigation_area'><strong>Area de Investigación : </strong></label><label>".$project["investigation_area"]."</label>
-            <br>
             <br>
             <br>
             <label for='student_one_name'><strong>Estudiante 1) Nombre y Apellido : </strong></label><label>".$project["student_one_name"]."</label>
@@ -634,12 +674,10 @@
                             <br>
                             <br>
                             <br>
-                            <br>
                             <br>";
             }
             $html.="
             <table><tr><td style='padding-left: 100px'><label class='approvation'>Aprobación por parte del Tutor <br> (firma)</label></td><td style='padding-left: 200px'><label class='date_sign'>Día y Fecha</label></td></tr></table>
-            <br>
             <br>
             <br>
             <br>
@@ -673,8 +711,6 @@
             $html .="CD con el documento del Trabajo de Grado en word y PDF.Ficha Resumen del Trabajo de Grado (Formato G)
             <br>
             <br>
-            <br>
-            <br>
             <p class='text2' style='text-align: justify'>Nosotros los estudiantes de la Escuela de Ciencias Sociales firmantes de la presente ficha de registro 
                     declaramos que el presente Proyecto de Trabajo de Grado ha sido elaborado respetando las normas de 
                     derecho de autor y propiedad intelectual y que conocemos que cualquier tipo de irregularidad en este 
@@ -691,5 +727,5 @@
     // Despliega el PDF
     $html2pdf->output('imprimir.pdf','D');
 
-
+?>
 

@@ -5,7 +5,7 @@
     session_start();
 
     $_SESSION['page'] = $_SERVER['HTTP_REFERER'];
-    // Si el usuario tiene permisos
+
     if($_SESSION['verify']==true) {
 
         // Si los campos de nro de registro y term code no estan vacios
@@ -19,10 +19,23 @@
                 // Si no existe el proyecto
                 if($mongo->verifyIfExist($_POST["id_registerr"],$_POST["versionn"])){
                     // Elimina el proyecto de la base de datos
-                    $mongo->removeProject($_POST["id_registerr"],$_POST["term_code"],$_POST["versionn"]);
-                    $_SESSION["title"] = TITLE_PROJEC_DELETED;
-                    $_SESSION["message"] = MESSAGE_PROJECT_DELETED;
-                    header("Location: ./mensaje.php");
+                    if($mongo->removeProject($_POST["id_registerr"],$_POST["term_code"],$_POST["versionn"])){
+                        if(!$mongo->verifyIfExist($_POST["id_registerr"],$_POST["versionn"])){
+                            $_SESSION["title"] = TITLE_PROJEC_DELETED;
+                            $_SESSION["message"] = MESSAGE_PROJECT_DELETED;
+                            header("Location: ./mensaje.php");
+                        }
+                        else{
+                            $_SESSION["title"] = TITLE_NOT_FOUND_PROJECT;
+                            $_SESSION["message"] = MESSAGE_NOT_FOUND_PROJECT;
+                            header("Location: ./mensaje.php");
+                        }
+                    }
+                    else{
+                        $_SESSION["title"] = TITLE_NOT_FOUND_PROJECT;
+                        $_SESSION["message"] = MESSAGE_NOT_FOUND_PROJECT;
+                        header("Location: ./mensaje.php");
+                    }
                 }
                 else{
                     $_SESSION["title"] = TITLE_NOT_FOUND_PROJECT;
@@ -33,10 +46,23 @@
             else{
                 if($mongo->verifyIfExist($_POST["id_registerr"],$_POST["versionn"])){
                     // Elimina el proyecto de la base de datos
-                    $mongo->removeProject($_POST["id_registerr"],$_POST["term_code"],$_POST["versionn"]);
-                    $_SESSION["title"] = TITLE_PROJEC_DELETED;
-                    $_SESSION["message"] = MESSAGE_PROJECT_DELETED;
-                    header("Location: ./mensaje.php");
+                    if($mongo->removeProject($_POST["id_registerr"],$_POST["term_code"],$_POST["versionn"])){
+                        if(!$mongo->verifyIfExist($_POST["id_registerr"],$_POST["versionn"])){
+                            $_SESSION["title"] = TITLE_PROJEC_DELETED;
+                            $_SESSION["message"] = MESSAGE_PROJECT_DELETED;
+                            header("Location: ./mensaje.php");
+                        }
+                        else{
+                            $_SESSION["title"] = TITLE_NOT_FOUND_PROJECT;
+                            $_SESSION["message"] = MESSAGE_NOT_FOUND_PROJECT;
+                            header("Location: ./mensaje.php");
+                        }
+                    }else{
+                        $_SESSION["title"] = TITLE_NOT_FOUND_PROJECT;
+                        $_SESSION["message"] = MESSAGE_NOT_FOUND_PROJECT;
+                        header("Location: ./mensaje.php");
+                    }
+
                 }
                 else{
 

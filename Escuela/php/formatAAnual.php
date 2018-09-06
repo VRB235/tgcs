@@ -107,7 +107,7 @@
         </select>
     </label>
     <spam class="split">Estudiante 2)</spam>
-    <label for="student_two_name"><strong>Nombre y Apellido</strong>
+    <label for="student_two_name"><strong>Nombre y Apellido</strong>z
         <input type="text" id="student_two_name" name="student_two_name" class="form-control"  value="<?php echo $element->student_two_name?>" disabled>
     </label>
     <label for="student_two_id">Cédula de Identidad

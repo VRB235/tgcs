@@ -62,6 +62,9 @@
         /**
          * ProjectFAnual constructor.
          * @param $format
+         * @param $termCode
+         * @param $projectID
+         * @param $dateRegister
          * @param $approvalDate
          * @param $title
          * @param $investigationArea
@@ -90,6 +93,19 @@
          * @param $tutorHabPhone
          * @param $tutorCelPhone
          * @param $tutorCI
+         * @param $extern
+         * @param $tutorApprove
+         * @param $juryOne
+         * @param $juryStatusOne
+         * @param $juryRolOne
+         * @param $jutyTwo
+         * @param $juryStatusTwo
+         * @param $juryRolTwo
+         * @param $jutyThree
+         * @param $juryStatusThree
+         * @param $juryRolThree
+         * @param $cd
+         * @param $approve
          */
         public function __construct($format,
                                     $approvalDate, $title, $investigationArea,

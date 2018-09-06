@@ -44,7 +44,7 @@
     </label>
     <spam class="split">Estudiante 1)</spam>
     <label for="student_one_name"><strong>Nombre y Apellido</strong>
-        <input type="text" id="student_one_name" name="student_one_name" class="form-control" value="<?php echo $element->student_one_name?>" disabled>
+        <input type="text" id="student_one_name" name="ststudent_one_name" class="form-control" value="<?php echo $element->student_one_id?>" disabled>
     </label>
     <label for="student_one_id">Cédula de Identidad
         <input type="text" id="student_one_id" min="0" name="student_one_id" class="form-control" value="<?php echo $element->student_one_id?>" disabled>
@@ -91,12 +91,6 @@
     </label>
     <label for="student_two_approval_date">Fecha de Aprobación
         <input type="date" id="student_two_approval_date" min="1900" name="student_two_approval_date" class="form-control" value="<?php echo $element->student_two_approval_date?>" disabled>
-    </label>
-    <label for="same_seminar">¿Este proyecto es el mismo del Seminario?
-        <select id="same_seminar" name="same_seminar" class="form-control" disabled>
-            <option value="yes" <?php if($element->same_seminar=='yes'){echo "selected";}?>>Si</option>
-            <option value="no" <?php if($element->same_seminar=='no'){echo "selected";}?>>No</option>
-        </select>
     </label>
     <spam class="split">Tutor</spam>
     <label for="tutor_name"><strong>Nombre y Apellido del Tutor</strong>

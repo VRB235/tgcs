@@ -68,7 +68,7 @@
     </thead>
     <tbody>
     <?php
-    // Si el usuario tiene permisos
+
     if($_SESSION['verify']==true){
         foreach ($cursor as $element){
 
@@ -79,7 +79,13 @@
                 echo "<td>1era versión</td>";
             }
             else{
-                echo "<td>2da versión</td>";
+                if($element->version=="second_version"){
+                    echo "<td>2da versión</td>";
+                }
+                else{
+                    echo "<td>-</td>";
+                }
+
             }
             echo "<td>".$element->title."</td>";
             echo "<td>".$element->term_code."</td>";

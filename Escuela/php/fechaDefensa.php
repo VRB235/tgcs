@@ -63,7 +63,7 @@
         <tbody>
 
 <?php
-    // Si el usuario tiene permisos
+
     if($_SESSION['verify']==true) {
 
         $projectsA = $mongo->getProjectsInFormatA();
@@ -92,11 +92,11 @@
 
                     }
 
-                    echo "<td>" . $elementA->title . "</td>";
-                    echo "<td>" . $elementA->student_one_name . "</td>";
-                    echo "<td>" . $elementA->student_one_id . "</td>";
-                    echo "<td>" . $elementA->student_two_name . "</td>";
-                    echo "<td>" . $elementA->student_two_id . "</td>";
+                    echo "<td>" . $elementF->title . "</td>";
+                    echo "<td>" . $elementF->student_one_name . "</td>";
+                    echo "<td>" . $elementF->student_one_id . "</td>";
+                    echo "<td>" . $elementF->student_two_name . "</td>";
+                    echo "<td>" . $elementF->student_two_id . "</td>";
                     if (isset($elementA->defense_date)) {
                         echo "<td>" . $elementA->defense_date . "</td>";
                     } else {

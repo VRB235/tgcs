@@ -525,3 +525,11 @@ label[for="mention"] {
     margin-left: 10px;
 }
 
+label[for="id_register_estudiante"] {
+    display: block;
+    margin-left: 3%;
+    margin-right: 3%;
+    width: 230px;
+    margin-bottom: 20px;
+}
+
