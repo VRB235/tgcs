@@ -22,9 +22,6 @@
                         <td  style='padding: 0px; padding-left: 40px'>
                             <div><label>Fecha de Entrega: </label><div style='border: 1px solid black; width:180px;height:20px;border-radius: 5px'></div></div>
                         </td>
-                        <td style='padding: 0px; padding-left: 40px;padding-bottom: 25px;'>
-                            <div><label>Período: </label><div style='border: 1px solid black; width:180px;height:20px;border-radius: 5px;'></div></div>
-                        </td>
                     </tr>
                 </table>
             <table><tr><td style='padding-left: 300px; font-size: 15px; padding-bottom: 10px'><strong>FORMATO A</strong></td></tr>
@@ -249,9 +246,6 @@
                         <td  style='padding: 0px; padding-left: 40px'>
                             <div><label>Fecha de Entrega: </label><div style='border: 1px solid black; width:180px;height:20px;border-radius: 5px'></div></div>
                         </td>
-                        <td style='padding: 0px; padding-left: 40px;padding-bottom: 25px;'>
-                            <div><label>Período: </label><div style='border: 1px solid black; width:180px;height:20px;border-radius: 5px;'></div></div>
-                        </td>
                     </tr>
                 </table>
                 <table><tr><td style='padding-left: 300px; font-size: 15px; padding-bottom: 10px'><strong>FORMATO F</strong></td></tr>
@@ -468,9 +462,6 @@
                         <td  style='padding: 0px; padding-left: 40px'>
                             <div><label>Fecha de Entrega: </label><div style='border: 1px solid black; width:180px;height:20px;border-radius: 5px'></div></div>
                         </td>
-                        <td style='padding: 0px; padding-left: 40px;padding-bottom: 25px;'>
-                            <div><label>Período: </label><div style='border: 1px solid black; width:180px;height:20px;border-radius: 5px;'></div></div>
-                        </td>
                     </tr>
                 </table>
             <table><tr><td style='padding-left: 300px; font-size: 15px; padding-bottom: 10px'><strong>FORMATO A</strong></td></tr>
@@ -604,9 +595,6 @@
                         </td>
                         <td  style='padding: 0px; padding-left: 40px'>
                             <div><label>Fecha de Entrega: </label><div style='border: 1px solid black; width:180px;height:20px;border-radius: 5px'></div></div>
-                        </td>
-                        <td style='padding: 0px; padding-left: 40px;padding-bottom: 25px;'>
-                            <div><label>Período: </label><div style='border: 1px solid black; width:180px;height:20px;border-radius: 5px;'></div></div>
                         </td>
                     </tr>
                 </table>

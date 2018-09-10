@@ -43,7 +43,7 @@ define("MESSAGE_NOT_FOUND_PROJECT","El Nro de registro ingresado no existe");
 define("TITLE_NOT_FOUND_PROJECTS","Proyectos No Encontrados");
 define("MESSAGE_NOT_FOUND_PROJECTS","No se encontraron proyectos para procesar su solicitud");
 define("TITLE_JURY_ERROR","Jurado No Encontrado");
-define("MESSAGE_JURY_ERROR","El jurado ingresado no esta asignado al proyecto asignado");
+define("MESSAGE_JURY_ERROR","El jurado ingresado no esta asignado al proyecto seleccionado");
 define("TITLE_ID_REGISTER_USE","Nro de registro en uso");
 define("MESSAGE_ID_REGISTER_USE","El Nro de registro ingresado está en uso");
 define("TITLE_FORMAT_NOT_FOUND","Formato No Encontrado");

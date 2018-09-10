@@ -1,7 +1,9 @@
 
-Escuela/vendor/
+Escuela/recursos/credenciales.ini
 
-Estudiante/vendor/
+Escuela/recursos/user_access.ini
+
+Estudiante/recursos/credenciales.ini
 
 Escuela/recursos/credenciales.ini
 
